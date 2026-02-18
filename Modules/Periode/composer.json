@@ -1,0 +1,30 @@
+{
+    "name": "daraltauhid/periode",
+    "description": "",
+    "authors": [
+        {
+            "name": "M. Fauzan Hanif",
+            "email": "fauzanhanif2112@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Periode\\": "app/",
+            "Modules\\Periode\\Database\\Factories\\": "database/factories/",
+            "Modules\\Periode\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Periode\\Tests\\": "tests/"
+        }
+    }
+}

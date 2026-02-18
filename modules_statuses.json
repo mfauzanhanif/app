@@ -1,0 +1,7 @@
+{
+    "Admission": true,
+    "Institution": true,
+    "User": true,
+    "Periode": true,
+    "Finance": true
+}

@@ -1,0 +1,30 @@
+{
+    "name": "daraltauhid/institution",
+    "description": "",
+    "authors": [
+        {
+            "name": "M. Fauzan Hanif",
+            "email": "fauzanhanif2112@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Institution\\": "app/",
+            "Modules\\Institution\\Database\\Factories\\": "database/factories/",
+            "Modules\\Institution\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Institution\\Tests\\": "tests/"
+        }
+    }
+}
