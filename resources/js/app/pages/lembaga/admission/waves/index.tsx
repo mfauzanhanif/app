@@ -1,7 +1,7 @@
 import { Head, Link, usePage } from '@inertiajs/react';
 import { Plus, Calendar, Users, ToggleRight, ToggleLeft } from 'lucide-react';
 import AppLayout, { type NavGroup } from '@/app/layouts/app.layout';
-import { getAdmissionNavGroups } from './nav-config';
+import { getAdmissionNavGroups } from '../nav-config';
 
 interface Wave {
     id: number;

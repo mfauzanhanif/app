@@ -14,6 +14,7 @@ use Inertia\Inertia;
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\Fortify;
+use Modules\User\Models\User;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -48,7 +49,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::authenticateUsing(function (Request $request) {
             $identifier = $request->input('identifier');
 
-            $user = \App\Models\User::where('email', $identifier)
+            $user = User::where('email', $identifier)
                 ->orWhereHas('employee', fn ($q) => $q->where('nipy', $identifier))
                 ->first();
 

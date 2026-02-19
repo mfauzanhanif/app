@@ -5,6 +5,7 @@ use Modules\Admission\Http\Controllers\AdmissionInvoiceController;
 use Modules\Admission\Http\Controllers\AdmissionWaveController;
 use Modules\Admission\Http\Controllers\CandidateController;
 use Modules\Admission\Http\Controllers\CandidateExamController;
+use Modules\Admission\Http\Controllers\CandidateCertificateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::get('candidates', [CandidateController::class, 'index'])->name('candidate
 Route::get('candidates/{candidate}', [CandidateController::class, 'show'])->name('candidates.show');
 Route::put('candidates/{candidate}/status', [CandidateController::class, 'updateStatus'])->name('candidates.update-status');
 Route::put('candidates/{candidate}/documents/{document}/verify', [CandidateController::class, 'verifyDocument'])->name('candidates.verify-document');
+Route::get('candidates/{candidate}/certificate', [CandidateCertificateController::class, 'download'])->name('candidates.certificate');
 
 // --- Seleksi / Tes ---
 Route::get('candidates/{candidate}/exams', [CandidateExamController::class, 'index'])->name('candidate-exams.index');

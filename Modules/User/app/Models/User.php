@@ -7,6 +7,7 @@ use Modules\Institution\Models\Institution;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -96,7 +97,7 @@ class User extends Authenticatable
     public function getInstitutionIds(): array
     {
         // For Spatie Teams, we query the pivot table
-        return \DB::table('model_has_roles')
+        return DB::table('model_has_roles')
             ->where('model_id', $this->id)
             ->where('model_type', self::class)
             ->whereNotNull('institution_id')
@@ -118,9 +119,9 @@ class User extends Authenticatable
         // Check using Spatie Teams logic
         // We can temporarily set team id or query specific role
         // Ideally, hasRole check for *any* role in this team
-        
+
         // Easiest DB check via Pivot
-        return \DB::table('model_has_roles')
+        return DB::table('model_has_roles')
             ->where('model_id', $this->id)
             ->where('model_type', self::class)
             ->where('institution_id', $institutionId)
@@ -184,7 +185,7 @@ class User extends Authenticatable
      */
     public function getPrimaryInstitution(): ?Institution
     {
-        $institutionId = \DB::table('model_has_roles')
+        $institutionId = DB::table('model_has_roles')
             ->where('model_id', $this->id)
             ->where('model_type', self::class)
             ->whereNotNull('institution_id')
@@ -359,7 +360,7 @@ class User extends Authenticatable
      */
     protected function hasRoleInAnyInstitution(): bool
     {
-        return \DB::table('model_has_roles')
+        return DB::table('model_has_roles')
             ->where('model_id', $this->id)
             ->where('model_type', self::class)
             ->whereNotNull('institution_id')
@@ -384,7 +385,7 @@ class User extends Authenticatable
         // However, usually this is called in a controller where we might redirect afterwards.
         // Let's keep the team ID set only for the assignment if possible, OR assume the caller handles context.
         // To be safe: save current, set, assign, restore.
-        
+
         $previousTeamId = getPermissionsTeamId();
         setPermissionsTeamId($institutionId);
         $this->spatieAssignRole($role);

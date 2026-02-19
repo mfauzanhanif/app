@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Modules\Institution\Models\Institution;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -107,7 +108,7 @@ class HandleInertiaRequests extends Middleware
         // If institution not set by middleware, try to get from route
         if (!$institution && $request->route('institution')) {
             $institutionCode = $request->route('institution');
-            $institution = \App\Models\Institution::findByCode($institutionCode);
+            $institution = Institution::findByCode($institutionCode);
         }
 
         // If student not set by middleware, try to get from route

@@ -3,5 +3,6 @@
     "Institution": true,
     "User": true,
     "Periode": true,
-    "Finance": true
+    "Finance": true,
+    "Web": true
 }

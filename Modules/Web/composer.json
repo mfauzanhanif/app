@@ -1,0 +1,30 @@
+{
+    "name": "daraltauhid/web",
+    "description": "",
+    "authors": [
+        {
+            "name": "M. Fauzan Hanif",
+            "email": "fauzanhanif2112@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Web\\": "app/",
+            "Modules\\Web\\Database\\Factories\\": "database/factories/",
+            "Modules\\Web\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Web\\Tests\\": "tests/"
+        }
+    }
+}

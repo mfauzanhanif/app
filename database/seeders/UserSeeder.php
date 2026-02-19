@@ -7,6 +7,7 @@ use Modules\User\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 
 class UserSeeder extends Seeder
 {
@@ -20,7 +21,7 @@ class UserSeeder extends Seeder
         // ==========================================
         // 1. GLOBAL USERS (Yayasan Level)
         // ==========================================
-        
+
         $globalUsers = [
             [
                 'name' => 'Administrator',
@@ -120,18 +121,18 @@ class UserSeeder extends Seeder
                 // Assign Scoped Role
                 // Use the custom method we created in User model for easier assignment
                 // OR manually set context
-                
+
                 // Method 1: Manual Context Switching
                 // setPermissionsTeamId($institution->id);
                 // $user->assignRole($roleKey);
-                
+
                 // Method 2: Use helper (Recommended)
                 try {
                     $user->assignRoleInInstitution($roleKey, $institution);
                 } catch (\Exception $e) {
                     // Ignore if role doesn't exist? No, we should log.
                     // But in seeder we assume roles exist via RoleSeeder
-                     \Log::warning("Failed to assign role $roleKey to user $username: " . $e->getMessage());
+                    Log::warning("Failed to assign role $roleKey to user $username: " . $e->getMessage());
                 }
             }
         }
@@ -139,10 +140,10 @@ class UserSeeder extends Seeder
         // ==========================================
         // 3. GUARDIAN USER (Wali Santri)
         // ==========================================
-        // Guardian is effectively global or scoped? 
+        // Guardian is effectively global or scoped?
         // Based on discussion: Guardian acts for a Student. The role 'guardian' is global (End-User),
         // but access is determined by child relationship.
-        
+
         $guardianUser = User::firstOrCreate(
             ['email' => 'wali.santri@gmail.com'],
             [
@@ -154,7 +155,7 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
             ]
         );
-        
+
         setPermissionsTeamId(null);
         if (!$guardianUser->hasRole('guardian')) {
             $guardianUser->assignRole('guardian');
