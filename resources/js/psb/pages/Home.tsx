@@ -128,13 +128,12 @@ export default function Home({ waves }: HomeProps) {
                 <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
                     <div className="mb-12 text-center">
                         <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Alur Pendaftaran</h2>
-                        <p className="mt-3 text-lg text-gray-500 dark:text-gray-400">4 langkah mudah untuk mendaftar</p>
+                        <p className="mt-3 text-lg text-gray-500 dark:text-gray-400">3 langkah mudah untuk mendaftar</p>
                     </div>
-                    <div className="mx-auto grid max-w-4xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                        <StepCard step={1} title="Buat Akun" desc="Daftar akun wali santri di portal utama" />
-                        <StepCard step={2} title="Isi Formulir" desc="Lengkapi data santri, keluarga, dan dokumen" />
-                        <StepCard step={3} title="Bayar Formulir" desc="Upload bukti pembayaran biaya pendaftaran" />
-                        <StepCard step={4} title="Tunggu Hasil" desc="Pantau status di halaman pengumuman" />
+                    <div className="mx-auto grid max-w-4xl gap-8 sm:grid-cols-3">
+                        <StepCard step={1} title="Isi Formulir" desc="Lengkapi data santri, keluarga, dan dokumen" />
+                        <StepCard step={2} title="Bayar Formulir" desc="Upload bukti pembayaran biaya pendaftaran" />
+                        <StepCard step={3} title="Tunggu Hasil" desc="Pantau status di halaman pengumuman" />
                     </div>
                 </div>
             </section>

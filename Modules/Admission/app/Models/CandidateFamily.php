@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Admission\Enums\FamilyType;
 use Modules\Admission\Enums\IncomeRange;
+use Modules\Admission\Enums\JobType;
+use Modules\Admission\Enums\LastEducation;
 
 class CandidateFamily extends Model
 {
@@ -18,6 +20,8 @@ class CandidateFamily extends Model
         'nik',
         'name',
         'phone',
+        'email',
+        'last_education',
         'job',
         'income',
     ];
@@ -26,6 +30,8 @@ class CandidateFamily extends Model
     {
         return [
             'type' => FamilyType::class,
+            'last_education' => LastEducation::class,
+            'job' => JobType::class,
             'income' => IncomeRange::class,
         ];
     }

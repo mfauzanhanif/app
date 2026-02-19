@@ -7,8 +7,6 @@ interface PsbLayoutProps {
 }
 
 export default function PsbLayout({ children, title }: PsbLayoutProps) {
-    const appDomain = (window as any).__APP_DOMAIN || 'app.daraltauhid.com';
-
     return (
         <>
             <Head title={title} />
@@ -32,26 +30,15 @@ export default function PsbLayout({ children, title }: PsbLayoutProps) {
                         {/* Nav Links */}
                         <div className="hidden items-center gap-1 sm:flex">
                             <NavLink href="/">Beranda</NavLink>
-                            <NavLink href="/status">Status Pendaftaran</NavLink>
+                            <NavLink href="/status">Cek Status</NavLink>
                             <NavLink href="/pengumuman">Pengumuman</NavLink>
                         </div>
-
-                        {/* Login Button */}
-                        <a
-                            href={`//${appDomain}/login`}
-                            className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-emerald-200/50 transition-all hover:from-emerald-600 hover:to-teal-700 hover:shadow-lg dark:shadow-emerald-900/30"
-                        >
-                            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-                            </svg>
-                            Masuk
-                        </a>
                     </div>
 
                     {/* Mobile Nav */}
                     <div className="flex items-center gap-1 overflow-x-auto border-t border-emerald-50 px-4 py-1.5 sm:hidden dark:border-gray-800">
                         <NavLink href="/">Beranda</NavLink>
-                        <NavLink href="/status">Status</NavLink>
+                        <NavLink href="/status">Cek Status</NavLink>
                         <NavLink href="/pengumuman">Pengumuman</NavLink>
                     </div>
                 </nav>
@@ -91,8 +78,8 @@ function NavLink({ href, children }: { href: string; children: ReactNode }) {
         <Link
             href={href}
             className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${isActive
-                    ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white'
+                ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white'
                 }`}
         >
             {children}

@@ -54,7 +54,7 @@ Route::domain(env('APP_DOMAIN'))->group(function () {
 |--------------------------------------------------------------------------
 | Portal Penerimaan Santri Baru
 */
-Route::domain('psb.' . env('APP_DOMAIN'))->group(function () {
+Route::domain(env('PSB_DOMAIN'))->group(function () {
     require base_path('routes/psb.php');
 });
 

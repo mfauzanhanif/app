@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
 // use Modules\Employee\Models\Employee;
+use Modules\Student\Models\Student;
 
 class Institution extends Model
 {
@@ -28,7 +29,7 @@ class Institution extends Model
                 Cache::forget('institution_code_' . $institution->getOriginal('code'));
             }
             Cache::forget('institution_code_' . $institution->code);
-            
+
             // Tetap hapus domain cache untuk landing pages
             if ($institution->isDirty('domain')) {
                 Cache::forget('institution_domain_' . $institution->getOriginal('domain'));
@@ -119,6 +120,14 @@ class Institution extends Model
     public function roles(): HasMany
     {
         return $this->hasMany(Role::class);
+    }
+
+    /**
+     * Get all students for this institution.
+     */
+    public function students(): HasMany
+    {
+        return $this->hasMany(Student::class);
     }
 
     // ========================================

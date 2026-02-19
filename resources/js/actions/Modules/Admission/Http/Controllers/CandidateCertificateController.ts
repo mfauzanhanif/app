@@ -2,24 +2,24 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateCertificateController::download
  * @see Modules/Admission/app/Http/Controllers/CandidateCertificateController.php:16
- * @route '//psb.app.daraltauhid.test/sertifikat/{candidate}'
+ * @route '//psb.daraltauhid.test/sertifikat/{candidate}'
  */
-const download084b2cba29e6262df61e88882c00f78a = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: download084b2cba29e6262df61e88882c00f78a.url(args, options),
+const downloadc41cdbe1240977e4911bc0d44315312d = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: downloadc41cdbe1240977e4911bc0d44315312d.url(args, options),
     method: 'get',
 })
 
-download084b2cba29e6262df61e88882c00f78a.definition = {
+downloadc41cdbe1240977e4911bc0d44315312d.definition = {
     methods: ["get","head"],
-    url: '//psb.app.daraltauhid.test/sertifikat/{candidate}',
+    url: '//psb.daraltauhid.test/sertifikat/{candidate}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateCertificateController::download
  * @see Modules/Admission/app/Http/Controllers/CandidateCertificateController.php:16
- * @route '//psb.app.daraltauhid.test/sertifikat/{candidate}'
+ * @route '//psb.daraltauhid.test/sertifikat/{candidate}'
  */
-download084b2cba29e6262df61e88882c00f78a.url = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+downloadc41cdbe1240977e4911bc0d44315312d.url = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { candidate: args }
     }
@@ -42,7 +42,7 @@ download084b2cba29e6262df61e88882c00f78a.url = (args: { candidate: number | { id
                 : args.candidate,
                 }
 
-    return download084b2cba29e6262df61e88882c00f78a.definition.url
+    return downloadc41cdbe1240977e4911bc0d44315312d.definition.url
             .replace('{candidate}', parsedArgs.candidate.toString())
             .replace(/\/+$/, '') + queryParams(options)
 }
@@ -50,48 +50,48 @@ download084b2cba29e6262df61e88882c00f78a.url = (args: { candidate: number | { id
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateCertificateController::download
  * @see Modules/Admission/app/Http/Controllers/CandidateCertificateController.php:16
- * @route '//psb.app.daraltauhid.test/sertifikat/{candidate}'
+ * @route '//psb.daraltauhid.test/sertifikat/{candidate}'
  */
-download084b2cba29e6262df61e88882c00f78a.get = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: download084b2cba29e6262df61e88882c00f78a.url(args, options),
+downloadc41cdbe1240977e4911bc0d44315312d.get = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: downloadc41cdbe1240977e4911bc0d44315312d.url(args, options),
     method: 'get',
 })
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateCertificateController::download
  * @see Modules/Admission/app/Http/Controllers/CandidateCertificateController.php:16
- * @route '//psb.app.daraltauhid.test/sertifikat/{candidate}'
+ * @route '//psb.daraltauhid.test/sertifikat/{candidate}'
  */
-download084b2cba29e6262df61e88882c00f78a.head = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: download084b2cba29e6262df61e88882c00f78a.url(args, options),
+downloadc41cdbe1240977e4911bc0d44315312d.head = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: downloadc41cdbe1240977e4911bc0d44315312d.url(args, options),
     method: 'head',
 })
 
     /**
 * @see \Modules\Admission\Http\Controllers\CandidateCertificateController::download
  * @see Modules/Admission/app/Http/Controllers/CandidateCertificateController.php:16
- * @route '//psb.app.daraltauhid.test/sertifikat/{candidate}'
+ * @route '//psb.daraltauhid.test/sertifikat/{candidate}'
  */
-    const download084b2cba29e6262df61e88882c00f78aForm = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: download084b2cba29e6262df61e88882c00f78a.url(args, options),
+    const downloadc41cdbe1240977e4911bc0d44315312dForm = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: downloadc41cdbe1240977e4911bc0d44315312d.url(args, options),
         method: 'get',
     })
 
             /**
 * @see \Modules\Admission\Http\Controllers\CandidateCertificateController::download
  * @see Modules/Admission/app/Http/Controllers/CandidateCertificateController.php:16
- * @route '//psb.app.daraltauhid.test/sertifikat/{candidate}'
+ * @route '//psb.daraltauhid.test/sertifikat/{candidate}'
  */
-        download084b2cba29e6262df61e88882c00f78aForm.get = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: download084b2cba29e6262df61e88882c00f78a.url(args, options),
+        downloadc41cdbe1240977e4911bc0d44315312dForm.get = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: downloadc41cdbe1240977e4911bc0d44315312d.url(args, options),
             method: 'get',
         })
             /**
 * @see \Modules\Admission\Http\Controllers\CandidateCertificateController::download
  * @see Modules/Admission/app/Http/Controllers/CandidateCertificateController.php:16
- * @route '//psb.app.daraltauhid.test/sertifikat/{candidate}'
+ * @route '//psb.daraltauhid.test/sertifikat/{candidate}'
  */
-        download084b2cba29e6262df61e88882c00f78aForm.head = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: download084b2cba29e6262df61e88882c00f78a.url(args, {
+        downloadc41cdbe1240977e4911bc0d44315312dForm.head = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: downloadc41cdbe1240977e4911bc0d44315312d.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
                             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -100,7 +100,7 @@ download084b2cba29e6262df61e88882c00f78a.head = (args: { candidate: number | { i
             method: 'get',
         })
     
-    download084b2cba29e6262df61e88882c00f78a.form = download084b2cba29e6262df61e88882c00f78aForm
+    downloadc41cdbe1240977e4911bc0d44315312d.form = downloadc41cdbe1240977e4911bc0d44315312dForm
     /**
 * @see \Modules\Admission\Http\Controllers\CandidateCertificateController::download
  * @see Modules/Admission/app/Http/Controllers/CandidateCertificateController.php:16
@@ -200,7 +200,7 @@ download0c1c538f2091374b373d1d413610a206.head = (args: { institution: string | n
     download0c1c538f2091374b373d1d413610a206.form = download0c1c538f2091374b373d1d413610a206Form
 
 export const download = {
-    '//psb.app.daraltauhid.test/sertifikat/{candidate}': download084b2cba29e6262df61e88882c00f78a,
+    '//psb.daraltauhid.test/sertifikat/{candidate}': downloadc41cdbe1240977e4911bc0d44315312d,
     '//app.daraltauhid.test/{institution}/candidates/{candidate}/certificate': download0c1c538f2091374b373d1d413610a206,
 }
 

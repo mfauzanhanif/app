@@ -5,7 +5,6 @@ namespace Modules\Admission\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -37,7 +36,7 @@ class AdmissionController extends Controller
     }
 
     /**
-     * Show registration form for a specific wave.
+     * Show registration form for a specific wave (public).
      */
     public function showForm(AdmissionWave $wave): Response
     {
@@ -53,7 +52,7 @@ class AdmissionController extends Controller
     }
 
     /**
-     * Submit registration (multi-step form submission).
+     * Submit registration (public — tanpa login).
      */
     public function register(StoreCandidateRequest $request, AdmissionWave $wave): RedirectResponse
     {
@@ -61,12 +60,11 @@ class AdmissionController extends Controller
             abort(403, 'Pendaftaran gelombang ini sudah ditutup.');
         }
 
-        $user = Auth::user();
+        $registrationNumber = null;
 
-        DB::transaction(function () use ($request, $wave, $user) {
-            // 1. Create Candidate
+        DB::transaction(function () use ($request, $wave, &$registrationNumber) {
+            // 1. Create Candidate (tanpa user_id)
             $candidate = Candidate::create([
-                'user_id' => $user->id,
                 'institution_id' => $wave->institution_id,
                 'admission_wave_id' => $wave->id,
                 'registration_number' => Candidate::generateRegistrationNumber(
@@ -81,8 +79,12 @@ class AdmissionController extends Controller
                 'previous_school' => $request->previous_school,
                 'nisn' => $request->nisn,
                 'address' => $request->address,
+                'guardian_phone' => $request->guardian_phone,
+                'guardian_email' => $request->guardian_email,
                 'status' => CandidateStatus::DIAJUKAN,
             ]);
+
+            $registrationNumber = $candidate->registration_number;
 
             // 2. Create Family Data
             foreach ($request->families as $family) {
@@ -124,39 +126,70 @@ class AdmissionController extends Controller
 
         return redirect()
             ->route('psb.status')
-            ->with('success', 'Pendaftaran berhasil dikirim!');
+            ->with('success', 'Pendaftaran berhasil! Nomor pendaftaran Anda: ' . $registrationNumber);
     }
 
     /**
-     * Show registration status (for logged-in guardian).
+     * Show status lookup page (public — form input no. pendaftaran + NIK).
      */
-    public function status(): Response
+    public function status(Request $request): Response
     {
-        $user = Auth::user();
+        return Inertia::render('Status', [
+            'candidates' => [],
+            'searched' => false,
+        ]);
+    }
 
-        $candidates = Candidate::byUser($user->id)
+    /**
+     * Lookup status by registration number + NIK.
+     */
+    public function statusLookup(Request $request): Response
+    {
+        $request->validate([
+            'registration_number' => 'required|string',
+            'nik' => 'required|string|size:16',
+        ]);
+
+        $candidates = Candidate::where('registration_number', $request->registration_number)
+            ->where('nik', $request->nik)
             ->with([
                 'institution:id,name,code',
                 'admissionWave:id,name',
                 'invoices',
                 'documents',
             ])
-            ->latest()
             ->get();
 
         return Inertia::render('Status', [
             'candidates' => $candidates,
+            'searched' => true,
+            'filters' => $request->only('registration_number', 'nik'),
         ]);
     }
 
     /**
-     * Show announcement page.
+     * Show announcement lookup page (public).
      */
-    public function announcement(): Response
+    public function announcement(Request $request): Response
     {
-        $user = Auth::user();
+        return Inertia::render('Announcement', [
+            'candidates' => [],
+            'searched' => false,
+        ]);
+    }
 
-        $candidates = Candidate::byUser($user->id)
+    /**
+     * Lookup announcement by registration number + NIK.
+     */
+    public function announcementLookup(Request $request): Response
+    {
+        $request->validate([
+            'registration_number' => 'required|string',
+            'nik' => 'required|string|size:16',
+        ]);
+
+        $candidates = Candidate::where('registration_number', $request->registration_number)
+            ->where('nik', $request->nik)
             ->whereIn('status', [
                 CandidateStatus::LULUS,
                 CandidateStatus::TIDAK_LULUS,
@@ -167,11 +200,12 @@ class AdmissionController extends Controller
                 'admissionWave:id,name,announcement_date',
                 'exams',
             ])
-            ->latest()
             ->get();
 
         return Inertia::render('Announcement', [
             'candidates' => $candidates,
+            'searched' => true,
+            'filters' => $request->only('registration_number', 'nik'),
         ]);
     }
 

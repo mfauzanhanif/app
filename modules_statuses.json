@@ -4,5 +4,7 @@
     "User": true,
     "Periode": true,
     "Finance": true,
-    "Web": true
+    "Web": true,
+    "Student": true,
+    "Guardian": true
 }

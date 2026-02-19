@@ -23,6 +23,9 @@ export default function Register({ wave }: RegisterProps) {
         previous_school: '',
         nisn: '',
         address: '',
+        // Kontak Wali
+        guardian_phone: '',
+        guardian_email: '',
         // Keluarga
         families: [
             { type: 'ayah', nik: '', name: '', phone: '', job: '', income: '' },
@@ -44,7 +47,7 @@ export default function Register({ wave }: RegisterProps) {
     }
 
     function canGoNext() {
-        if (step === 0) return data.nik && data.name && data.dob;
+        if (step === 0) return data.nik && data.name && data.dob && data.guardian_phone;
         if (step === 1) return data.families[0].name && data.families[1].name;
         return true;
     }
@@ -71,10 +74,10 @@ export default function Register({ wave }: RegisterProps) {
                                 type="button"
                                 onClick={() => i < step && setStep(i)}
                                 className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${i === step
-                                        ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-200/50'
-                                        : i < step
-                                            ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300'
-                                            : 'bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500'
+                                    ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-200/50'
+                                    : i < step
+                                        ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300'
+                                        : 'bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500'
                                     }`}
                             >
                                 <span className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold ${i <= step ? 'bg-white/20' : ''
@@ -94,7 +97,7 @@ export default function Register({ wave }: RegisterProps) {
                 <form onSubmit={handleSubmit}>
                     <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
                         <div className="p-6 sm:p-8">
-                            {/* Step 1: Biodata */}
+                            {/* Step 1: Biodata + Kontak Wali */}
                             {step === 0 && (
                                 <div className="space-y-6">
                                     <SectionTitle>Data Calon Santri</SectionTitle>
@@ -123,6 +126,13 @@ export default function Register({ wave }: RegisterProps) {
                                             onChange={(e) => setData('address', e.target.value)}
                                             className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm transition-colors focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                                         />
+                                    </div>
+
+                                    {/* Kontak Wali */}
+                                    <SectionTitle>Kontak Wali / Orang Tua</SectionTitle>
+                                    <div className="grid gap-5 sm:grid-cols-2">
+                                        <InputField label="No. HP Wali" value={data.guardian_phone} onChange={(v) => setData('guardian_phone', v)} error={errors.guardian_phone} required placeholder="08xxxxxxxxxx" />
+                                        <InputField label="Email Wali (opsional)" value={data.guardian_email} onChange={(v) => setData('guardian_email', v)} error={errors.guardian_email} type="email" placeholder="email@contoh.com" />
                                     </div>
                                 </div>
                             )}
@@ -244,9 +254,9 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 function InputField({
-    label, value, onChange, error, type = 'text', required, className = '',
+    label, value, onChange, error, type = 'text', required, className = '', placeholder,
 }: {
-    label: string; value: string; onChange: (v: string) => void; error?: string; type?: string; required?: boolean; className?: string;
+    label: string; value: string; onChange: (v: string) => void; error?: string; type?: string; required?: boolean; className?: string; placeholder?: string;
 }) {
     return (
         <div className={className}>
@@ -256,6 +266,7 @@ function InputField({
             <input
                 type={type}
                 value={value}
+                placeholder={placeholder}
                 onChange={(e) => onChange(e.target.value)}
                 className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
             />

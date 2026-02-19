@@ -49,8 +49,9 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('user_id')
+                ->nullable()
                 ->constrained('users')
-                ->cascadeOnDelete();
+                ->nullOnDelete();
 
             $table->foreignId('institution_id')
                 ->constrained('institutions')
@@ -69,11 +70,15 @@ return new class extends Migration
             $table->string('nik', 16);
             $table->string('name');
             $table->enum('gender', ['l', 'p']);
-            $table->string('pob'); // Tempat lahir
-            $table->date('dob'); // Tanggal lahir
+            $table->string('pob', 100);
+            $table->date('dob');
             $table->string('previous_school')->nullable();
-            $table->string('nisn')->nullable();
+            $table->string('nisn', 10)->unique()->nullable();
             $table->text('address');
+
+            // Kontak Wali (untuk pendaftar publik tanpa akun)
+            $table->string('guardian_phone', 20)->nullable();
+            $table->string('guardian_email')->nullable();
 
             // Status Flow
             $table->enum('status', [
@@ -134,14 +139,49 @@ return new class extends Migration
             $table->enum('type', ['ayah', 'ibu', 'wali']);
             $table->string('nik', 16)->nullable();
             $table->string('name');
-            $table->string('phone')->nullable();
-            $table->string('job')->nullable();
+            $table->string('phone', 20)->nullable();
+            $table->string('email')->nullable();
+            $table->enum('last_education', [
+                'sd', 'smp', 'sma', 'd1', 'd2', 'd3', 's1', 's2', 's3', 'tidak_sekolah',
+            ])->nullable();
+            $table->enum('job', [
+                'Akuntan',
+                'Apoteker',
+                'Arsitek',
+                'Bidan',
+                'Buruh',
+                'Buruh Harian Lepas',
+                'Dokter',
+                'Dosen',
+                'Guru',
+                'IRT',
+                'Karyawan BUMN/BUMD',
+                'Karyawan Swasta',
+                'Kepala/Perangkat Desa',
+                'Nelayan',
+                'Pedagang',
+                'Pelaut',
+                'Pensiunan',
+                'Perawat',
+                'Petani',
+                'Peternak',
+                'PNS',
+                'Polri',
+                'Seniman',
+                'Sopir',
+                'TNI',
+                'Wartawan',
+                'Wiraswasta',
+                'Tidak Bekerja',
+                'Lainnya',
+            ])->nullable();
             $table->enum('income', [
-                'kurang_1jt',
-                '1_3jt',
-                '3_5jt',
-                '5_10jt',
-                'lebih_10jt',
+                '<_500rb',
+                'Rp. 500.000 - Rp. 1.000.000',
+                'Rp. 1.000.000 - Rp. 3.000.000',
+                'Rp. 3.000.000 - Rp. 5.000.000',
+                'Rp. 5.000.000 - Rp. 10.000.000',
+                'Rp. 10.000.000_>',
             ])->nullable();
 
             $table->timestamps();

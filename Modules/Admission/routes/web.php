@@ -6,6 +6,7 @@ use Modules\Admission\Http\Controllers\AdmissionWaveController;
 use Modules\Admission\Http\Controllers\CandidateController;
 use Modules\Admission\Http\Controllers\CandidateExamController;
 use Modules\Admission\Http\Controllers\CandidateCertificateController;
+use Modules\Admission\Http\Controllers\EnrollmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,8 @@ Route::put('candidates/{candidate}/exams/{exam}', [CandidateExamController::clas
 Route::get('admission-invoices', [AdmissionInvoiceController::class, 'index'])->name('admission-invoices.index');
 Route::put('admission-invoices/{invoice}/verify', [AdmissionInvoiceController::class, 'verify'])->name('admission-invoices.verify');
 Route::put('admission-invoices/{invoice}/cancel', [AdmissionInvoiceController::class, 'cancel'])->name('admission-invoices.cancel');
+
+// --- Enrollment (One Click Migration) ---
+Route::post('enrollment/{candidate}/migrate', [EnrollmentController::class, 'migrate'])->name('enrollment.migrate');
+Route::post('enrollment/batch-migrate', [EnrollmentController::class, 'batchMigrate'])->name('enrollment.batch-migrate');
+

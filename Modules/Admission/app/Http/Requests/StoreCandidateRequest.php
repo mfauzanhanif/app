@@ -24,6 +24,10 @@ class StoreCandidateRequest extends FormRequest
             'nisn' => 'nullable|string|max:20',
             'address' => 'required|string|max:1000',
 
+            // Kontak Wali (wajib untuk pendaftar tanpa akun)
+            'guardian_phone' => 'required|string|max:20',
+            'guardian_email' => 'nullable|email|max:255',
+
             // Family Data (minimal ayah atau ibu)
             'families' => 'required|array|min:1',
             'families.*.type' => 'required|in:ayah,ibu,wali',
@@ -50,6 +54,7 @@ class StoreCandidateRequest extends FormRequest
         return [
             'nik.size' => 'NIK harus 16 digit.',
             'dob.before' => 'Tanggal lahir harus sebelum hari ini.',
+            'guardian_phone.required' => 'Nomor HP wali wajib diisi.',
             'families.required' => 'Data keluarga wajib diisi.',
             'families.min' => 'Minimal 1 data keluarga (ayah/ibu/wali).',
             'families.*.name.required' => 'Nama orang tua/wali wajib diisi.',

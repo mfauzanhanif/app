@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::landing
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:27
- * @route '//psb.app.daraltauhid.test/'
+ * @route '//psb.daraltauhid.test/'
  */
 export const landing = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: landing.url(options),
@@ -11,13 +11,13 @@ export const landing = (options?: RouteQueryOptions): RouteDefinition<'get'> => 
 
 landing.definition = {
     methods: ["get","head"],
-    url: '//psb.app.daraltauhid.test/',
+    url: '//psb.daraltauhid.test/',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::landing
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:27
- * @route '//psb.app.daraltauhid.test/'
+ * @route '//psb.daraltauhid.test/'
  */
 landing.url = (options?: RouteQueryOptions) => {
     return landing.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ landing.url = (options?: RouteQueryOptions) => {
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::landing
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:27
- * @route '//psb.app.daraltauhid.test/'
+ * @route '//psb.daraltauhid.test/'
  */
 landing.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: landing.url(options),
@@ -35,7 +35,7 @@ landing.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::landing
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:27
- * @route '//psb.app.daraltauhid.test/'
+ * @route '//psb.daraltauhid.test/'
  */
 landing.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: landing.url(options),
@@ -45,7 +45,7 @@ landing.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::landing
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:27
- * @route '//psb.app.daraltauhid.test/'
+ * @route '//psb.daraltauhid.test/'
  */
     const landingForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: landing.url(options),
@@ -55,7 +55,7 @@ landing.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::landing
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:27
- * @route '//psb.app.daraltauhid.test/'
+ * @route '//psb.daraltauhid.test/'
  */
         landingForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: landing.url(options),
@@ -64,7 +64,7 @@ landing.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::landing
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:27
- * @route '//psb.app.daraltauhid.test/'
+ * @route '//psb.daraltauhid.test/'
  */
         landingForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: landing.url({
@@ -80,7 +80,7 @@ landing.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::showForm
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:42
- * @route '//psb.app.daraltauhid.test/daftar/{wave}'
+ * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 export const showForm = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showForm.url(args, options),
@@ -89,13 +89,13 @@ export const showForm = (args: { wave: number | { id: number } } | [wave: number
 
 showForm.definition = {
     methods: ["get","head"],
-    url: '//psb.app.daraltauhid.test/daftar/{wave}',
+    url: '//psb.daraltauhid.test/daftar/{wave}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::showForm
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:42
- * @route '//psb.app.daraltauhid.test/daftar/{wave}'
+ * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 showForm.url = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -128,7 +128,7 @@ showForm.url = (args: { wave: number | { id: number } } | [wave: number | { id: 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::showForm
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:42
- * @route '//psb.app.daraltauhid.test/daftar/{wave}'
+ * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 showForm.get = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showForm.url(args, options),
@@ -137,7 +137,7 @@ showForm.get = (args: { wave: number | { id: number } } | [wave: number | { id: 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::showForm
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:42
- * @route '//psb.app.daraltauhid.test/daftar/{wave}'
+ * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 showForm.head = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: showForm.url(args, options),
@@ -147,7 +147,7 @@ showForm.head = (args: { wave: number | { id: number } } | [wave: number | { id:
     /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::showForm
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:42
- * @route '//psb.app.daraltauhid.test/daftar/{wave}'
+ * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
     const showFormForm = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: showForm.url(args, options),
@@ -157,7 +157,7 @@ showForm.head = (args: { wave: number | { id: number } } | [wave: number | { id:
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::showForm
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:42
- * @route '//psb.app.daraltauhid.test/daftar/{wave}'
+ * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
         showFormForm.get = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: showForm.url(args, options),
@@ -166,7 +166,7 @@ showForm.head = (args: { wave: number | { id: number } } | [wave: number | { id:
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::showForm
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:42
- * @route '//psb.app.daraltauhid.test/daftar/{wave}'
+ * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
         showFormForm.head = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: showForm.url(args, {
@@ -182,7 +182,7 @@ showForm.head = (args: { wave: number | { id: number } } | [wave: number | { id:
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::register
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:58
- * @route '//psb.app.daraltauhid.test/daftar/{wave}'
+ * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 export const register = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: register.url(args, options),
@@ -191,13 +191,13 @@ export const register = (args: { wave: number | { id: number } } | [wave: number
 
 register.definition = {
     methods: ["post"],
-    url: '//psb.app.daraltauhid.test/daftar/{wave}',
+    url: '//psb.daraltauhid.test/daftar/{wave}',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::register
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:58
- * @route '//psb.app.daraltauhid.test/daftar/{wave}'
+ * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 register.url = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -230,7 +230,7 @@ register.url = (args: { wave: number | { id: number } } | [wave: number | { id: 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::register
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:58
- * @route '//psb.app.daraltauhid.test/daftar/{wave}'
+ * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 register.post = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: register.url(args, options),
@@ -240,7 +240,7 @@ register.post = (args: { wave: number | { id: number } } | [wave: number | { id:
     /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::register
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:58
- * @route '//psb.app.daraltauhid.test/daftar/{wave}'
+ * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
     const registerForm = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: register.url(args, options),
@@ -250,7 +250,7 @@ register.post = (args: { wave: number | { id: number } } | [wave: number | { id:
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::register
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:58
- * @route '//psb.app.daraltauhid.test/daftar/{wave}'
+ * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
         registerForm.post = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: register.url(args, options),
@@ -261,7 +261,7 @@ register.post = (args: { wave: number | { id: number } } | [wave: number | { id:
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:133
- * @route '//psb.app.daraltauhid.test/status'
+ * @route '//psb.daraltauhid.test/status'
  */
 export const status = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: status.url(options),
@@ -270,13 +270,13 @@ export const status = (options?: RouteQueryOptions): RouteDefinition<'get'> => (
 
 status.definition = {
     methods: ["get","head"],
-    url: '//psb.app.daraltauhid.test/status',
+    url: '//psb.daraltauhid.test/status',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:133
- * @route '//psb.app.daraltauhid.test/status'
+ * @route '//psb.daraltauhid.test/status'
  */
 status.url = (options?: RouteQueryOptions) => {
     return status.definition.url + queryParams(options)
@@ -285,7 +285,7 @@ status.url = (options?: RouteQueryOptions) => {
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:133
- * @route '//psb.app.daraltauhid.test/status'
+ * @route '//psb.daraltauhid.test/status'
  */
 status.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: status.url(options),
@@ -294,7 +294,7 @@ status.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:133
- * @route '//psb.app.daraltauhid.test/status'
+ * @route '//psb.daraltauhid.test/status'
  */
 status.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: status.url(options),
@@ -304,7 +304,7 @@ status.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:133
- * @route '//psb.app.daraltauhid.test/status'
+ * @route '//psb.daraltauhid.test/status'
  */
     const statusForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: status.url(options),
@@ -314,7 +314,7 @@ status.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:133
- * @route '//psb.app.daraltauhid.test/status'
+ * @route '//psb.daraltauhid.test/status'
  */
         statusForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: status.url(options),
@@ -323,7 +323,7 @@ status.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:133
- * @route '//psb.app.daraltauhid.test/status'
+ * @route '//psb.daraltauhid.test/status'
  */
         statusForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: status.url({
@@ -337,9 +337,197 @@ status.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     
     status.form = statusForm
 /**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::statusLookup
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @route '//psb.daraltauhid.test/status'
+ */
+export const statusLookup = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: statusLookup.url(options),
+    method: 'post',
+})
+
+statusLookup.definition = {
+    methods: ["post"],
+    url: '//psb.daraltauhid.test/status',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::statusLookup
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @route '//psb.daraltauhid.test/status'
+ */
+statusLookup.url = (options?: RouteQueryOptions) => {
+    return statusLookup.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::statusLookup
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @route '//psb.daraltauhid.test/status'
+ */
+statusLookup.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: statusLookup.url(options),
+    method: 'post',
+})
+
+    /**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::statusLookup
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @route '//psb.daraltauhid.test/status'
+ */
+    const statusLookupForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: statusLookup.url(options),
+        method: 'post',
+    })
+
+            /**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::statusLookup
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @route '//psb.daraltauhid.test/status'
+ */
+        statusLookupForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: statusLookup.url(options),
+            method: 'post',
+        })
+    
+    statusLookup.form = statusLookupForm
+/**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
+ * @route '//psb.daraltauhid.test/pengumuman'
+ */
+export const announcement = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: announcement.url(options),
+    method: 'get',
+})
+
+announcement.definition = {
+    methods: ["get","head"],
+    url: '//psb.daraltauhid.test/pengumuman',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
+ * @route '//psb.daraltauhid.test/pengumuman'
+ */
+announcement.url = (options?: RouteQueryOptions) => {
+    return announcement.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
+ * @route '//psb.daraltauhid.test/pengumuman'
+ */
+announcement.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: announcement.url(options),
+    method: 'get',
+})
+/**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
+ * @route '//psb.daraltauhid.test/pengumuman'
+ */
+announcement.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: announcement.url(options),
+    method: 'head',
+})
+
+    /**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
+ * @route '//psb.daraltauhid.test/pengumuman'
+ */
+    const announcementForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: announcement.url(options),
+        method: 'get',
+    })
+
+            /**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
+ * @route '//psb.daraltauhid.test/pengumuman'
+ */
+        announcementForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: announcement.url(options),
+            method: 'get',
+        })
+            /**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
+ * @route '//psb.daraltauhid.test/pengumuman'
+ */
+        announcementForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: announcement.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    announcement.form = announcementForm
+/**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::announcementLookup
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @route '//psb.daraltauhid.test/pengumuman'
+ */
+export const announcementLookup = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: announcementLookup.url(options),
+    method: 'post',
+})
+
+announcementLookup.definition = {
+    methods: ["post"],
+    url: '//psb.daraltauhid.test/pengumuman',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::announcementLookup
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @route '//psb.daraltauhid.test/pengumuman'
+ */
+announcementLookup.url = (options?: RouteQueryOptions) => {
+    return announcementLookup.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::announcementLookup
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @route '//psb.daraltauhid.test/pengumuman'
+ */
+announcementLookup.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: announcementLookup.url(options),
+    method: 'post',
+})
+
+    /**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::announcementLookup
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @route '//psb.daraltauhid.test/pengumuman'
+ */
+    const announcementLookupForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: announcementLookup.url(options),
+        method: 'post',
+    })
+
+            /**
+* @see \Modules\Admission\Http\Controllers\AdmissionController::announcementLookup
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @route '//psb.daraltauhid.test/pengumuman'
+ */
+        announcementLookupForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: announcementLookup.url(options),
+            method: 'post',
+        })
+    
+    announcementLookup.form = announcementLookupForm
+/**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::uploadProof
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:181
- * @route '//psb.app.daraltauhid.test/invoices/{invoice}/upload-proof'
+ * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
 export const uploadProof = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: uploadProof.url(args, options),
@@ -348,13 +536,13 @@ export const uploadProof = (args: { invoice: number | { id: number } } | [invoic
 
 uploadProof.definition = {
     methods: ["post"],
-    url: '//psb.app.daraltauhid.test/invoices/{invoice}/upload-proof',
+    url: '//psb.daraltauhid.test/invoices/{invoice}/upload-proof',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::uploadProof
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:181
- * @route '//psb.app.daraltauhid.test/invoices/{invoice}/upload-proof'
+ * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
 uploadProof.url = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -387,7 +575,7 @@ uploadProof.url = (args: { invoice: number | { id: number } } | [invoice: number
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::uploadProof
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:181
- * @route '//psb.app.daraltauhid.test/invoices/{invoice}/upload-proof'
+ * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
 uploadProof.post = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: uploadProof.url(args, options),
@@ -397,7 +585,7 @@ uploadProof.post = (args: { invoice: number | { id: number } } | [invoice: numbe
     /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::uploadProof
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:181
- * @route '//psb.app.daraltauhid.test/invoices/{invoice}/upload-proof'
+ * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
     const uploadProofForm = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: uploadProof.url(args, options),
@@ -407,7 +595,7 @@ uploadProof.post = (args: { invoice: number | { id: number } } | [invoice: numbe
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::uploadProof
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:181
- * @route '//psb.app.daraltauhid.test/invoices/{invoice}/upload-proof'
+ * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
         uploadProofForm.post = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: uploadProof.url(args, options),
@@ -415,84 +603,6 @@ uploadProof.post = (args: { invoice: number | { id: number } } | [invoice: numbe
         })
     
     uploadProof.form = uploadProofForm
-/**
-* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
- * @route '//psb.app.daraltauhid.test/pengumuman'
- */
-export const announcement = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: announcement.url(options),
-    method: 'get',
-})
-
-announcement.definition = {
-    methods: ["get","head"],
-    url: '//psb.app.daraltauhid.test/pengumuman',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
- * @route '//psb.app.daraltauhid.test/pengumuman'
- */
-announcement.url = (options?: RouteQueryOptions) => {
-    return announcement.definition.url + queryParams(options)
-}
-
-/**
-* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
- * @route '//psb.app.daraltauhid.test/pengumuman'
- */
-announcement.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: announcement.url(options),
-    method: 'get',
-})
-/**
-* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
- * @route '//psb.app.daraltauhid.test/pengumuman'
- */
-announcement.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: announcement.url(options),
-    method: 'head',
-})
-
-    /**
-* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
- * @route '//psb.app.daraltauhid.test/pengumuman'
- */
-    const announcementForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: announcement.url(options),
-        method: 'get',
-    })
-
-            /**
-* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
- * @route '//psb.app.daraltauhid.test/pengumuman'
- */
-        announcementForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: announcement.url(options),
-            method: 'get',
-        })
-            /**
-* @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:155
- * @route '//psb.app.daraltauhid.test/pengumuman'
- */
-        announcementForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: announcement.url({
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'HEAD',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'get',
-        })
-    
-    announcement.form = announcementForm
-const AdmissionController = { landing, showForm, register, status, uploadProof, announcement }
+const AdmissionController = { landing, showForm, register, status, statusLookup, announcement, announcementLookup, uploadProof }
 
 export default AdmissionController

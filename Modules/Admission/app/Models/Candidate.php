@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Modules\Admission\Enums\CandidateStatus;
 use Modules\Admission\Enums\Gender;
 use Modules\Institution\Models\Institution;
+use Modules\Student\Models\Student;
 use Modules\User\Models\User;
 
 class Candidate extends Model
@@ -31,6 +32,8 @@ class Candidate extends Model
         'previous_school',
         'nisn',
         'address',
+        'guardian_phone',
+        'guardian_email',
         'status',
         'student_id',
     ];
@@ -81,6 +84,14 @@ class Candidate extends Model
     public function invoices(): HasMany
     {
         return $this->hasMany(AdmissionInvoice::class);
+    }
+
+    /**
+     * Siswa hasil migrasi (diisi setelah One Click Migration).
+     */
+    public function student(): BelongsTo
+    {
+        return $this->belongsTo(Student::class);
     }
 
     public function father(): HasOne
