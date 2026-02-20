@@ -13,6 +13,7 @@ class EmployeeDocument extends Model
 
     protected $fillable = [
         'employee_id',
+        'employee_education_id',
         'file_type',
         'file_name',
         'file_path',
@@ -23,7 +24,7 @@ class EmployeeDocument extends Model
     protected function casts(): array
     {
         return [
-            'file_type' => DocumentType::class ,
+            'file_type' => DocumentType::class,
             'is_valid' => 'boolean',
         ];
     }
@@ -63,6 +64,11 @@ class EmployeeDocument extends Model
     public function employee(): BelongsTo
     {
         return $this->belongsTo(Employee::class);
+    }
+
+    public function education(): BelongsTo
+    {
+        return $this->belongsTo(EmployeeEducation::class, 'employee_education_id');
     }
 
     // ========================================

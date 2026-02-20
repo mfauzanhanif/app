@@ -30,4 +30,20 @@ enum LastEducation: string
             self::TIDAK_SEKOLAH => 'Tidak Sekolah',
         };
     }
+
+    public function weight(): int
+    {
+        return match ($this) {
+            self::TIDAK_SEKOLAH => 0,
+            self::SD => 10,
+            self::SMP => 20,
+            self::SMA => 30,
+            self::D1 => 31,
+            self::D2 => 32,
+            self::D3 => 33,
+            self::S1 => 40,
+            self::S2 => 50,
+            self::S3 => 60,
+        };
+    }
 }

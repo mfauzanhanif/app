@@ -5,6 +5,11 @@ namespace Modules\Employee\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Modules\Institution\Models\Institution;
+use Modules\Employee\Models\EmployeeEducation;
+use Modules\Employee\Models\EmployeeDocument;
 
 class Employee extends Model
 {
@@ -16,8 +21,8 @@ class Employee extends Model
         'nuptk',
         'npwp',
         'name',
-        'place_of_birth',
-        'date_of_birth',
+        'pob',
+        'dob',
         'gender',
         'address',
         'rt',
@@ -29,17 +34,30 @@ class Employee extends Model
         'postal_code',
         'phone',
         'email',
-        'last_education',
-        'major',
-        'university',
         'bank_name',
         'bank_account',
         'bank_account_holder',
-        'institution_id',
     ];
 
     public function institution(): BelongsTo
     {
         return $this->belongsTo(Institution::class);
+    }
+
+    public function educations(): HasMany
+    {
+        return $this->hasMany(EmployeeEducation::class);
+    }
+
+    public function documents(): HasMany
+    {
+        return $this->hasMany(EmployeeDocument::class);
+    }
+
+    public function latestEducation(): HasOne
+    {
+        return $this->hasOne(EmployeeEducation::class)
+            ->where('education_type', 'formal')
+            ->ofMany('level_weight', 'max');
     }
 }

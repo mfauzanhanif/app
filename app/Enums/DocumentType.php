@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum DocumentType
+enum DocumentType: string
 {
     // Personal
     case FOTO = 'foto';
@@ -11,6 +11,7 @@ enum DocumentType
     case KTP_ORTU = 'ktp_ortu';
     case AKTA_LAHIR = 'akta_lahir';
     case IJAZAH = 'ijazah';
+    case TRANSKRIP_NILAI = 'transkrip_nilai';
     case SKL = 'skl';
     case KIP = 'kip';
     case NPWP = 'npwp';
@@ -33,6 +34,7 @@ enum DocumentType
             self::KTP_ORTU => 'KTP Orang Tua',
             self::AKTA_LAHIR => 'Akta Kelahiran',
             self::IJAZAH => 'Ijazah',
+            self::TRANSKRIP_NILAI => 'Transkrip Nilai',
             self::SKL => 'Surat Keterangan Lulus',
             self::KIP => 'Kartu Indonesia Pintar',
             self::NPWP => 'NPWP',

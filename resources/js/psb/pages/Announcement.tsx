@@ -1,8 +1,8 @@
 import { useForm } from '@inertiajs/react';
 import { type FormEvent } from 'react';
-import PsbLayout from '../layouts/psb-layout';
-import type { Candidate } from '../types';
-import { STATUS_MAP, EXAM_LABELS, formatDate } from '../types';
+import PsbLayout from '@/psb/layouts/psb-layout';
+import type { Candidate } from '@/psb/types';
+import { STATUS_MAP, EXAM_LABELS, formatDate } from '@/psb/types';
 
 interface AnnouncementProps {
     candidates: Candidate[];

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration 
+return new class extends Migration
 {
     public function up(): void
     {
@@ -74,7 +74,12 @@ return new class extends Migration
 
             // Status & Tanggal
             $table->enum('status', [
-                'aktif', 'lulus', 'pindah', 'dikeluarkan', 'meninggal', 'diskors',
+                'aktif',
+                'lulus',
+                'pindah',
+                'dikeluarkan',
+                'meninggal',
+                'diskors',
             ])->default('aktif');
             $table->date('join_date');
             $table->date('graduate_date')->nullable();
@@ -106,8 +111,19 @@ return new class extends Migration
             $table->string('phone', 20)->nullable();
             $table->string('email')->nullable();
             $table->enum('last_education', [
-                'sd', 'smp', 'sma', 'd1', 'd2', 'd3', 's1', 's2', 's3', 'tidak_sekolah',
+                'sd',
+                'smp',
+                'sma',
+                'd1',
+                'd2',
+                'd3',
+                's1',
+                's2',
+                's3',
+                'tidak_sekolah',
             ])->nullable();
+            $table->boolean('is_pesantren_alumnus')->default(false);
+            $table->string('pesantren_name')->nullable();
             $table->enum('job', [
                 'Akuntan',
                 'Apoteker',
@@ -159,7 +175,7 @@ return new class extends Migration
             $table->char('village_code', 10)->nullable();
             $table->foreign('village_code')->references('code')->on('villages');
             $table->string('postal_code', 10)->nullable();
-            
+
             $table->boolean('is_alive')->default(true);
             $table->boolean('is_guardian')->nullable();
 
@@ -181,7 +197,14 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             $table->enum('file_type', [
-                'foto', 'kk', 'akta_lahir', 'ijazah', 'skl', 'kip','ktp_ortu', 'lainnya',
+                'foto',
+                'kk',
+                'akta_lahir',
+                'ijazah',
+                'skl',
+                'kip',
+                'ktp_ortu',
+                'lainnya',
             ]);
             $table->string('file_name');
             $table->string('file_path');

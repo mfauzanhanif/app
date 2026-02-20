@@ -35,8 +35,19 @@ return new class extends Migration
 
             // Pendidikan & Pekerjaan
             $table->enum('last_education', [
-                'sd', 'smp', 'sma', 'd1', 'd2', 'd3', 's1', 's2', 's3', 'tidak_sekolah',
+                'sd',
+                'smp',
+                'sma',
+                'd1',
+                'd2',
+                'd3',
+                's1',
+                's2',
+                's3',
+                'tidak_sekolah',
             ])->nullable();
+            $table->boolean('is_pesantren_alumnus')->default(false);
+            $table->string('pesantren_name')->nullable();
             $table->enum('job', [
                 'Akuntan',
                 'Apoteker',
@@ -69,7 +80,12 @@ return new class extends Migration
                 'Lainnya',
             ])->nullable();
             $table->enum('income', [
-                '<_500rb', 'Rp. 500.000 - Rp. 1.000.000', 'Rp. 1.000.000 - Rp. 3.000.000', 'Rp. 3.000.000 - Rp. 5.000.000', 'Rp. 5.000.000 - Rp. 10.000.000', 'Rp. 10.000.000_>',
+                '<_500rb',
+                'Rp. 500.000 - Rp. 1.000.000',
+                'Rp. 1.000.000 - Rp. 3.000.000',
+                'Rp. 3.000.000 - Rp. 5.000.000',
+                'Rp. 5.000.000 - Rp. 10.000.000',
+                'Rp. 10.000.000_>',
             ])->nullable();
 
             // Alamat Lengkap
@@ -113,8 +129,12 @@ return new class extends Migration
 
             // Hubungan wali dengan siswa
             $table->enum('relationship', [
-                'ayah_kandung', 'ibu_kandung', 'wali',
-                'ayah_tiri', 'ibu_tiri', 'kerabat',
+                'ayah_kandung',
+                'ibu_kandung',
+                'wali',
+                'ayah_tiri',
+                'ibu_tiri',
+                'kerabat',
             ]);
 
             $table->timestamps();

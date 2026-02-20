@@ -25,7 +25,7 @@ return new class extends Migration
                 ->constrained('academic_years')
                 ->cascadeOnDelete();
 
-            $table->string('name'); // "Gelombang 1 - Jalur Prestasi"
+            $table->string('name');
             $table->date('start_date');
             $table->date('end_date');
             $table->date('exam_date')->nullable();
@@ -48,7 +48,7 @@ return new class extends Migration
         Schema::create('candidates', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')
+            $table->foreignId('user_id') // ini pertimbangkan, disimpan di sini atau di guardian
                 ->nullable()
                 ->constrained('users')
                 ->nullOnDelete();
@@ -134,6 +134,8 @@ return new class extends Migration
             $table->enum('last_education', [
                 'sd', 'smp', 'sma', 'd1', 'd2', 'd3', 's1', 's2', 's3', 'tidak_sekolah',
             ])->nullable();
+            $table->boolean('is_pesantren_alumnus')->default(false);
+            $table->string('pesantren_name')->nullable();
             $table->enum('job', [
                 'Akuntan',
                 'Apoteker',

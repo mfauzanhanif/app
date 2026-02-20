@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration 
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -26,9 +26,10 @@ return new class extends Migration
 
             // Biodata
             $table->string('name');
-            $table->string('place_of_birth');
-            $table->date('date_of_birth');
+            $table->string('pob', 100);
+            $table->date('dob');
             $table->enum('gender', ['l', 'p']);
+            $table->string('mother_name')->nullable();
             // Alamat Lengkap
             $table->text('address')->nullable();
             $table->string('rt', 5)->nullable();
@@ -46,13 +47,6 @@ return new class extends Migration
             // Kontak
             $table->string('phone', 20);
             $table->string('email')->unique();
-
-            // Data Pendidikan & Profesi
-            $table->enum('last_education', [
-                'sd', 'smp', 'sma', 'd1', 'd2', 'd3', 's1', 's2', 's3', 'tidak_sekolah',
-            ])->nullable();
-            $table->string('major')->nullable(); // Jurusan
-            $table->string('university')->nullable();
 
             // Data Bank (Satu rekening untuk transfer gaji total)
             $table->string('bank_name')->nullable();
@@ -95,7 +89,30 @@ return new class extends Migration
         });
 
         // ==============================
-        // 3. EMPLOYEE DOCUMENTS (Berkas Persyaratan)
+        // 3. EMPLOYEE EDUCATIONS (Riwayat Pendidikan)
+        // ==============================
+        Schema::create('employee_educations', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('employee_id')->constrained('employees')->cascadeOnDelete();
+
+            $table->enum('education_type', ['formal', 'pesantren'])->default('formal');
+            $table->string('education_level');
+            $table->tinyInteger('level_weight')->default(0);
+            $table->string('institution_name');
+            $table->string('major')->nullable();
+
+            $table->year('entry_year')->nullable();
+            $table->year('graduation_year')->nullable();
+            $table->boolean('is_graduated')->default(true);
+
+            $table->string('certificate_number')->nullable();
+            $table->decimal('score', 4, 2)->nullable();
+
+            $table->timestamps();
+        });
+
+        // ==============================
+        // 4. EMPLOYEE DOCUMENTS (Berkas Persyaratan)
         // ==============================
         Schema::create('employee_documents', function (Blueprint $table) {
             $table->id();
@@ -104,8 +121,22 @@ return new class extends Migration
                 ->constrained('employees')
                 ->cascadeOnDelete();
 
+            $table->foreignId('employee_education_id')
+                ->nullable()
+                ->constrained('employee_educations')
+                ->cascadeOnDelete();
+
             $table->enum('file_type', [
-                'foto', 'cv', 'ktp', 'kk', 'akta_lahir', 'ijazah', 'npwp','sertifikat' ,'lainnya'
+                'foto',
+                'cv',
+                'ktp',
+                'kk',
+                'akta_lahir',
+                'ijazah',
+                'transkrip_nilai',
+                'npwp',
+                'sertifikat',
+                'lainnya'
             ]);
             $table->string('file_name');
             $table->string('file_path');
@@ -116,6 +147,7 @@ return new class extends Migration
 
             // Index
             $table->index(['employee_id', 'file_type']);
+            $table->index('employee_education_id');
         });
     }
 
@@ -125,6 +157,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('employee_documents');
+        Schema::dropIfExists('employee_educations');
         Schema::dropIfExists('employee_assignments');
         Schema::dropIfExists('employees');
     }

@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Enums\LastEducation;
 use Modules\Guardian\Enums\IncomeRange;
 use Modules\Guardian\Enums\JobType;
-use Modules\Guardian\Enums\LastEducation;
 use Modules\Student\Models\Student;
 use Modules\User\Models\User;
-use phpDocumentor\Reflection\Types\Void_;
 
 class Guardian extends Model
 {
@@ -30,6 +29,8 @@ class Guardian extends Model
         'pob',
         'dob',
         'last_education',
+        'is_pesantren_alumnus',
+        'pesantren_name',
         'job',
         'income',
         'address',
@@ -49,6 +50,7 @@ class Guardian extends Model
             'dob' => 'date',
             'is_alive' => 'boolean',
             'last_education' => LastEducation::class ,
+            'is_pesantren_alumnus' => 'boolean',
             'job' => JobType::class ,
             'income' => IncomeRange::class ,
         ];

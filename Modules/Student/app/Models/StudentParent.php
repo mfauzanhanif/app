@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Enums\LastEducation;
 use Modules\Student\Enums\IncomeRange;
 use Modules\Student\Enums\JobType;
-use Modules\Student\Enums\LastEducation;
 use Modules\Student\Enums\ParentType;
 
 class StudentParent extends Model
@@ -23,6 +23,8 @@ class StudentParent extends Model
         'phone',
         'email',
         'last_education',
+        'is_pesantren_alumnus',
+        'pesantren_name',
         'job',
         'income',
         'address',
@@ -42,6 +44,7 @@ class StudentParent extends Model
         return [
             'type' => ParentType::class ,
             'last_education' => LastEducation::class ,
+            'is_pesantren_alumnus' => 'boolean',
             'job' => JobType::class ,
             'income' => IncomeRange::class ,
             'is_alive' => 'boolean',
