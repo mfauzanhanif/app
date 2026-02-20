@@ -37,7 +37,7 @@ export default function Login({ canResetPassword, status }: LoginProps) {
 
     return (
         <>
-            <Head title="Masuk" />
+            <Head/>
             <AuthLayout title="Selamat Datang" subtitle="Silakan masuk ke akun Anda untuk melanjutkan.">
 
                 {/* Status Message */}

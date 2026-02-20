@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
 export const select = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ select.definition = {
 
 /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
 select.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ select.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
 select.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ select.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
 select.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,7 +44,7 @@ select.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
     const selectForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -54,7 +54,7 @@ select.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
         selectForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -63,7 +63,7 @@ select.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
         selectForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -79,7 +79,7 @@ select.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     select.form = selectForm
 /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
 export const switchMethod = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -94,7 +94,7 @@ switchMethod.definition = {
 
 /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
 switchMethod.url = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -122,7 +122,7 @@ switchMethod.url = (args: { publicId: string | number } | [publicId: string | nu
 
 /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
 switchMethod.get = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -131,7 +131,7 @@ switchMethod.get = (args: { publicId: string | number } | [publicId: string | nu
 })
 /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
 switchMethod.head = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -141,7 +141,7 @@ switchMethod.head = (args: { publicId: string | number } | [publicId: string | n
 
     /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
     const switchMethodForm = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -151,7 +151,7 @@ switchMethod.head = (args: { publicId: string | number } | [publicId: string | n
 
             /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
         switchMethodForm.get = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -160,7 +160,7 @@ switchMethod.head = (args: { publicId: string | number } | [publicId: string | n
         })
             /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
         switchMethodForm.head = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -174,9 +174,612 @@ switchMethod.head = (args: { publicId: string | number } | [publicId: string | n
         })
     
     switchMethod.form = switchMethodForm
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::index
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:13
+ * @route '/students'
+ */
+export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: index.url(options),
+    method: 'get',
+})
+
+index.definition = {
+    methods: ["get","head"],
+    url: '/students',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::index
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:13
+ * @route '/students'
+ */
+index.url = (options?: RouteQueryOptions) => {
+    return index.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::index
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:13
+ * @route '/students'
+ */
+index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: index.url(options),
+    method: 'get',
+})
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::index
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:13
+ * @route '/students'
+ */
+index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: index.url(options),
+    method: 'head',
+})
+
+    /**
+* @see \Modules\Student\Http\Controllers\StudentController::index
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:13
+ * @route '/students'
+ */
+    const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: index.url(options),
+        method: 'get',
+    })
+
+            /**
+* @see \Modules\Student\Http\Controllers\StudentController::index
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:13
+ * @route '/students'
+ */
+        indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index.url(options),
+            method: 'get',
+        })
+            /**
+* @see \Modules\Student\Http\Controllers\StudentController::index
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:13
+ * @route '/students'
+ */
+        indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    index.form = indexForm
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::create
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:21
+ * @route '/students/create'
+ */
+export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: create.url(options),
+    method: 'get',
+})
+
+create.definition = {
+    methods: ["get","head"],
+    url: '/students/create',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::create
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:21
+ * @route '/students/create'
+ */
+create.url = (options?: RouteQueryOptions) => {
+    return create.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::create
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:21
+ * @route '/students/create'
+ */
+create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: create.url(options),
+    method: 'get',
+})
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::create
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:21
+ * @route '/students/create'
+ */
+create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: create.url(options),
+    method: 'head',
+})
+
+    /**
+* @see \Modules\Student\Http\Controllers\StudentController::create
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:21
+ * @route '/students/create'
+ */
+    const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: create.url(options),
+        method: 'get',
+    })
+
+            /**
+* @see \Modules\Student\Http\Controllers\StudentController::create
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:21
+ * @route '/students/create'
+ */
+        createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: create.url(options),
+            method: 'get',
+        })
+            /**
+* @see \Modules\Student\Http\Controllers\StudentController::create
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:21
+ * @route '/students/create'
+ */
+        createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: create.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    create.form = createForm
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::store
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:29
+ * @route '/students'
+ */
+export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+store.definition = {
+    methods: ["post"],
+    url: '/students',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::store
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:29
+ * @route '/students'
+ */
+store.url = (options?: RouteQueryOptions) => {
+    return store.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::store
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:29
+ * @route '/students'
+ */
+store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+    /**
+* @see \Modules\Student\Http\Controllers\StudentController::store
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:29
+ * @route '/students'
+ */
+    const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: store.url(options),
+        method: 'post',
+    })
+
+            /**
+* @see \Modules\Student\Http\Controllers\StudentController::store
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:29
+ * @route '/students'
+ */
+        storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: store.url(options),
+            method: 'post',
+        })
+    
+    store.form = storeForm
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::show
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:34
+ * @route '/students/{student}'
+ */
+export const show = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show.url(args, options),
+    method: 'get',
+})
+
+show.definition = {
+    methods: ["get","head"],
+    url: '/students/{student}',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::show
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:34
+ * @route '/students/{student}'
+ */
+show.url = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { student: args }
+    }
+
+    
+    if (Array.isArray(args)) {
+        args = {
+                    student: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        student: args.student,
+                }
+
+    return show.definition.url
+            .replace('{student}', parsedArgs.student.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::show
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:34
+ * @route '/students/{student}'
+ */
+show.get = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show.url(args, options),
+    method: 'get',
+})
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::show
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:34
+ * @route '/students/{student}'
+ */
+show.head = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: show.url(args, options),
+    method: 'head',
+})
+
+    /**
+* @see \Modules\Student\Http\Controllers\StudentController::show
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:34
+ * @route '/students/{student}'
+ */
+    const showForm = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: show.url(args, options),
+        method: 'get',
+    })
+
+            /**
+* @see \Modules\Student\Http\Controllers\StudentController::show
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:34
+ * @route '/students/{student}'
+ */
+        showForm.get = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: show.url(args, options),
+            method: 'get',
+        })
+            /**
+* @see \Modules\Student\Http\Controllers\StudentController::show
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:34
+ * @route '/students/{student}'
+ */
+        showForm.head = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: show.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    show.form = showForm
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::edit
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:42
+ * @route '/students/{student}/edit'
+ */
+export const edit = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: edit.url(args, options),
+    method: 'get',
+})
+
+edit.definition = {
+    methods: ["get","head"],
+    url: '/students/{student}/edit',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::edit
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:42
+ * @route '/students/{student}/edit'
+ */
+edit.url = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { student: args }
+    }
+
+    
+    if (Array.isArray(args)) {
+        args = {
+                    student: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        student: args.student,
+                }
+
+    return edit.definition.url
+            .replace('{student}', parsedArgs.student.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::edit
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:42
+ * @route '/students/{student}/edit'
+ */
+edit.get = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: edit.url(args, options),
+    method: 'get',
+})
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::edit
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:42
+ * @route '/students/{student}/edit'
+ */
+edit.head = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: edit.url(args, options),
+    method: 'head',
+})
+
+    /**
+* @see \Modules\Student\Http\Controllers\StudentController::edit
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:42
+ * @route '/students/{student}/edit'
+ */
+    const editForm = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: edit.url(args, options),
+        method: 'get',
+    })
+
+            /**
+* @see \Modules\Student\Http\Controllers\StudentController::edit
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:42
+ * @route '/students/{student}/edit'
+ */
+        editForm.get = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: edit.url(args, options),
+            method: 'get',
+        })
+            /**
+* @see \Modules\Student\Http\Controllers\StudentController::edit
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:42
+ * @route '/students/{student}/edit'
+ */
+        editForm.head = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: edit.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    edit.form = editForm
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::update
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:50
+ * @route '/students/{student}'
+ */
+export const update = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: update.url(args, options),
+    method: 'put',
+})
+
+update.definition = {
+    methods: ["put","patch"],
+    url: '/students/{student}',
+} satisfies RouteDefinition<["put","patch"]>
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::update
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:50
+ * @route '/students/{student}'
+ */
+update.url = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { student: args }
+    }
+
+    
+    if (Array.isArray(args)) {
+        args = {
+                    student: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        student: args.student,
+                }
+
+    return update.definition.url
+            .replace('{student}', parsedArgs.student.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::update
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:50
+ * @route '/students/{student}'
+ */
+update.put = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: update.url(args, options),
+    method: 'put',
+})
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::update
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:50
+ * @route '/students/{student}'
+ */
+update.patch = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+    url: update.url(args, options),
+    method: 'patch',
+})
+
+    /**
+* @see \Modules\Student\Http\Controllers\StudentController::update
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:50
+ * @route '/students/{student}'
+ */
+    const updateForm = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: update.url(args, {
+                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                        _method: 'PUT',
+                        ...(options?.query ?? options?.mergeQuery ?? {}),
+                    }
+                }),
+        method: 'post',
+    })
+
+            /**
+* @see \Modules\Student\Http\Controllers\StudentController::update
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:50
+ * @route '/students/{student}'
+ */
+        updateForm.put = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: update.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'PUT',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'post',
+        })
+            /**
+* @see \Modules\Student\Http\Controllers\StudentController::update
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:50
+ * @route '/students/{student}'
+ */
+        updateForm.patch = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: update.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'PATCH',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'post',
+        })
+    
+    update.form = updateForm
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::destroy
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:55
+ * @route '/students/{student}'
+ */
+export const destroy = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: destroy.url(args, options),
+    method: 'delete',
+})
+
+destroy.definition = {
+    methods: ["delete"],
+    url: '/students/{student}',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::destroy
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:55
+ * @route '/students/{student}'
+ */
+destroy.url = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { student: args }
+    }
+
+    
+    if (Array.isArray(args)) {
+        args = {
+                    student: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        student: args.student,
+                }
+
+    return destroy.definition.url
+            .replace('{student}', parsedArgs.student.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Student\Http\Controllers\StudentController::destroy
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:55
+ * @route '/students/{student}'
+ */
+destroy.delete = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: destroy.url(args, options),
+    method: 'delete',
+})
+
+    /**
+* @see \Modules\Student\Http\Controllers\StudentController::destroy
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:55
+ * @route '/students/{student}'
+ */
+    const destroyForm = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: destroy.url(args, {
+                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                        _method: 'DELETE',
+                        ...(options?.query ?? options?.mergeQuery ?? {}),
+                    }
+                }),
+        method: 'post',
+    })
+
+            /**
+* @see \Modules\Student\Http\Controllers\StudentController::destroy
+ * @see Modules/Student/app/Http/Controllers/StudentController.php:55
+ * @route '/students/{student}'
+ */
+        destroyForm.delete = (args: { student: string | number } | [student: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: destroy.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'DELETE',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'post',
+        })
+    
+    destroy.form = destroyForm
 const student = {
     select: Object.assign(select, select),
 switch: Object.assign(switchMethod, switchMethod),
+index: Object.assign(index, index),
+create: Object.assign(create, create),
+store: Object.assign(store, store),
+show: Object.assign(show, show),
+edit: Object.assign(edit, edit),
+update: Object.assign(update, update),
+destroy: Object.assign(destroy, destroy),
 }
 
 export default student

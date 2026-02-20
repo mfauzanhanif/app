@@ -13,6 +13,7 @@ use Modules\Guardian\Enums\JobType;
 use Modules\Guardian\Enums\LastEducation;
 use Modules\Student\Models\Student;
 use Modules\User\Models\User;
+use phpDocumentor\Reflection\Types\Void_;
 
 class Guardian extends Model
 {
@@ -47,9 +48,9 @@ class Guardian extends Model
         return [
             'dob' => 'date',
             'is_alive' => 'boolean',
-            'last_education' => LastEducation::class,
-            'job' => JobType::class,
-            'income' => IncomeRange::class,
+            'last_education' => LastEducation::class ,
+            'job' => JobType::class ,
+            'income' => IncomeRange::class ,
         ];
     }
 
@@ -80,10 +81,10 @@ class Guardian extends Model
 
         $lastNumber = 0;
         if ($lastGuardian && preg_match('/(\d+)$/', $lastGuardian->guardian_unique_id, $matches)) {
-            $lastNumber = (int) $matches[1];
+            $lastNumber = (int)$matches[1];
         }
 
-        return $prefix.str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
+        return $prefix . str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
     }
 
     // ========================================
@@ -100,7 +101,7 @@ class Guardian extends Model
      */
     public function students(): BelongsToMany
     {
-        return $this->belongsToMany(Student::class, 'guardian_student')
+        return $this->belongsToMany(Student::class , 'guardian_student')
             ->withPivot(['relationship'])
             ->withTimestamps();
     }
@@ -130,12 +131,12 @@ class Guardian extends Model
             return $query;
         }
 
-        return $query->where(function (Builder $q) use ($search) {
-            $q->where('name', 'like', "%{$search}%")
-                ->orWhere('nik', 'like', "%{$search}%")
-                ->orWhere('phone', 'like', "%{$search}%")
-                ->orWhere('guardian_unique_id', 'like', "%{$search}%");
-        });
+        $query->where('name', 'like', "%{$search}%")
+            ->orWhere('nik', 'like', "%{$search}%")
+            ->orWhere('phone', 'like', "%{$search}%")
+            ->orWhere('guardian_unique_id', 'like', "%{$search}%");
+
+        return $query;
     }
 
     // ========================================

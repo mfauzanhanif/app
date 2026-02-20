@@ -193,13 +193,13 @@ class Student extends Model
             return $query;
         }
 
-        return $query->where(function (Builder $q) use ($search) {
-            $q->where('name', 'like', "%{$search}%")
-                ->orWhere('nik', 'like', "%{$search}%")
-                ->orWhere('nisy', 'like', "%{$search}%")
-                ->orWhere('nis', 'like', "%{$search}%")
-                ->orWhere('nisn', 'like', "%{$search}%");
-        });
+        $query->where('name', 'like', "%{$search}%")
+            ->orWhere('nik', 'like', "%{$search}%")
+            ->orWhere('nisy', 'like', "%{$search}%")
+            ->orWhere('nis', 'like', "%{$search}%")
+            ->orWhere('nisn', 'like', "%{$search}%");
+
+        return $query;
     }
 
     // ========================================

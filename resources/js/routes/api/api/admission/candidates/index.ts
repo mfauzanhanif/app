@@ -79,7 +79,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     index.form = indexForm
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
 export const show = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -94,7 +94,7 @@ show.definition = {
 
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
 show.url = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -127,7 +127,7 @@ show.url = (args: { candidate: number | { id: number } } | [candidate: number | 
 
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
 show.get = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -136,7 +136,7 @@ show.get = (args: { candidate: number | { id: number } } | [candidate: number | 
 })
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
 show.head = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -146,7 +146,7 @@ show.head = (args: { candidate: number | { id: number } } | [candidate: number |
 
     /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
     const showForm = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -156,7 +156,7 @@ show.head = (args: { candidate: number | { id: number } } | [candidate: number |
 
             /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
         showForm.get = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -165,7 +165,7 @@ show.head = (args: { candidate: number | { id: number } } | [candidate: number |
         })
             /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
         showForm.head = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

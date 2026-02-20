@@ -20,6 +20,7 @@ interface AppLayoutProps extends PropsWithChildren {
     navGroups: NavGroup[];
     institutionCode?: string;
     roleLabel?: string;
+    sidebarBranding?: ReactNode;
 }
 
 export default function AppLayout({
@@ -28,19 +29,21 @@ export default function AppLayout({
     navGroups,
     institutionCode,
     roleLabel = 'Operator',
+    sidebarBranding,
 }: AppLayoutProps) {
     const [isSidebarOpen, setSidebarOpen] = useState(false);
 
     return (
-        <div className="flex h-screen bg-gray-50 font-sans text-gray-800 overflow-hidden">
+        <div className="flex h-screen overflow-hidden bg-gray-50 font-sans text-gray-800">
             <AppSidebar
                 variant={sidebarVariant}
                 navGroups={navGroups}
                 isOpen={isSidebarOpen}
                 onClose={() => setSidebarOpen(false)}
+                branding={sidebarBranding}
             />
 
-            <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+            <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
                 <AppHeader
                     institutionCode={institutionCode}
                     roleLabel={roleLabel}

@@ -1,0 +1,446 @@
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::index
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:22
+ * @route '/api/v1/employees'
+ */
+export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: index.url(options),
+    method: 'get',
+})
+
+index.definition = {
+    methods: ["get","head"],
+    url: '/api/v1/employees',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::index
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:22
+ * @route '/api/v1/employees'
+ */
+index.url = (options?: RouteQueryOptions) => {
+    return index.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::index
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:22
+ * @route '/api/v1/employees'
+ */
+index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: index.url(options),
+    method: 'get',
+})
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::index
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:22
+ * @route '/api/v1/employees'
+ */
+index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: index.url(options),
+    method: 'head',
+})
+
+    /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::index
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:22
+ * @route '/api/v1/employees'
+ */
+    const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: index.url(options),
+        method: 'get',
+    })
+
+            /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::index
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:22
+ * @route '/api/v1/employees'
+ */
+        indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index.url(options),
+            method: 'get',
+        })
+            /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::index
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:22
+ * @route '/api/v1/employees'
+ */
+        indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    index.form = indexForm
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::store
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:66
+ * @route '/api/v1/employees'
+ */
+export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+store.definition = {
+    methods: ["post"],
+    url: '/api/v1/employees',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::store
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:66
+ * @route '/api/v1/employees'
+ */
+store.url = (options?: RouteQueryOptions) => {
+    return store.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::store
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:66
+ * @route '/api/v1/employees'
+ */
+store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+    /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::store
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:66
+ * @route '/api/v1/employees'
+ */
+    const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: store.url(options),
+        method: 'post',
+    })
+
+            /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::store
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:66
+ * @route '/api/v1/employees'
+ */
+        storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: store.url(options),
+            method: 'post',
+        })
+    
+    store.form = storeForm
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::show
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:100
+ * @route '/api/v1/employees/{employee}'
+ */
+export const show = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show.url(args, options),
+    method: 'get',
+})
+
+show.definition = {
+    methods: ["get","head"],
+    url: '/api/v1/employees/{employee}',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::show
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:100
+ * @route '/api/v1/employees/{employee}'
+ */
+show.url = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { employee: args }
+    }
+
+            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+            args = { employee: args.id }
+        }
+    
+    if (Array.isArray(args)) {
+        args = {
+                    employee: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        employee: typeof args.employee === 'object'
+                ? args.employee.id
+                : args.employee,
+                }
+
+    return show.definition.url
+            .replace('{employee}', parsedArgs.employee.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::show
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:100
+ * @route '/api/v1/employees/{employee}'
+ */
+show.get = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show.url(args, options),
+    method: 'get',
+})
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::show
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:100
+ * @route '/api/v1/employees/{employee}'
+ */
+show.head = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: show.url(args, options),
+    method: 'head',
+})
+
+    /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::show
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:100
+ * @route '/api/v1/employees/{employee}'
+ */
+    const showForm = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: show.url(args, options),
+        method: 'get',
+    })
+
+            /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::show
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:100
+ * @route '/api/v1/employees/{employee}'
+ */
+        showForm.get = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: show.url(args, options),
+            method: 'get',
+        })
+            /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::show
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:100
+ * @route '/api/v1/employees/{employee}'
+ */
+        showForm.head = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: show.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    show.form = showForm
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::update
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:141
+ * @route '/api/v1/employees/{employee}'
+ */
+export const update = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: update.url(args, options),
+    method: 'put',
+})
+
+update.definition = {
+    methods: ["put","patch"],
+    url: '/api/v1/employees/{employee}',
+} satisfies RouteDefinition<["put","patch"]>
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::update
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:141
+ * @route '/api/v1/employees/{employee}'
+ */
+update.url = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { employee: args }
+    }
+
+            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+            args = { employee: args.id }
+        }
+    
+    if (Array.isArray(args)) {
+        args = {
+                    employee: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        employee: typeof args.employee === 'object'
+                ? args.employee.id
+                : args.employee,
+                }
+
+    return update.definition.url
+            .replace('{employee}', parsedArgs.employee.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::update
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:141
+ * @route '/api/v1/employees/{employee}'
+ */
+update.put = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: update.url(args, options),
+    method: 'put',
+})
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::update
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:141
+ * @route '/api/v1/employees/{employee}'
+ */
+update.patch = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+    url: update.url(args, options),
+    method: 'patch',
+})
+
+    /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::update
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:141
+ * @route '/api/v1/employees/{employee}'
+ */
+    const updateForm = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: update.url(args, {
+                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                        _method: 'PUT',
+                        ...(options?.query ?? options?.mergeQuery ?? {}),
+                    }
+                }),
+        method: 'post',
+    })
+
+            /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::update
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:141
+ * @route '/api/v1/employees/{employee}'
+ */
+        updateForm.put = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: update.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'PUT',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'post',
+        })
+            /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::update
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:141
+ * @route '/api/v1/employees/{employee}'
+ */
+        updateForm.patch = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: update.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'PATCH',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'post',
+        })
+    
+    update.form = updateForm
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::destroy
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:158
+ * @route '/api/v1/employees/{employee}'
+ */
+export const destroy = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: destroy.url(args, options),
+    method: 'delete',
+})
+
+destroy.definition = {
+    methods: ["delete"],
+    url: '/api/v1/employees/{employee}',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::destroy
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:158
+ * @route '/api/v1/employees/{employee}'
+ */
+destroy.url = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { employee: args }
+    }
+
+            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+            args = { employee: args.id }
+        }
+    
+    if (Array.isArray(args)) {
+        args = {
+                    employee: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        employee: typeof args.employee === 'object'
+                ? args.employee.id
+                : args.employee,
+                }
+
+    return destroy.definition.url
+            .replace('{employee}', parsedArgs.employee.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::destroy
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:158
+ * @route '/api/v1/employees/{employee}'
+ */
+destroy.delete = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: destroy.url(args, options),
+    method: 'delete',
+})
+
+    /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::destroy
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:158
+ * @route '/api/v1/employees/{employee}'
+ */
+    const destroyForm = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: destroy.url(args, {
+                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                        _method: 'DELETE',
+                        ...(options?.query ?? options?.mergeQuery ?? {}),
+                    }
+                }),
+        method: 'post',
+    })
+
+            /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::destroy
+ * @see Modules/Employee/app/Http/Controllers/EmployeeController.php:158
+ * @route '/api/v1/employees/{employee}'
+ */
+        destroyForm.delete = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: destroy.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'DELETE',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'post',
+        })
+    
+    destroy.form = destroyForm
+const employee = {
+    index: Object.assign(index, index),
+store: Object.assign(store, store),
+show: Object.assign(show, show),
+update: Object.assign(update, update),
+destroy: Object.assign(destroy, destroy),
+}
+
+export default employee

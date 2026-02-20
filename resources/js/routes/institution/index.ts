@@ -3,7 +3,7 @@ import users from './users'
 import roles from './roles'
 /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
 export const select = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -18,7 +18,7 @@ select.definition = {
 
 /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
 select.url = (options?: RouteQueryOptions) => {
@@ -27,7 +27,7 @@ select.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
 select.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -36,7 +36,7 @@ select.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
 select.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -46,7 +46,7 @@ select.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
     const selectForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -56,7 +56,7 @@ select.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
         selectForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ select.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\LoginController::select
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
         selectForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -81,7 +81,7 @@ select.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     select.form = selectForm
 /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
 export const switchMethod = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -96,7 +96,7 @@ switchMethod.definition = {
 
 /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
 switchMethod.url = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -124,7 +124,7 @@ switchMethod.url = (args: { code: string | number } | [code: string | number ] |
 
 /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
 switchMethod.get = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -133,7 +133,7 @@ switchMethod.get = (args: { code: string | number } | [code: string | number ] |
 })
 /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
 switchMethod.head = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -143,7 +143,7 @@ switchMethod.head = (args: { code: string | number } | [code: string | number ] 
 
     /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
     const switchMethodForm = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -153,7 +153,7 @@ switchMethod.head = (args: { code: string | number } | [code: string | number ] 
 
             /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
         switchMethodForm.get = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -162,7 +162,7 @@ switchMethod.head = (args: { code: string | number } | [code: string | number ] 
         })
             /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
         switchMethodForm.head = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

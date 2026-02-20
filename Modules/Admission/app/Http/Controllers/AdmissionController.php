@@ -21,9 +21,9 @@ use Modules\Institution\Models\Institution;
 class AdmissionController extends Controller
 {
     /**
-     * PSB Landing Page — show open waves and info.
+     * PSB Home Page — show open waves and info.
      */
-    public function landing(): Response
+    public function home(): Response
     {
         $waves = AdmissionWave::with('institution:id,name,code,type')
             ->active()

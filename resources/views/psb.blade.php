@@ -31,17 +31,17 @@
         }
     </style>
 
-    <title inertia>{{ config('app.name', 'PSB Dar Al Tauhid') }}</title>
+    <title inertia>PSB Dar Al Tauhid</title>
 
-    <link rel="icon" href="/logo-pondok.ico" sizes="any">
-    <link rel="icon" href="/logo-pondok.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/logo-pondok.png">
+    <link rel="icon" href="/assets/images/logo/logo-pondok.svg" sizes="any">
+    <link rel="icon" href="/assets/images/logo/logo-pondok.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/images/logo/logo-pondok.svg">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
 
     @viteReactRefresh
-    @vite(['resources/css/app.css', 'resources/js/psb.tsx'])
+    @vite(['resources/css/psb.css', 'resources/js/psb.tsx'])
     @inertiaHead
 </head>
 

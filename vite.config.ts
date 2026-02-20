@@ -8,7 +8,14 @@ import flowbiteReact from "flowbite-react/plugin/vite";
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.tsx', 'resources/js/psb.tsx'],
+            input: [
+                'resources/css/app.css', 
+                'resources/css/psb.css', 
+                'resources/css/misdt.css', 
+                'resources/js/app.tsx', 
+                'resources/js/psb.tsx', 
+                'resources/js/misdt.tsx'
+            ],
             ssr: 'resources/js/ssr.tsx',
             refresh: true,
         }),

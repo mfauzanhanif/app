@@ -192,6 +192,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Check if user has any global role (alias for hasGlobalRole).
+     */
+    public function isGlobalAdmin(): bool
+    {
+        return $this->hasGlobalRole();
+    }
+
+    /**
      * Get the primary institution for this user.
      * Returns the first institution or null.
      */
@@ -203,7 +211,7 @@ class User extends Authenticatable
             ->whereNotNull('institution_id')
             ->value('institution_id');
 
-        return $institutionId ?Institution::find($institutionId) : null;
+        return $institutionId ? Institution::find($institutionId) : null;
     }
 
     // ========================================
@@ -264,11 +272,11 @@ class User extends Authenticatable
         $institutions = $this->getInstitutions();
         if ($institutions->isNotEmpty()) {
             $portals['institutions'] = $institutions->map(fn(Institution $i) => [
-            'id' => $i->id,
-            'code' => $i->code,
-            'name' => $i->name,
-            'type' => $i->type,
-            'url' => $i->getDashboardUrl(),
+                'id' => $i->id,
+                'code' => $i->code,
+                'name' => $i->name,
+                'type' => $i->type,
+                'url' => $i->getDashboardUrl(),
             ])->toArray();
         }
 
@@ -277,10 +285,10 @@ class User extends Authenticatable
             $students = $this->getStudents();
             if ($students->isNotEmpty()) {
                 $portals['students'] = $students->map(fn($s) => [
-                'id' => $s->id ?? null,
-                'public_id' => $s->public_id ?? null,
-                'name' => $s->name ?? null,
-                'url' => url("/wali/{$s->public_id}/dashboard"),
+                    'id' => $s->id ?? null,
+                    'public_id' => $s->public_id ?? null,
+                    'name' => $s->name ?? null,
+                    'url' => url("/wali/{$s->public_id}/dashboard"),
                 ])->toArray();
             }
         }
@@ -356,8 +364,8 @@ class User extends Authenticatable
             if (is_string($role)) {
                 throw new \InvalidArgumentException(
                     "DILARANG menggunakan assignRole('nama_role') karena ambigu (satu nama role bisa ada di banyak lembaga). " .
-                    "Gunakan assignRoleInInstitution('nama_role', \$institution) atau pass object Role secara langsung."
-                    );
+                        "Gunakan assignRoleInInstitution('nama_role', \$institution) atau pass object Role secara langsung."
+                );
             }
         }
 
@@ -427,7 +435,7 @@ class User extends Authenticatable
         }
 
         $id = session('current_institution_id');
-        return $id ?Institution::find($id) : null;
+        return $id ? Institution::find($id) : null;
     }
 
     /**

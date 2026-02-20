@@ -9,7 +9,7 @@ interface HomeProps {
 
 export default function Home({ waves }: HomeProps) {
     return (
-        <PsbLayout title="Beranda">
+        <PsbLayout>
             {/* Hero Section */}
             <section className="relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700" />

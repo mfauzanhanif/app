@@ -49,7 +49,7 @@ Constraint: Kombinasi (academic_year_id, name) harus unik.
 | start_date | DATE        | Not Null. Tanggal mulai (biasanya 1 Januari).                                                         |
 | end_date   | DATE        | Not Null. Tanggal selesai (biasanya 31 Desember).                                                     |
 | is_active  | BOOLEAN     | Default false. Menandakan periode akuntansi yang sedang berjalan.                                     |
-| status     | ENUM        | Default OPEN. Status Audit: OPEN (Bisa input), CLOSED (Tutup Sementara), AUDITED (Terkunci Permanen). |
+| status     | ENUM        | Default open. Status Audit: open (Bisa input), closed (Tutup Sementara), audited (Terkunci Permanen). |
 | created_at | TIMESTAMP   | Waktu dibuat.                                                                                         |
 | updated_at | TIMESTAMP   | Waktu terakhir diupdate.                                                                              |
 

@@ -12,8 +12,8 @@ use Modules\Admission\Http\Controllers\CandidateCertificateController;
 | Semua route public — pendaftar tidak perlu login.
 */
 
-// Landing
-Route::get('/', [AdmissionController::class, 'landing'])->name('psb.landing');
+// Home
+Route::get('/', [AdmissionController::class, 'home'])->name('psb.home');
 
 // Pendaftaran (public — langsung isi form)
 Route::get('/daftar/{wave}', [AdmissionController::class, 'showForm'])->name('psb.form');

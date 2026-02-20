@@ -24,11 +24,6 @@ Route::domain(env('APP_DOMAIN'))->group(function () {
         return redirect()->to(Auth::user()->getDefaultPortalUrl());
     })->name('home');
 
-    // Test
-    Route::get('/test/region-select', function () {
-        return \Inertia\Inertia::render('Test/RegionSelectTest');
-    });
-
     // Load Authentication Routes (Login, Register, etc.)
     require base_path('routes/app/auth.php');
 
@@ -64,3 +59,13 @@ Route::domain(env('PSB_DOMAIN'))->group(function () {
 |--------------------------------------------------------------------------
 */
 require base_path('routes/ppdt.php');
+
+
+/*
+|--------------------------------------------------------------------------
+| MISDT / LANDING PAGE (misdt.daraltauhid.com)
+|--------------------------------------------------------------------------
+*/
+Route::domain(env('MISDT_DOMAIN'))->group(function () {
+    require base_path('routes/misdt.php');
+});

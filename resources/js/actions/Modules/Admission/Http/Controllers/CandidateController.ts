@@ -182,7 +182,7 @@ export const index = {
 
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
 const show84a226803f5cdad7e1e217b182e77931 = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -197,7 +197,7 @@ show84a226803f5cdad7e1e217b182e77931.definition = {
 
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
 show84a226803f5cdad7e1e217b182e77931.url = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -230,7 +230,7 @@ show84a226803f5cdad7e1e217b182e77931.url = (args: { candidate: number | { id: nu
 
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
 show84a226803f5cdad7e1e217b182e77931.get = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -239,7 +239,7 @@ show84a226803f5cdad7e1e217b182e77931.get = (args: { candidate: number | { id: nu
 })
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
 show84a226803f5cdad7e1e217b182e77931.head = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -249,7 +249,7 @@ show84a226803f5cdad7e1e217b182e77931.head = (args: { candidate: number | { id: n
 
     /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
     const show84a226803f5cdad7e1e217b182e77931Form = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -259,7 +259,7 @@ show84a226803f5cdad7e1e217b182e77931.head = (args: { candidate: number | { id: n
 
             /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
         show84a226803f5cdad7e1e217b182e77931Form.get = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -268,7 +268,7 @@ show84a226803f5cdad7e1e217b182e77931.head = (args: { candidate: number | { id: n
         })
             /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '/api/v1/admission/candidates/{candidate}'
  */
         show84a226803f5cdad7e1e217b182e77931Form.head = (args: { candidate: number | { id: number } } | [candidate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -284,7 +284,7 @@ show84a226803f5cdad7e1e217b182e77931.head = (args: { candidate: number | { id: n
     show84a226803f5cdad7e1e217b182e77931.form = show84a226803f5cdad7e1e217b182e77931Form
     /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}'
  */
 const show5e16edc6cf4761bccb4ba7b4c85732f6 = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -299,7 +299,7 @@ show5e16edc6cf4761bccb4ba7b4c85732f6.definition = {
 
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}'
  */
 show5e16edc6cf4761bccb4ba7b4c85732f6.url = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions) => {
@@ -327,7 +327,7 @@ show5e16edc6cf4761bccb4ba7b4c85732f6.url = (args: { institution: string | number
 
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}'
  */
 show5e16edc6cf4761bccb4ba7b4c85732f6.get = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -336,7 +336,7 @@ show5e16edc6cf4761bccb4ba7b4c85732f6.get = (args: { institution: string | number
 })
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}'
  */
 show5e16edc6cf4761bccb4ba7b4c85732f6.head = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -346,7 +346,7 @@ show5e16edc6cf4761bccb4ba7b4c85732f6.head = (args: { institution: string | numbe
 
     /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}'
  */
     const show5e16edc6cf4761bccb4ba7b4c85732f6Form = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -356,7 +356,7 @@ show5e16edc6cf4761bccb4ba7b4c85732f6.head = (args: { institution: string | numbe
 
             /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}'
  */
         show5e16edc6cf4761bccb4ba7b4c85732f6Form.get = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -365,7 +365,7 @@ show5e16edc6cf4761bccb4ba7b4c85732f6.head = (args: { institution: string | numbe
         })
             /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::show
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:57
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:58
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}'
  */
         show5e16edc6cf4761bccb4ba7b4c85732f6Form.head = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -387,7 +387,7 @@ export const show = {
 
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::updateStatus
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:81
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:82
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/status'
  */
 export const updateStatus = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -402,7 +402,7 @@ updateStatus.definition = {
 
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::updateStatus
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:81
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:82
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/status'
  */
 updateStatus.url = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions) => {
@@ -430,7 +430,7 @@ updateStatus.url = (args: { institution: string | number, candidate: number | { 
 
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::updateStatus
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:81
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:82
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/status'
  */
 updateStatus.put = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -440,7 +440,7 @@ updateStatus.put = (args: { institution: string | number, candidate: number | { 
 
     /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::updateStatus
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:81
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:82
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/status'
  */
     const updateStatusForm = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -455,7 +455,7 @@ updateStatus.put = (args: { institution: string | number, candidate: number | { 
 
             /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::updateStatus
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:81
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:82
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/status'
  */
         updateStatusForm.put = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -471,7 +471,7 @@ updateStatus.put = (args: { institution: string | number, candidate: number | { 
     updateStatus.form = updateStatusForm
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::verifyDocument
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:119
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:120
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/documents/{document}/verify'
  */
 export const verifyDocument = (args: { institution: string | number, candidate: number | { id: number }, document: string | number } | [institution: string | number, candidate: number | { id: number }, document: string | number ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -486,7 +486,7 @@ verifyDocument.definition = {
 
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::verifyDocument
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:119
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:120
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/documents/{document}/verify'
  */
 verifyDocument.url = (args: { institution: string | number, candidate: number | { id: number }, document: string | number } | [institution: string | number, candidate: number | { id: number }, document: string | number ], options?: RouteQueryOptions) => {
@@ -517,7 +517,7 @@ verifyDocument.url = (args: { institution: string | number, candidate: number | 
 
 /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::verifyDocument
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:119
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:120
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/documents/{document}/verify'
  */
 verifyDocument.put = (args: { institution: string | number, candidate: number | { id: number }, document: string | number } | [institution: string | number, candidate: number | { id: number }, document: string | number ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -527,7 +527,7 @@ verifyDocument.put = (args: { institution: string | number, candidate: number | 
 
     /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::verifyDocument
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:119
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:120
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/documents/{document}/verify'
  */
     const verifyDocumentForm = (args: { institution: string | number, candidate: number | { id: number }, document: string | number } | [institution: string | number, candidate: number | { id: number }, document: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -542,7 +542,7 @@ verifyDocument.put = (args: { institution: string | number, candidate: number | 
 
             /**
 * @see \Modules\Admission\Http\Controllers\CandidateController::verifyDocument
- * @see Modules/Admission/app/Http/Controllers/CandidateController.php:119
+ * @see Modules/Admission/app/Http/Controllers/CandidateController.php:120
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/documents/{document}/verify'
  */
         verifyDocumentForm.put = (args: { institution: string | number, candidate: number | { id: number }, document: string | number } | [institution: string | number, candidate: number | { id: number }, document: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

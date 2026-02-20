@@ -1,0 +1,181 @@
+@import 'tailwindcss';
+@import 'flowbite-react/plugin/tailwindcss';
+@source '../../.flowbite-react/class-list.json';
+
+@import 'tw-animate-css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    /* Font Family */
+    --font-sans:
+        'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+
+    /* Brand Colors */
+    --color-dat-primary: #15803d;
+    --color-dat-secondary: #166534;
+    --color-dat-accent: #fefce8;
+    --color-dat-text: #1e293b;
+}
+
+/* =====================================================
+   BASE STYLES
+   ===================================================== */
+@layer base {
+    /* Alpine.js cloak - hide until loaded (keep if any residual Alpine is used) */
+    [x-cloak] {
+        display: none !important;
+    }
+}
+
+/* =====================================================
+   COMPONENT UTILITIES
+   ===================================================== */
+
+@layer components {
+    /* Form Input Base */
+    .form-input {
+        @apply w-full rounded-lg border border-gray-300 p-3 shadow-sm transition;
+        @apply focus:ring-dat-primary focus:border-dat-primary focus:ring-2;
+    }
+
+    /* Form Label */
+    .form-label {
+        @apply mb-1 block text-sm font-medium text-gray-700;
+    }
+
+    /* Form Error */
+    .form-error {
+        @apply mt-1 text-sm text-red-500;
+    }
+
+    /* Card Container */
+    .card {
+        @apply overflow-hidden rounded-xl bg-white shadow-lg;
+    }
+
+    /* Card with top border accent */
+    .card-accent {
+        @apply border-dat-primary overflow-hidden rounded-xl border-t-4 bg-white shadow-lg;
+    }
+
+    /* Primary Button */
+    .btn-primary {
+        @apply bg-dat-primary hover:bg-dat-secondary px-4 py-2 font-medium text-white;
+        @apply rounded-lg shadow-md transition;
+    }
+
+    /* Secondary Button */
+    .btn-secondary {
+        @apply text-dat-text bg-white px-4 py-2 font-medium hover:bg-gray-50;
+        @apply rounded-lg border border-gray-300 transition;
+    }
+
+    /* Section Title */
+    .section-title {
+        @apply text-dat-text text-2xl font-extrabold sm:text-3xl md:text-4xl;
+    }
+
+    /* Badge/Status Styles */
+    .badge {
+        @apply inline-flex rounded-full px-3 py-1 text-xs leading-5 font-semibold;
+    }
+
+    .badge-success {
+        @apply bg-green-100 text-green-800;
+    }
+
+    .badge-warning {
+        @apply bg-amber-100 text-amber-800;
+    }
+
+    .badge-danger {
+        @apply bg-red-100 text-red-800;
+    }
+
+    .badge-info {
+        @apply bg-gray-100 text-gray-800;
+    }
+}
+
+/* =====================================================
+   ANIMATIONS
+   ===================================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+    animation: fadeIn 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.6s ease-out,
+        transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Spinner Animation */
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* =====================================================
+   FILE UPLOAD DROPZONE
+   ===================================================== */
+
+.file-dropzone {
+    @apply rounded-xl border-2 border-dashed border-gray-300 p-4 md:p-6;
+    @apply flex flex-col items-center justify-center bg-gray-50;
+    @apply hover:border-dat-primary cursor-pointer transition hover:bg-green-50;
+}
+
+/* =====================================================
+   STEP INDICATOR
+   ===================================================== */
+
+.step-indicator {
+    @apply flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold;
+    @apply shadow transition-all duration-300;
+}
+
+.step-indicator.active {
+    @apply bg-dat-primary text-white;
+}
+
+.step-indicator.inactive {
+    @apply border-2 border-gray-200 bg-white text-gray-400;
+}

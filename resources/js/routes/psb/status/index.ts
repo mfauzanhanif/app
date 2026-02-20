@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../wayfinder'
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::lookup
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:148
  * @route '//psb.daraltauhid.test/status'
  */
 export const lookup = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +16,7 @@ lookup.definition = {
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::lookup
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:148
  * @route '//psb.daraltauhid.test/status'
  */
 lookup.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ lookup.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::lookup
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:148
  * @route '//psb.daraltauhid.test/status'
  */
 lookup.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -35,7 +35,7 @@ lookup.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::lookup
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:148
  * @route '//psb.daraltauhid.test/status'
  */
     const lookupForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -45,7 +45,7 @@ lookup.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::lookup
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:0
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:148
  * @route '//psb.daraltauhid.test/status'
  */
         lookupForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

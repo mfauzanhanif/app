@@ -38,7 +38,10 @@ return [
         'ensure_pages_exist' => true,
 
         'page_paths' => [
-            resource_path('js/APP/pages'),
+            resource_path('js/app/pages'),
+            resource_path('js/psb/pages'),
+            resource_path('js/ppdt/pages'),
+            resource_path('js/misdt/pages'),
         ],
 
         'page_extensions' => [

@@ -2,45 +2,44 @@
 
 ## 2.1 `users` - User Admin
 
-| Field                       | Type      | Deskripsi                |
-| --------------------------- | --------- | ------------------------ |
-| `id`                        | BIGINT    | Primary key              |
-| `name`                      | VARCHAR   | Nama                     |
-| `username`                  | VARCHAR   | Menggunnakan NIPY untuk employee dan Guadian ID untuk Wali (unique) |
-| `email`                     | VARCHAR   | Email (unique)           |
-| `email_verified_at`         | TIMESTAMP | Waktu verifikasi email   |
-| `password`                  | VARCHAR   | Password (hashed)        |
-| `two_factor_secret`         | TEXT      | Secret key 2FA (Fortify) |
-| `two_factor_recovery_codes` | TEXT      | Kode recovery 2FA        |
-| `two_factor_confirmed_at`   | TIMESTAMP | Waktu konfirmasi 2FA     |
-| `role_type`                 | ENUM      | `employee`, `guardian`   |
-| `is_active`                 | BOOLEAN   | Default Aktif            |
-| `remember_token`            | VARCHAR   | Token remember me        |
-| `deleted_at`                | TIMESTAMP | Soft delete              |
+| Field                       | Type      | Deskripsi                                                           |
+| --------------------------- | --------- | ------------------------------------------------------------------- |
+| `id`                        | BIGINT    | Primary key                                                         |
+| `name`                      | VARCHAR   | Nama                                                                |
+| `username`                  | VARCHAR   | Nullable. Menggunakan NIPY untuk employee dan Guardian ID untuk Wali (unique)|
+| `email`                     | VARCHAR   | Email (unique)                                                      |
+| `email_verified_at`         | TIMESTAMP | Nullable. Waktu verifikasi email                                    |
+| `password`                  | VARCHAR   | Password (hashed)                                                   |
+| `two_factor_secret`         | TEXT      | Nullable. Secret key 2FA (Fortify)                                  |
+| `two_factor_recovery_codes` | TEXT      | Nullable. Kode recovery 2FA                                         |
+| `two_factor_confirmed_at`   | TIMESTAMP | Nullable. Waktu konfirmasi 2FA                                      |
+| `role_type`                 | ENUM      | Nullable. Pilihan: `employee`, `guardian`                           |
+| `is_active`                 | BOOLEAN   | Default Aktif (true)                                                |
+| `remember_token`            | VARCHAR   | Token remember me                                                   |
+| `deleted_at`                | TIMESTAMP | Soft delete                                                         |
 
 **Unique**: `email`, `username`  
-**Index**: `email`, `username`  
+**Index**: `email`  
 **Primary Key**: `id`  
 **Relasi**:
 
 - `users` 1:N `guardians` (User sebagai Wali Murid)
 - `users` 1:N `employees` (User sebagai Pegawai)
-- `users` 1:N `payments` (User sebagai Petugas)
 
 ---
 
 ## 2.2. `permissions` - by spatie
 
-| Field        | Type      | Deskripsi                  |
-| ------------ | --------- | -------------------------- |
-| `id`         | BIGINT    | Primary key                |
-| `name`       | VARCHAR   | Nama permission            |
-| `guard_name` | VARCHAR   | Guard name (web, api, dll) |
-| `created_at` | TIMESTAMP | Waktu dibuat               |
-| `updated_at` | TIMESTAMP | Waktu diupdate             |
+| Field        | Type      | Deskripsi                                 |
+| ------------ | --------- | ----------------------------------------- |
+| `id`         | BIGINT    | Primary key                               |
+| `name`       | VARCHAR   | Nama permission                           |
+| `guard_name` | VARCHAR   | Guard name (web, api, dll)                |
+| `group_name` | VARCHAR   | Default 'Uncategorized'. Kategori/Group.  |
+| `created_at` | TIMESTAMP | Waktu dibuat                              |
+| `updated_at` | TIMESTAMP | Waktu diupdate                            |
 
 **Unique**: `name`, `guard_name`  
-**Index**: `name`  
 **Primary Key**: `id`
 
 ---
@@ -50,47 +49,48 @@
 | Field            | Type      | Deskripsi                  |
 | ---------------- | --------- | -------------------------- |
 | `id`             | BIGINT    | Primary key                |
-| `institution_id` | BIGINT    | ID Lembaga                 |
+| `institution_id` | BIGINT    | Nullable. ID Lembaga       |
 | `name`           | VARCHAR   | Nama role                  |
+| `display_name`   | VARCHAR   | Nullable. Nama tampilan    |
 | `guard_name`     | VARCHAR   | Guard name (web, api, dll) |
 | `created_at`     | TIMESTAMP | Waktu dibuat               |
 | `updated_at`     | TIMESTAMP | Waktu diupdate             |
 
 **Unique**: `institution_id`, `name`, `guard_name`  
-**Index**: `institution_id`, `name`  
+**Index**: `institution_id`  
 **Primary Key**: `id`  
-**Foreign Key**: `institution_id` -> `institutions.id`  
-**Relasi**:
-
-- `institution_id` -> `institutions.id`
 
 ---
 
 ## 2.4. `model_has_permissions` - by spatie
 
-| Field           | Type    | Deskripsi                      |
-| --------------- | ------- | ------------------------------ |
-| `permission_id` | BIGINT  | Foreign key ke permissions.id  |
-| `model_type`    | VARCHAR | Tipe model (App\\Models\\User) |
-| `model_id`      | BIGINT  | ID model                       |
+| Field            | Type    | Deskripsi                                      |
+| ---------------- | ------- | ---------------------------------------------- |
+| `id`             | BIGINT  | Primary key (Surrogate Key)                    |
+| `permission_id`  | BIGINT  | Foreign key ke permissions.id                  |
+| `model_type`     | VARCHAR | Tipe model (App\\Models\\User)                 |
+| `model_id`       | BIGINT  | ID model                                       |
+| `institution_id` | BIGINT  | Nullable. Foreign key ke institutions.id       |
 
-**Foreign Key**: `permission_id` -> `permissions.id` (cascade delete)  
-**Index**: `model_id`, `model_type`  
-**Primary Key**: `permission_id`, `model_id`, `model_type` (atau dengan team_foreign_key jika teams enabled)
+**Foreign Key**: `permission_id` -> `permissions.id` (cascade delete), `institution_id` -> `institutions.id` (cascade delete)  
+**Index**: `model_id`, `model_type`, `institution_id`  
+**Primary Key**: `id`
 
 ---
 
 ## 2.5. `model_has_roles` - by spatie
 
-| Field        | Type    | Deskripsi                      |
-| ------------ | ------- | ------------------------------ |
-| `role_id`    | BIGINT  | Foreign key ke roles.id        |
-| `model_type` | VARCHAR | Tipe model (App\\Models\\User) |
-| `model_id`   | BIGINT  | ID model                       |
+| Field            | Type    | Deskripsi                                      |
+| ---------------- | ------- | ---------------------------------------------- |
+| `id`             | BIGINT  | Primary key (Surrogate Key)                    |
+| `role_id`        | BIGINT  | Foreign key ke roles.id                        |
+| `model_type`     | VARCHAR | Tipe model (App\\Models\\User)                 |
+| `model_id`       | BIGINT  | ID model                                       |
+| `institution_id` | BIGINT  | Nullable. Foreign key ke institutions.id       |
 
-**Foreign Key**: `role_id` -> `roles.id` (cascade delete)  
-**Index**: `model_id`, `model_type`  
-**Primary Key**: `role_id`, `model_id`, `model_type` (atau dengan team_foreign_key jika teams enabled)
+**Foreign Key**: `role_id` -> `roles.id` (cascade delete), `institution_id` -> `institutions.id` (cascade delete)  
+**Index**: `model_id`, `model_type`, `institution_id`, `role_id`  
+**Primary Key**: `id`
 
 ---
 

@@ -98,7 +98,7 @@ dashboard.head = (args: { institution: string | number } | [institution: string 
     dashboard.form = dashboardForm
 /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
 export const switchMethod = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -113,7 +113,7 @@ switchMethod.definition = {
 
 /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
 switchMethod.url = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -141,7 +141,7 @@ switchMethod.url = (args: { institution: string | number } | [institution: strin
 
 /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
 switchMethod.get = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -150,7 +150,7 @@ switchMethod.get = (args: { institution: string | number } | [institution: strin
 })
 /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
 switchMethod.head = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -160,7 +160,7 @@ switchMethod.head = (args: { institution: string | number } | [institution: stri
 
     /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
     const switchMethodForm = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -170,7 +170,7 @@ switchMethod.head = (args: { institution: string | number } | [institution: stri
 
             /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
         switchMethodForm.get = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -179,7 +179,7 @@ switchMethod.head = (args: { institution: string | number } | [institution: stri
         })
             /**
 * @see \App\Http\Controllers\LoginController::switchMethod
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
         switchMethodForm.head = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

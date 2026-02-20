@@ -58,15 +58,15 @@ class UserSeeder extends Seeder
 
         foreach ($globalUsers as $userData) {
             $user = User::firstOrCreate(
-            ['email' => $userData['email']],
-            [
-                'name' => $userData['name'],
-                'username' => $userData['username'],
-                'password' => $defaultPassword,
-                'is_active' => true,
-                'role_type' => 'employee',
-                'email_verified_at' => now(),
-            ]
+                ['email' => $userData['email']],
+                [
+                    'name' => $userData['name'],
+                    'username' => $userData['username'],
+                    'password' => $defaultPassword,
+                    'is_active' => true,
+                    'role_type' => 'employee',
+                    'email_verified_at' => now(),
+                ]
             );
 
             // Assign Global Role (pass Role object, not string)
@@ -109,15 +109,15 @@ class UserSeeder extends Seeder
                 $name = "{$roleLabel} " . strtoupper($institution->code);
 
                 $user = User::firstOrCreate(
-                ['email' => $email],
-                [
-                    'name' => $name,
-                    'username' => $username,
-                    'password' => $defaultPassword,
-                    'is_active' => true,
-                    'role_type' => 'employee',
-                    'email_verified_at' => now(),
-                ]
+                    ['email' => $email],
+                    [
+                        'name' => $name,
+                        'username' => $username,
+                        'password' => $defaultPassword,
+                        'is_active' => true,
+                        'role_type' => 'employee',
+                        'email_verified_at' => now(),
+                    ]
                 );
 
                 // Assign Scoped Role
@@ -131,13 +131,24 @@ class UserSeeder extends Seeder
                 // Method 2: Use helper (Recommended)
                 try {
                     $user->assignRoleInInstitution($roleKey, $institution);
-                }
-                catch (\Exception $e) {
+                } catch (\Exception $e) {
                     // Ignore if role doesn't exist? No, we should log.
                     // But in seeder we assume roles exist via RoleSeeder
                     Log::warning("Failed to assign role $roleKey to user $username: " . $e->getMessage());
                 }
             }
+
+            // --- TAMBAHAN UNTUK UJI COBA ---
+            // Jadikan akun 'administrator' sebagai 'Operator' (admin) di setiap lembaga
+            $adminUser = User::where('username', 'administrator')->first();
+            if ($adminUser) {
+                try {
+                    $adminUser->assignRoleInInstitution('school_operator', $institution);
+                } catch (\Exception $e) {
+                    Log::warning("Failed to assign scoped role to administrator: " . $e->getMessage());
+                }
+            }
+            // -------------------------------
         }
 
         // ==========================================
@@ -150,15 +161,15 @@ class UserSeeder extends Seeder
         $guardianRole = Role::findByName('guardian', 'web');
 
         $guardianUser = User::firstOrCreate(
-        ['email' => 'wali.santri@gmail.com'],
-        [
-            'name' => 'Wali Santri 01',
-            'username' => 'walisantri01',
-            'password' => $defaultPassword,
-            'is_active' => true,
-            'role_type' => 'guardian',
-            'email_verified_at' => now(),
-        ]
+            ['email' => 'wali.santri@gmail.com'],
+            [
+                'name' => 'Wali Santri 01',
+                'username' => 'walisantri01',
+                'password' => $defaultPassword,
+                'is_active' => true,
+                'role_type' => 'guardian',
+                'email_verified_at' => now(),
+            ]
         );
 
         setPermissionsTeamId(null);

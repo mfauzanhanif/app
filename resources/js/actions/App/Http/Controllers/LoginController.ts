@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\LoginController::selectInstitution
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
 export const selectInstitution = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ selectInstitution.definition = {
 
 /**
 * @see \App\Http\Controllers\LoginController::selectInstitution
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
 selectInstitution.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ selectInstitution.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\LoginController::selectInstitution
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
 selectInstitution.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ selectInstitution.get = (options?: RouteQueryOptions): RouteDefinition<'get'> =>
 })
 /**
 * @see \App\Http\Controllers\LoginController::selectInstitution
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
 selectInstitution.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,7 +44,7 @@ selectInstitution.head = (options?: RouteQueryOptions): RouteDefinition<'head'> 
 
     /**
 * @see \App\Http\Controllers\LoginController::selectInstitution
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
     const selectInstitutionForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -54,7 +54,7 @@ selectInstitution.head = (options?: RouteQueryOptions): RouteDefinition<'head'> 
 
             /**
 * @see \App\Http\Controllers\LoginController::selectInstitution
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
         selectInstitutionForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -63,7 +63,7 @@ selectInstitution.head = (options?: RouteQueryOptions): RouteDefinition<'head'> 
         })
             /**
 * @see \App\Http\Controllers\LoginController::selectInstitution
- * @see app/Http/Controllers/LoginController.php:17
+ * @see app/Http/Controllers/LoginController.php:19
  * @route '//app.daraltauhid.test/select-institution'
  */
         selectInstitutionForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -79,7 +79,7 @@ selectInstitution.head = (options?: RouteQueryOptions): RouteDefinition<'head'> 
     selectInstitution.form = selectInstitutionForm
 /**
 * @see \App\Http\Controllers\LoginController::selectStudent
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
 export const selectStudent = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -94,7 +94,7 @@ selectStudent.definition = {
 
 /**
 * @see \App\Http\Controllers\LoginController::selectStudent
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
 selectStudent.url = (options?: RouteQueryOptions) => {
@@ -103,7 +103,7 @@ selectStudent.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\LoginController::selectStudent
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
 selectStudent.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -112,7 +112,7 @@ selectStudent.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\LoginController::selectStudent
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
 selectStudent.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -122,7 +122,7 @@ selectStudent.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
 
     /**
 * @see \App\Http\Controllers\LoginController::selectStudent
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
     const selectStudentForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -132,7 +132,7 @@ selectStudent.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
 
             /**
 * @see \App\Http\Controllers\LoginController::selectStudent
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
         selectStudentForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -141,7 +141,7 @@ selectStudent.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
         })
             /**
 * @see \App\Http\Controllers\LoginController::selectStudent
- * @see app/Http/Controllers/LoginController.php:53
+ * @see app/Http/Controllers/LoginController.php:55
  * @route '//app.daraltauhid.test/select-student'
  */
         selectStudentForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -157,7 +157,7 @@ selectStudent.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
     selectStudent.form = selectStudentForm
 /**
 * @see \App\Http\Controllers\LoginController::switchInstitution
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
 export const switchInstitution = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -172,7 +172,7 @@ switchInstitution.definition = {
 
 /**
 * @see \App\Http\Controllers\LoginController::switchInstitution
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
 switchInstitution.url = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -200,7 +200,7 @@ switchInstitution.url = (args: { code: string | number } | [code: string | numbe
 
 /**
 * @see \App\Http\Controllers\LoginController::switchInstitution
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
 switchInstitution.get = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -209,7 +209,7 @@ switchInstitution.get = (args: { code: string | number } | [code: string | numbe
 })
 /**
 * @see \App\Http\Controllers\LoginController::switchInstitution
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
 switchInstitution.head = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -219,7 +219,7 @@ switchInstitution.head = (args: { code: string | number } | [code: string | numb
 
     /**
 * @see \App\Http\Controllers\LoginController::switchInstitution
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
     const switchInstitutionForm = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -229,7 +229,7 @@ switchInstitution.head = (args: { code: string | number } | [code: string | numb
 
             /**
 * @see \App\Http\Controllers\LoginController::switchInstitution
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
         switchInstitutionForm.get = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -238,7 +238,7 @@ switchInstitution.head = (args: { code: string | number } | [code: string | numb
         })
             /**
 * @see \App\Http\Controllers\LoginController::switchInstitution
- * @see app/Http/Controllers/LoginController.php:106
+ * @see app/Http/Controllers/LoginController.php:108
  * @route '//app.daraltauhid.test/switch-institution/{code}'
  */
         switchInstitutionForm.head = (args: { code: string | number } | [code: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -254,7 +254,7 @@ switchInstitution.head = (args: { code: string | number } | [code: string | numb
     switchInstitution.form = switchInstitutionForm
 /**
 * @see \App\Http\Controllers\LoginController::switchStudent
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
 export const switchStudent = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -269,7 +269,7 @@ switchStudent.definition = {
 
 /**
 * @see \App\Http\Controllers\LoginController::switchStudent
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
 switchStudent.url = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -297,7 +297,7 @@ switchStudent.url = (args: { publicId: string | number } | [publicId: string | n
 
 /**
 * @see \App\Http\Controllers\LoginController::switchStudent
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
 switchStudent.get = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -306,7 +306,7 @@ switchStudent.get = (args: { publicId: string | number } | [publicId: string | n
 })
 /**
 * @see \App\Http\Controllers\LoginController::switchStudent
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
 switchStudent.head = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -316,7 +316,7 @@ switchStudent.head = (args: { publicId: string | number } | [publicId: string | 
 
     /**
 * @see \App\Http\Controllers\LoginController::switchStudent
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
     const switchStudentForm = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -326,7 +326,7 @@ switchStudent.head = (args: { publicId: string | number } | [publicId: string | 
 
             /**
 * @see \App\Http\Controllers\LoginController::switchStudent
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
         switchStudentForm.get = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -335,7 +335,7 @@ switchStudent.head = (args: { publicId: string | number } | [publicId: string | 
         })
             /**
 * @see \App\Http\Controllers\LoginController::switchStudent
- * @see app/Http/Controllers/LoginController.php:129
+ * @see app/Http/Controllers/LoginController.php:131
  * @route '//app.daraltauhid.test/switch-student/{publicId}'
  */
         switchStudentForm.head = (args: { publicId: string | number } | [publicId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -351,7 +351,7 @@ switchStudent.head = (args: { publicId: string | number } | [publicId: string | 
     switchStudent.form = switchStudentForm
 /**
 * @see \App\Http\Controllers\LoginController::switchInstitutionPage
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
 export const switchInstitutionPage = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -366,7 +366,7 @@ switchInstitutionPage.definition = {
 
 /**
 * @see \App\Http\Controllers\LoginController::switchInstitutionPage
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
 switchInstitutionPage.url = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -394,7 +394,7 @@ switchInstitutionPage.url = (args: { institution: string | number } | [instituti
 
 /**
 * @see \App\Http\Controllers\LoginController::switchInstitutionPage
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
 switchInstitutionPage.get = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -403,7 +403,7 @@ switchInstitutionPage.get = (args: { institution: string | number } | [instituti
 })
 /**
 * @see \App\Http\Controllers\LoginController::switchInstitutionPage
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
 switchInstitutionPage.head = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -413,7 +413,7 @@ switchInstitutionPage.head = (args: { institution: string | number } | [institut
 
     /**
 * @see \App\Http\Controllers\LoginController::switchInstitutionPage
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
     const switchInstitutionPageForm = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -423,7 +423,7 @@ switchInstitutionPage.head = (args: { institution: string | number } | [institut
 
             /**
 * @see \App\Http\Controllers\LoginController::switchInstitutionPage
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
         switchInstitutionPageForm.get = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -432,7 +432,7 @@ switchInstitutionPage.head = (args: { institution: string | number } | [institut
         })
             /**
 * @see \App\Http\Controllers\LoginController::switchInstitutionPage
- * @see app/Http/Controllers/LoginController.php:82
+ * @see app/Http/Controllers/LoginController.php:84
  * @route '//app.daraltauhid.test/{institution}/switch-institution'
  */
         switchInstitutionPageForm.head = (args: { institution: string | number } | [institution: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
