@@ -98,7 +98,7 @@ function HeroSection() {
                                 <div className="absolute -inset-4 rounded-full bg-white/10 blur-2xl"></div>
                                 {/* Change asset path below if FOTOSANTRI.png is stored elsewhere, using standard public path */}
                                 <img
-                                    src="/FOTOSANTRI.png"
+                                    src="/assets/images/psb/foto-santri.png"
                                     alt="Santri Dar Al Tauhid"
                                     className="relative h-auto w-64 transform object-contain drop-shadow-2xl transition duration-500 hover:scale-[1.02] sm:w-72 md:w-80 lg:w-96"
                                 />

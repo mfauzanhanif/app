@@ -1,0 +1,53 @@
+# Finance Module Implementation Plan
+
+The objective is to implement the **Finance Module (Keuangan & Akuntansi)** according to the architectural guidelines in [docs/Modules.md](file:///c:/laragon/www/app/docs/Modules.md) (Sections 15.1 - 15.4) and the database specifications in [docs/DATABASE/15_FINANCE.md](file:///c:/laragon/www/app/docs/DATABASE/15_FINANCE.md). By completing the backend (Models, Controllers, and Routes), the `vite-plugin-wayfinder` will automatically generate the corresponding frontend React queries/actions in `resources/js/actions/Modules/Finance`.
+
+## User Review Required
+
+Please review the proposed architecture and database schema translations below to ensure they align with your business requirements before we proceed to coding.
+
+## Proposed Changes
+
+### 1. Database Migrations
+Create a migration file (e.g., `2026_02_21_000000_create_finance_tables.php`) containing all tables in the correct order of foreign key dependencies:
+- **Master Data & Billing:** `finance_coa`, `finance_fee_types`, `finance_invoices`, `finance_invoice_items`.
+- **Wallet System:** `finance_wallets`, `finance_wallet_transactions`.
+- **Payment Gateway:** `finance_payment_methods`, `finance_gateway_transactions`.
+- **Accounting:** `finance_journals`, `finance_journal_details`, `finance_fixed_vas`.
+
+### 2. Eloquent Models & Enums
+Create the corresponding models in `Modules/Finance/app/Models` with strict typing and relationships:
+- `Coa` (Self-referencing parent/child)
+- `FeeType`
+- `Invoice` & `InvoiceItem`
+- `Wallet` & `WalletTransaction`
+- `PaymentMethod` & `GatewayTransaction`
+- `Journal` & `JournalDetail`
+- `FixedVa`
+
+Create Enums in `Modules/Finance/app/Enums/`:
+- `CoaType`, `NormalBalance`
+- `FeeFrequency`, `InvoiceStatus`
+- `WalletType`, `WalletTransactionType`
+- `PaymentStatus`
+
+### 3. API Controllers
+Develop specific controllers to partition the complex logic inside `Modules/Finance/app/Http/Controllers/`:
+- **BillingController:** Handle generation of `FeeTypes` and bulk/single `Invoices`.
+- **WalletController:** Retrieve wallet balances and log `WalletTransactions`.
+- **TreasuryController:** Handle `GatewayTransactions`, Fixed VAs generation, and webhook endpoint (Callback from Flip/Midtrans) for auto-allocation to unpaid invoices.
+- **AccountingController:** Manage the Chart of Accounts (`Coa`) and retrieve automatic/double-entry `Journals`.
+
+### 4. Routes & Frontend Action Generation
+- Update `Modules/Finance/routes/api.php` to register all these endpoints.
+- Run `npm run build` or Vite dev server to trigger `wayfinder` generation, populating `resources/js/actions/Modules/Finance/Http/Controllers/` with full TypeScript definitions for the frontend.
+
+## Verification Plan
+
+### Automated Tests
+- Run `php artisan migrate:fresh` to verify schema integrity and foreign key constraints.
+- Run `php artisan optimize:clear` and check for route resolution issues.
+
+### Manual Verification
+- Inspect the generated TS definitions in `resources/js/actions/Modules/Finance`.
+- Review the `Invoice` auto-allocation logic through mocked tests (Top up a wallet and verify if an unpaid invoice automatically shifts to `paid` and creates the respective `Journal` entry).
