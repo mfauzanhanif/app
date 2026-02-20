@@ -25,14 +25,15 @@ class CandidateController extends Controller
 
         $candidates = Candidate::forInstitution($institution->id)
             ->with(['admissionWave:id,name', 'invoices'])
-            ->when($request->status, fn ($q, $status) => $q->where('status', $status))
-            ->when($request->wave_id, fn ($q, $waveId) => $q->forWave($waveId))
+            ->when($request->status, fn($q, $status) => $q->where('status', $status))
+            ->when($request->wave_id, fn($q, $waveId) => $q->forWave($waveId))
             ->when($request->search, function ($q, $search) {
-                $q->where(function ($query) use ($search) {
+            $q->where(function ($query) use ($search) {
                     $query->where('name', 'like', "%{$search}%")
                         ->orWhere('registration_number', 'like', "%{$search}%")
                         ->orWhere('nik', 'like', "%{$search}%");
-                });
+                }
+                );
             })
             ->latest()
             ->paginate(20)
@@ -46,7 +47,7 @@ class CandidateController extends Controller
             'waves' => $waves,
             'filters' => $request->only(['status', 'wave_id', 'search']),
             'statuses' => collect(CandidateStatus::cases())
-                ->map(fn ($s) => ['value' => $s->value, 'label' => $s->label()]),
+            ->map(fn($s) => ['value' => $s->value, 'label' => $s->label()]),
             'institutionCode' => $institution->code,
         ]);
     }
@@ -61,7 +62,7 @@ class CandidateController extends Controller
         $candidate->load([
             'admissionWave:id,name',
             'documents',
-            'families',
+            'parents',
             'exams',
             'invoices',
             'user:id,name,email',
@@ -71,7 +72,7 @@ class CandidateController extends Controller
             'candidate' => $candidate,
             'institutionCode' => $institution->code,
             'statuses' => collect(CandidateStatus::cases())
-                ->map(fn ($s) => ['value' => $s->value, 'label' => $s->label()]),
+            ->map(fn($s) => ['value' => $s->value, 'label' => $s->label()]),
         ]);
     }
 
@@ -94,7 +95,7 @@ class CandidateController extends Controller
                 ->where('type', InvoiceType::BIAYA_DAFTAR_ULANG)
                 ->exists();
 
-            if (! $existingInvoice && $wave) {
+            if (!$existingInvoice && $wave) {
                 AdmissionInvoice::create([
                     'candidate_id' => $candidate->id,
                     'code' => AdmissionInvoice::generateCode(),
@@ -107,9 +108,9 @@ class CandidateController extends Controller
 
         return redirect()
             ->route('candidates.show', [
-                'institution' => $institution->code,
-                'candidate' => $candidate->id,
-            ])
+            'institution' => $institution->code,
+            'candidate' => $candidate->id,
+        ])
             ->with('success', "Status kandidat diubah menjadi {$newStatus->label()}.");
     }
 
@@ -139,9 +140,9 @@ class CandidateController extends Controller
 
         return redirect()
             ->route('candidates.show', [
-                'institution' => $institution->code,
-                'candidate' => $candidate->id,
-            ])
+            'institution' => $institution->code,
+            'candidate' => $candidate->id,
+        ])
             ->with('success', 'Dokumen berhasil diverifikasi.');
     }
 }

@@ -28,7 +28,7 @@ class CheckInstitutionAccess
         $user = Auth::user();
 
         // Jika belum login, biarkan auth middleware yang handle
-        if (! $user) {
+        if (!$user) {
             return $next($request);
         }
 
@@ -38,14 +38,14 @@ class CheckInstitutionAccess
             : null;
 
         // Jika tidak ada institution context, lanjutkan (global routes)
-        if (! $currentInstitution) {
+        if (!$currentInstitution) {
             return $next($request);
         }
 
         // === ACCESS VALIDATION LOGIC ===
 
         // 1. Global Admin handling
-        if ($user->isGlobalAdmin()) {
+        if ($user->hasGlobalRole()) {
             // Two Hats Rule: jika Global Admin juga punya scoped role di lembaga ini,
             // inject sebagai scoped_role agar bertindak sesuai role lokal.
             // Contoh: Operator Yayasan yang juga Guru MI → saat akses MI, bertindak sebagai Guru MI.
@@ -58,7 +58,7 @@ class CheckInstitutionAccess
         }
 
         // 2. Cek apakah user memiliki role di institution ini
-        if (! $user->hasRoleInInstitution($currentInstitution->id)) {
+        if (!$user->hasRoleInInstitution($currentInstitution->id)) {
             abort(403, 'Anda tidak memiliki akses ke lembaga ini.');
         }
 
@@ -76,7 +76,7 @@ class CheckInstitutionAccess
     {
         // Hanya tulis session jika context berubah (optimasi: hindari write setiap request)
         if (session('current_institution_id') === $institution->id
-            && session('institution_access_type') === $accessType) {
+        && session('institution_access_type') === $accessType) {
             return;
         }
 
@@ -91,7 +91,8 @@ class CheckInstitutionAccess
         if ($accessType === 'scoped_role') {
             $roles = $user->getRolesInInstitution($institution->id);
             session(['current_roles' => $roles->pluck('name')->toArray()]);
-        } else {
+        }
+        else {
             // Global admin accessing institution
             session(['current_roles' => ['Global Admin']]);
         }

@@ -73,7 +73,7 @@ return new class extends Migration
             $table->string('pob', 100);
             $table->date('dob');
             $table->enum('gender', ['l', 'p']);
-            
+
             //  Kontak dan Alamat Calon Santri
             $table->string('phone', 20)->nullable();
             $table->string('email')->nullable();
@@ -89,11 +89,11 @@ return new class extends Migration
             $table->char('village_code', 10)->nullable();
             $table->foreign('village_code')->references('code')->on('villages');
             $table->string('postal_code', 10)->nullable();
-            
+
             $table->string('previous_school')->nullable();
             $table->string('previous_class')->nullable();
             $table->string('previous_school_address')->nullable();
-            
+
             $table->enum('status', [
                 'draft',
                 'diajukan',
@@ -117,33 +117,9 @@ return new class extends Migration
         });
 
         // ==============================
-        // 3. CANDIDATE DOCUMENTS (Berkas Persyaratan)
+        // 3. CANDIDATE PARENTS (Data Orang Tua/Wali)
         // ==============================
-        Schema::create('candidate_documents', function (Blueprint $table) {
-            $table->id();
-
-            $table->foreignId('candidate_id')
-                ->constrained('candidates')
-                ->cascadeOnDelete();
-
-            $table->enum('file_type', [
-                'foto', 'kk', 'akta_lahir', 'ijazah', 'skl', 'kip','ktp_ortu', 'lainnya',
-            ]);
-            $table->string('file_name');
-            $table->string('file_path');
-            $table->boolean('is_valid')->nullable();
-            $table->text('notes')->nullable();
-
-            $table->timestamps();
-
-            // Index
-            $table->index(['candidate_id', 'file_type']);
-        });
-
-        // ==============================
-        // 4. CANDIDATE FAMILIES (Data Orang Tua/Wali)
-        // ==============================
-        Schema::create('candidate_families', function (Blueprint $table) {
+        Schema::create('candidate_parents', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('candidate_id')
@@ -197,11 +173,37 @@ return new class extends Migration
                 'Rp. 5.000.000 - Rp. 10.000.000',
                 'Rp. 10.000.000_>',
             ])->nullable();
+            $table->boolean('is_alive')->nullable();
+            $table->boolean('is_guardian')->nullable();
 
             $table->timestamps();
 
             // Index
             $table->index('candidate_id');
+        });
+
+        // ==============================
+        // 4. CANDIDATE DOCUMENTS (Berkas Persyaratan)
+        // ==============================
+        Schema::create('candidate_documents', function (Blueprint $table) {
+            $table->id();
+
+            $table->foreignId('candidate_id')
+                ->constrained('candidates')
+                ->cascadeOnDelete();
+
+            $table->enum('file_type', [
+                'foto', 'kk', 'akta_lahir', 'ijazah', 'skl', 'kip', 'ktp_ortu', 'lainnya',
+            ]);
+            $table->string('file_name');
+            $table->string('file_path');
+            $table->boolean('is_valid')->nullable();
+            $table->text('notes')->nullable();
+
+            $table->timestamps();
+
+            // Index
+            $table->index(['candidate_id', 'file_type']);
         });
 
         // ==============================
@@ -274,8 +276,8 @@ return new class extends Migration
     {
         Schema::dropIfExists('admission_invoices');
         Schema::dropIfExists('candidate_exams');
-        Schema::dropIfExists('candidate_families');
         Schema::dropIfExists('candidate_documents');
+        Schema::dropIfExists('candidate_parents');
         Schema::dropIfExists('candidates');
         Schema::dropIfExists('admission_waves');
     }

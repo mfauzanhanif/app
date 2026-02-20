@@ -14,7 +14,7 @@ use Modules\Admission\Models\AdmissionInvoice;
 use Modules\Admission\Models\AdmissionWave;
 use Modules\Admission\Models\Candidate;
 use Modules\Admission\Models\CandidateDocument;
-use Modules\Admission\Models\CandidateFamily;
+use Modules\Admission\Models\CandidateParent;
 use Modules\Admission\Http\Requests\StoreCandidateRequest;
 use Modules\Institution\Models\Institution;
 
@@ -40,7 +40,7 @@ class AdmissionController extends Controller
      */
     public function showForm(AdmissionWave $wave): Response
     {
-        if (! $wave->isOpen()) {
+        if (!$wave->isOpen()) {
             abort(403, 'Pendaftaran gelombang ini sudah ditutup.');
         }
 
@@ -56,7 +56,7 @@ class AdmissionController extends Controller
      */
     public function register(StoreCandidateRequest $request, AdmissionWave $wave): RedirectResponse
     {
-        if (! $wave->isOpen()) {
+        if (!$wave->isOpen()) {
             abort(403, 'Pendaftaran gelombang ini sudah ditutup.');
         }
 
@@ -68,9 +68,9 @@ class AdmissionController extends Controller
                 'institution_id' => $wave->institution_id,
                 'admission_wave_id' => $wave->id,
                 'registration_number' => Candidate::generateRegistrationNumber(
-                    $wave->institution_id,
-                    $wave->id
-                ),
+                $wave->institution_id,
+                $wave->id
+            ),
                 'nik' => $request->nik,
                 'name' => $request->name,
                 'gender' => $request->gender,
@@ -79,23 +79,25 @@ class AdmissionController extends Controller
                 'previous_school' => $request->previous_school,
                 'nisn' => $request->nisn,
                 'address' => $request->address,
-                'guardian_phone' => $request->guardian_phone,
-                'guardian_email' => $request->guardian_email,
                 'status' => CandidateStatus::DIAJUKAN,
             ]);
 
             $registrationNumber = $candidate->registration_number;
 
-            // 2. Create Family Data
-            foreach ($request->families as $family) {
-                CandidateFamily::create([
+            // 2. Create Parent Data
+            foreach ($request->parents as $parent) {
+                CandidateParent::create([
                     'candidate_id' => $candidate->id,
-                    'type' => $family['type'],
-                    'nik' => $family['nik'] ?? null,
-                    'name' => $family['name'],
-                    'phone' => $family['phone'] ?? null,
-                    'job' => $family['job'] ?? null,
-                    'income' => $family['income'] ?? null,
+                    'type' => $parent['type'],
+                    'nik' => $parent['nik'] ?? null,
+                    'name' => $parent['name'],
+                    'phone' => $parent['phone'] ?? null,
+                    'email' => $parent['email'] ?? null,
+                    'last_education' => $parent['last_education'] ?? null,
+                    'job' => $parent['job'] ?? null,
+                    'income' => $parent['income'] ?? null,
+                    'is_alive' => $parent['is_alive'] ?? true,
+                    'is_guardian' => $parent['is_guardian'] ?? false,
                 ]);
             }
 
@@ -153,11 +155,11 @@ class AdmissionController extends Controller
         $candidates = Candidate::where('registration_number', $request->registration_number)
             ->where('nik', $request->nik)
             ->with([
-                'institution:id,name,code',
-                'admissionWave:id,name',
-                'invoices',
-                'documents',
-            ])
+            'institution:id,name,code',
+            'admissionWave:id,name',
+            'invoices',
+            'documents',
+        ])
             ->get();
 
         return Inertia::render('Status', [
@@ -191,15 +193,15 @@ class AdmissionController extends Controller
         $candidates = Candidate::where('registration_number', $request->registration_number)
             ->where('nik', $request->nik)
             ->whereIn('status', [
-                CandidateStatus::LULUS,
-                CandidateStatus::TIDAK_LULUS,
-                CandidateStatus::DITERIMA,
-            ])
+            CandidateStatus::LULUS,
+            CandidateStatus::TIDAK_LULUS,
+            CandidateStatus::DITERIMA,
+        ])
             ->with([
-                'institution:id,name,code',
-                'admissionWave:id,name,announcement_date',
-                'exams',
-            ])
+            'institution:id,name,code',
+            'admissionWave:id,name,announcement_date',
+            'exams',
+        ])
             ->get();
 
         return Inertia::render('Announcement', [

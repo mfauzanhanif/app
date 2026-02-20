@@ -72,7 +72,7 @@ Sesuai standar pendidikan dan keuangan:
 
 ## 3. USER MODULE (Identity & Access Management)
 
-### 2.1. Authentication (Autentikasi)
+### 3.1. Authentication (Autentikasi)
 
 - **Unified Login (SSO):** User hanya perlu login satu kali di `app.daraltauhid.com` untuk mengakses seluruh layanan. (tidak perlu login lagi, ketika switch lembaga).
 - **Multi-Role-Institution User:** Satu akun user dapat memiliki banyak peran di berbagai lembaga sekaligus.
@@ -80,7 +80,7 @@ Sesuai standar pendidikan dan keuangan:
 - **Institution Selection:** jika user adalah internal employee, maka setelah login akan diarahkan ke halaman pilih lembaga untuk memilih masuk ke lembaga mana (misal: Pondok, MI, MA).
 - **Student Selection:** jika user adalah wali santri, maka setelah login akan diarahkan ke halaman pilih siswa untuk memilih masuk ke siswa mana (misal: Pondok, MI, MA).
 
-### 2.2. Authorization (Otorisasi)
+### 3.2. Authorization (Otorisasi)
 
 - **RBAC (Role-Based Access Control):**
   - **Global Roles:** Peran tingkat tinggi yang tidak terikat lembaga (contoh: *Operator Yayasan*).
@@ -102,11 +102,11 @@ Sesuai standar pendidikan dan keuangan:
 
 ---
 
-## 3. EMPLOYEE MODULE (Kepegawaian)
+## 4. EMPLOYEE MODULE (Kepegawaian)
 
 Modul ini mengelola siklus hidup SDM, mulai dari rekrutmen, penugasan lintas lembaga, manajemen SK, hingga data dasar penggajian.
 
-### 3.1. Employee Master Data (Database Pegawai)
+### 4.1. Employee Master Data (Database Pegawai)
 
 Pusat data tunggal untuk seluruh SDM Yayasan (Guru & Tenaga Kependidikan).
 
@@ -117,7 +117,7 @@ Pusat data tunggal untuk seluruh SDM Yayasan (Guru & Tenaga Kependidikan).
   - Data Yayasan: NIPY (Nomor Induk Pegawai Yayasan), Tanggal Bergabung (TMT Yayasan).
 - **Arsip Digital:** Upload scan KTP, Ijazah, KK, dan SK Pengangkatan dalam format PDF (disimpan di private storage demi keamanan).
 
-### 3.2. Multi-Institution Assignments (Penugasan Lintas Lembaga)
+### 4.2. Multi-Institution Assignments (Penugasan Lintas Lembaga)
 
 Fitur ini menangani logika "The Two Hats Rule" secara database.
 
@@ -130,7 +130,7 @@ Fitur ini menangani logika "The Two Hats Rule" secara database.
 - **Job Description (Tupoksi):**
   - Mencatat apa tugas utama pegawai di lembaga tersebut (Guru Mapel / Staff TU / Kebersihan).
 
-### 3.3. Structural Positions (Manajemen Jabatan)
+### 4.3. Structural Positions (Manajemen Jabatan)
 
 Mengelola jabatan struktural yang memiliki implikasi pada Tunjangan Jabatan dan Hak Akses (Role) di aplikasi.
 
@@ -140,7 +140,7 @@ Mengelola jabatan struktural yang memiliki implikasi pada Tunjangan Jabatan dan 
   - Logic Otomatis: Jika pegawai diangkat menjadi "Bendahara MI", sistem otomatis memberikan Role Treasurer pada scope institution_id: MI di Modul User.
   - Jika masa jabatan habis, role otomatis dicabut.
 
-### 3.4. Employee Attendance (Presensi Kerja)
+### 4.4. Employee Attendance (Presensi Kerja)
 
 Berbeda dengan presensi siswa, ini adalah presensi jam kerja pegawai (Fingerprint/Geotagging).
 
@@ -155,7 +155,7 @@ Berbeda dengan presensi siswa, ini adalah presensi jam kerja pegawai (Fingerprin
   - Approval berjenjang (Kepala Lembaga -> Ketua Yayasan).
   - Integrasi Payroll: Potongan gaji otomatis jika Izin/Alpha melebihi kuota.
 
-### 3.5. Payroll Master Data (Data Dasar Gaji)
+### 4.5. Payroll Master Data (Data Dasar Gaji)
 
 Modul ini HANYA menyimpan konfigurasi dan tarif. Perhitungan (Kalkulator Gaji) ada di Modul 15.
 
@@ -166,17 +166,17 @@ Modul ini HANYA menyimpan konfigurasi dan tarif. Perhitungan (Kalkulator Gaji) a
 - **Bank Account Info:**
   - Rekening Bank untuk transfer gaji (Logic Payroll Bank Transfer).
 
-### 3.6. Performance & Mutation (Kinerja & Mutasi)
+### 4.6. Performance & Mutation (Kinerja & Mutasi)
 
 - **Mutation History:** Mencatat sejarah perpindahan homebase antar lembaga.
 - **Warning Letters (SP):** Pencatatan Surat Peringatan (SP1, SP2, SP3) sebagai bahan evaluasi perpanjangan kontrak.
 - **PKG (Penilaian Kinerja Guru):** Input skor evaluasi tahunan (Integrasi ke nominal Insentif Kinerja).
 
-## 4. ASSET MODULE (Sarana Prasarana)
+## 5. ASSET MODULE (Sarana Prasarana)
 
 Modul ini berfungsi untuk manajemen aset fisik secara menyeluruh (Lifecycle), mulai dari pengadaan, operasional harian, perawatan, hingga penghapusan aset.
 
-### 4.1. Inventory Management (Inventaris)
+### 5.1. Inventory Management (Inventaris)
 
 Menangani pencatatan master data aset.
 
@@ -189,7 +189,7 @@ Menangani pencatatan master data aset.
   - Fitur audit berkala (Bulanan/Tahunan).
   - Proses: Scan fisik barang di ruangan -> Bandingkan dengan data sistem -> Flagging barang hilang/tidak sesuai lokasi.
 
-### 4.2. Room Management (Manajemen Ruangan)
+### 5.2. Room Management (Manajemen Ruangan)
 
 Master Data lokasi fisik.
 
@@ -198,7 +198,7 @@ Master Data lokasi fisik.
 - **Atribut Ruangan**
   - Kapasitas, Fasilitas Default, dan PIC Ruangan.
 
-### 4.3. Asset Operations (Operasional Aset)
+### 5.3. Asset Operations (Operasional Aset)
 
 Menangani dinamika pergerakan aset sehari-hari.
 
@@ -212,7 +212,7 @@ Menangani dinamika pergerakan aset sehari-hari.
   - Flow: Request Pinjam -> Approval Sarpras -> Serah Terima -> Pengembalian.
   - Contoh: Peminjaman Proyektor untuk kegiatan OSIS/Ekskul.
 
-### 4.4. Maintenance & Repair (Perawatan & Perbaikan)
+### 5.4. Maintenance & Repair (Perawatan & Perbaikan)
 
 Menangani kesehatan aset dan biaya perbaikan.
 
@@ -225,7 +225,7 @@ Menangani kesehatan aset dan biaya perbaikan.
   - Cost Tracking: Input biaya perbaikan (Sparepart + Jasa).
   - Integrasi Finance: Biaya perbaikan otomatis tercatat sebagai pengeluaran di pos anggaran pemeliharaan.
 
-### 4.5. Procurement (Pengadaan)
+### 5.5. Procurement (Pengadaan)
 
 Menangani pembelian aset baru.
 
@@ -237,7 +237,7 @@ Menangani pembelian aset baru.
 
 ---
 
-### 4.6. Asset Disposal (Penghapusan Aset)
+### 5.6. Asset Disposal (Penghapusan Aset)
 
 Menangani aset yang sudah habis masa pakainya atau rusak total.
 
@@ -247,11 +247,11 @@ Menangani aset yang sudah habis masa pakainya atau rusak total.
 - **Asset Value Adjustment**
   - Pencatatan nilai akhir aset (Nilai Residu) jika aset dijual (Pemasukan Kas).
 
-## 5. ADMISSION MODULE (Penerimaan Peserta Didik Baru)
+## 6. ADMISSION MODULE (Penerimaan Peserta Didik Baru)
 
 Pintu gerbang data siswa. Modul ini sering memiliki siklus hidup yang berbeda (musiman).
 
-### 5.1. Registration Portals
+### 6.1. Registration Portals
 
 - Multi-Channel: Menangani pendaftaran via psb.daraltauhid.com (Pondok) dan halaman dari subdomain sekolah (/ppdb).
 - Data Collection: Formulir biodata, upload berkas (KK, Akta), dan validasi dokumen.
@@ -260,7 +260,7 @@ Pintu gerbang data siswa. Modul ini sering memiliki siklus hidup yang berbeda (m
   - Pengaturan Gelombang Pendaftaran (Tanggal Buka/Tutup).
   - Informasi Alur & Prosedur (Tampil di Frontend).
 
-### 5.2. Enrollment
+### 6.2. Enrollment
 
 - Candidate Database: Tabel terpisah dari users atau students. Isinya data mentah pendaftar.
 - Billing PSB: Generate tagihan formulir & uang pangkal otomatis.
@@ -273,24 +273,24 @@ Pintu gerbang data siswa. Modul ini sering memiliki siklus hidup yang berbeda (m
   - unique() + nullable() — Di MySQL, NULL tidak dihitung dalam unique constraint (multiple NULL dibolehkan). Jadi ini aman untuk siswa yang belum punya NISN. ✅
   - Potensi masalah: Jika satu anak mendaftar ulang (misal pindah jenjang), NISN yang sama bisa masuk ke candidates lagi padahal sudah ada di students. Pastikan ada validasi di application level untuk cek duplikat NISN lintas kedua tabel.
 
-## 6. STUDENT MODULE (Siswa)
+## 7. STUDENT MODULE (Siswa)
 
-### 6.1. Student Profile (The Golden Record)
+### 7.1. Student Profile (The Golden Record)
 
 - NISY (Yayasan), NIS (Sekolah), NISN (Nomor Induk Santri - Nasional).
 - Data Pribadi yang statis (Lahir, NIK, Gol Darah).
 - Relation: BelongsTo Institution (Siswa MI beda dengan Siswa MA).
 
-## 7. GUARDIAN MODULE (Wali)
+## 8. GUARDIAN MODULE (Wali)
 
 Wali adalah entitas yang berdiri sendiri, bukan sekadar "kolom pelengkap" di tabel siswa.
 
-### 7.1 Guardian Master Data
+### 8.1 Guardian Master Data
 
 - Data Ayah/Ibu/Wali (NIK, No HP/WA, Alamat).
 - User Account untuk login ke aplikasi (Role: guardian).
 
-### 7.2 Family Mapping (Many-to-Many)
+### 8.2 Family Mapping (Many-to-Many)
 
 - Tabel pivot guardian_student.
 - Skenario: Pak Budi (Guardian ID: 101) punya anak:
@@ -298,12 +298,12 @@ Wali adalah entitas yang berdiri sendiri, bukan sekadar "kolom pelengkap" di tab
   - Siti (Siswi MI)
   - Pak Budi cukup login sekali untuk melihat tagihan dan nilai kedua anaknya.
 
-### 7.3 Communication Hub
+### 8.3 Communication Hub
 
 - Fitur Broadcast WA Gateway yang menargetkan guardian_id.
 - Logic: Saat Enrollment Migration, sistem harus cerdas mengecek via NIK/No HP: "Apakah Bapak ini sudah ada di database?". Jika sudah, link saja ke anak baru. Jangan buat data ganda.
 
-## 8. STUDENT AFFAIRS MODULE (Kesiswaan)
+## 9. STUDENT AFFAIRS MODULE (Kesiswaan)
 
 - Mutasi Siswa: Kuhusus Pindah sekolah (Keluar/Masuk).
 - Prestasi Siswa.
@@ -311,43 +311,43 @@ Wali adalah entitas yang berdiri sendiri, bukan sekadar "kolom pelengkap" di tab
   - saat siswa dimutasi "Keluar/Pindah", status tagihan di Modul Finance otomatis berhenti (freeze).
   - saat siswa dimutasi "Masuk", status tagihan di Modul Finance otomatis aktif (unfreeze).
 
-## 9. BOARDING MODULE (Pondok)
+## 10. BOARDING MODULE (Pondok)
 
 - Dormitory: Manajemen kamar asrama dan penempatan santri.
 - Permission: Perizinan (pulang/sakit)
   - Integrasi izin: Jika santri dapat Izin Pulang (Boarding Module), sistem harus otomatis menandai Izin pada Absensi KBM (Academic Module).
 - Discipline: Pencatatan poin pelanggaran/prestasi.
 
-## 10. ACADEMIC MODULE (Akademik)
+## 11. ACADEMIC MODULE (Akademik)
 
 Modul inti operasional pendidikan.
 
-### 10.1. Academic Year & Semester
+### 11.1. Academic Year & Semester
 
 - Mengambil referensi dari App Settings Module 1.2.
 - Menjadi Global Scope untuk seluruh query di modul Curriculum, Journal, dan Grading.
 
-### 10.2. Class Management
+### 11.2. Class Management
 
 - Data ruang kelas diambil dari Modul Assets.
 - Classroom Master: Nama Kelas (misal: VII-A), Tingkat (7), dan Kuota.
 - Student Placement: Menempatkan siswa ke dalam kelas (History tercatat per tahun).
 - Homeroom Assignment: Menentukan Wali Kelas untuk setiap rombel.
 
-### 10.3. Academic Calendar
+### 11.3. Academic Calendar
 
 - Input jadwal kegiatan akademik (UTS, UAS, Pembagian Rapor).
 - Integrasi jadwal keggiatan antar lembaga.
 
-### 10.4. Movements/Mutations
+### 11.4. Movements/Mutations
 
 - Kenaikan Kelas & Kelulusan.
 
-## 11. CURRICULUM MODULE (Kurikulum)
+## 12. CURRICULUM MODULE (Kurikulum)
 
 Modul ini berfungsi sebagai "Otak Perencanaan". Di sinilah Admin Kurikulum menentukan apa yang akan diajarkan, siapa yang mengajar, dan kapan diajarkan. Modul Jurnal dan Grading akan sangat bergantung pada data di sini.
 
-### 11.1. Intrakurikuler
+### 12.1. Intrakurikuler
 
 Kegiatan belajar mengajar tatap muka rutin di kelas.
 
@@ -366,7 +366,7 @@ Kegiatan belajar mengajar tatap muka rutin di kelas.
 - Timetable Generator: Mapping (Hari + Jam Ke + Kelas + Mapel + Guru + Ruangan).
 - Conflict Checker: Validasi otomatis agar guru tidak mengajar di dua kelas pada jam yang sama.
 
-### 11.2. Kokurikuler
+### 12.2. Kokurikuler
 
 - **Project Master Data**:
   - Themes (Tema Besar): (Misal: Gaya Hidup Berkelanjutan, Bangunlah Jiwa Raganya).
@@ -380,7 +380,7 @@ Kegiatan belajar mengajar tatap muka rutin di kelas.
 - **Project Schedule**:
 - Block System: Mengatur jadwal projek, apakah sistem Reguler (1 jam/minggu) atau di tanggal tertentu.
 
-### 11.3. Ekstrakurikuler
+### 12.3. Ekstrakurikuler
 
 Kegiatan pengembangan bakat di luar jam akademik.
 
@@ -396,11 +396,11 @@ Kegiatan pengembangan bakat di luar jam akademik.
 - **Schedule & Venue**:
   - Mengatur jadwal latihan rutin (Hari & Jam) dan lokasi latihan (Lapangan, Lab Komputer).
 
-## 12. JOURNAL MODULE (Jurnal)
+## 13. JOURNAL MODULE (Jurnal)
 
 Modul ini mencatat realisasi dari perencanaan yang ada di Curriculum Module. Data dari modul ini menjadi dasar pembayaran honor (Payroll) dan pelaporan akademik (Grading).
 
-### 12.1. Attendance System (Presensi Siswa)
+### 13.1. Attendance System (Presensi Siswa)
 
 Sistem pencatatan kehadiran yang terintegrasi (Boarding -> Sekolah -> Mapel).
 
@@ -421,7 +421,7 @@ Sistem pencatatan kehadiran yang terintegrasi (Boarding -> Sekolah -> Mapel).
     - Guru Mapel hanya bisa mengubah status siswa yang Homeroom-nya "Hadir".
     - > Contoh: Budi "Hadir" saat apel pagi. Tapi saat jam Matematika (jam ke-5), Budi tidak ada. Guru Matematika mengubah status Budi menjadi "Alpha" (Bolos).
 
-### 12.2. Intracurricular Journal (Jurnal KBM Reguler)
+### 13.2. Intracurricular Journal (Jurnal KBM Reguler)
 
 Mencatat kegiatan belajar mengajar rutin sesuai Jadwal Pelajaran (Timetable) dari Modul Kurikulum.
 
@@ -442,7 +442,7 @@ Materi Ajar:
   - Fitur untuk mencatat jika guru asli berhalangan hadir.
   - Logic Payroll: Honor jam mengajar akan masuk ke Guru Pengganti, bukan Guru Asli.
 
-### 12.3. Co-curricular Journal (Jurnal Kokurikuler)
+### 13.3. Co-curricular Journal (Jurnal Kokurikuler)
 
 Mencatat kegiatan Projek Penguatan Profil Pelajar Pancasila. Struktur datanya berbeda karena tidak berbasis Mapel, melainkan Tema & Aktivitas.
 
@@ -453,7 +453,7 @@ Mencatat kegiatan Projek Penguatan Profil Pelajar Pancasila. Struktur datanya be
   - Dimensions Targeted: Checklist dimensi profil pelajar Pancasila yang diobservasi hari itu (Gotong Royong, Kreatif, dll).
   - Notes: Catatan perkembangan karakter siswa atau dinamika kelompok.
 
-### 12.4. Extracurricular Journal (Jurnal Ekskul)
+### 13.4. Extracurricular Journal (Jurnal Ekskul)
 
 Mencatat kegiatan pengembangan minat bakat di luar jam sekolah.
 
@@ -465,7 +465,7 @@ Mencatat kegiatan pengembangan minat bakat di luar jam sekolah.
   - Presensi kehadiran anggota ekskul (Hadir/Izin/Alpha).
   - Data ini penting untuk penilaian nilai Ekskul di Rapor (Modul Grading).
 
-### 12.5. Validation & Approval (Validasi Kepala Sekolah)
+### 13.5. Validation & Approval (Validasi Kepala Sekolah)
 
 Mekanisme kontrol kualitas ("Quality Assurance") sebelum data jurnal menjadi dasar penggajian.
 
@@ -475,7 +475,7 @@ Mekanisme kontrol kualitas ("Quality Assurance") sebelum data jurnal menjadi das
 
 - **Feedback Loop**: Kepala Sekolah bisa memberikan komentar/revisi pada jurnal guru (misal: "Materi kurang detail, tolong lengkapi").
 
-### 12.6. Reporting & Integrations
+### 13.6. Reporting & Integrations
 
 Output data dari jurnal untuk modul lain.
 
@@ -490,11 +490,11 @@ Output data dari jurnal untuk modul lain.
 - **Grading Feed** (Ke Modul Grading):
   - Mengirim rekapitulasi Absensi Siswa (Jumlah S/I/A) per Semester untuk dicetak di Rapor.
 
-## 13 GRADING MODULE (Penilaian)
+## 14 GRADING MODULE (Penilaian)
 
 Modul ini menangani konfigurasi penilaian, input nilai, kalkulasi predikat, hingga pencetakan Rapor dan Leger.
 
-### 13.1. Assessment Configuration (Konfigurasi Penilaian)
+### 14.1. Assessment Configuration (Konfigurasi Penilaian)
 Sebelum guru bisa input nilai, admin/kurikulum harus menetapkan "Aturan Main" terlebih dahulu.
 
 - **Assessment Plans** (Rencana Penilaian):
@@ -516,10 +516,10 @@ Sebelum guru bisa input nilai, admin/kurikulum harus menetapkan "Aturan Main" te
   - Konversi Angka ke Huruf.
   - Contoh: 90-100 = A, 80-89 = B.
 
-### 13.2. Score Entry (Input Nilai)
+### 14.2. Score Entry (Input Nilai)
 Antarmuka bagi guru untuk memasukkan data nilai.
 
-#### 13.2.1. Academic Scores (Nilai Mapel)
+#### 14.2.1. Academic Scores (Nilai Mapel)
 
 - Input Grid: Tampilan seperti Excel (Siswa di baris, Jenis Penilaian di kolom).
 - Auto-Save: Fitur simpan otomatis saat guru mengetik (mencegah data hilang jika koneksi putus).
@@ -528,13 +528,13 @@ Antarmuka bagi guru untuk memasukkan data nilai.
   - Fitur opsional untuk men-generate deskripsi rapor otomatis berdasarkan nilai.
   - Logic: Jika nilai TP 1 > 90, maka deskripsi: "Ananda sangat menguasai [Materi TP 1]...".
 
-#### 13.2.2. Project Assessment (Nilai P5 - Ko-kurikuler)
+#### 14.2.2. Project Assessment (Nilai P5 - Ko-kurikuler)
 
 - Input: Bukan angka, melainkan Ceklis Capaian.
 - Dimensi: Beriman, Berkebinekaan Global, Gotong Royong, dll.
 - Predikat: MB (Mulai Berkembang), SB (Sedang Berkembang), BSH (Berkembang Sesuai Harapan), SAB (Sangat Berkembang).
 
-#### 13.2.3. Non-Academic Scores (Nilai Penunjang)
+#### 14.2.3. Non-Academic Scores (Nilai Penunjang)
 
 - Extracurricular: Input nilai (A/B/C) dan deskripsi untuk ekskul yang diikuti siswa (Data ekskul diambil dari Modul 11/12).
 - Attendance Recap:
@@ -543,7 +543,7 @@ Antarmuka bagi guru untuk memasukkan data nilai.
 - Character/Attitude: Nilai Sikap Spiritual & Sosial (Jurnal Sikap).
 - Homeroom Notes: Catatan Wali Kelas (Motivasi/Saran).
 
-### 13.3. Result Processing (Leger)
+### 14.3. Result Processing (Leger)
 Tahap validasi sebelum rapor dicetak.
   
 - Leger Generator:
@@ -555,7 +555,7 @@ Tahap validasi sebelum rapor dicetak.
   - Tombol aksi untuk menetapkan status: Naik Kelas, Tinggal Kelas, atau Lulus.
   - Integrasi ke Modul Academic: Jika status "Naik Kelas" di-finalisasi, sistem otomatis memindahkan siswa ke tingkat selanjutnya di database tahun ajaran baru.
 
-### 13.4. Reporting (Cetak Rapor)
+### 14.4. Reporting (Cetak Rapor)
 Output fisik untuk wali santri.
 
 - Template Engine:
@@ -570,34 +570,34 @@ Output fisik untuk wali santri.
 - Digital Report Card (Rapor Digital):
   - Wali santri bisa melihat nilai via Dashboard Wali (View Only) tanpa harus menunggu cetak fisik.
 
-## 14. FINANCE MODULE (Keuangan & Akuntansi)
+## 15. FINANCE MODULE (Keuangan & Akuntansi)
 
 Modul dengan logika paling ketat dan kompleks. Wajib terisolasi untuk keamanan data.
 
-### 14.1. Billing (Tagihan)
+### 15.1. Billing (Tagihan)
 - **Fee Components**: Manajemen komponen biaya (SPP, Uang Gedung, Katering) dengan frekuensi (Bulanan/Tahunan/Sekali).
 - **Invoice Generator**: Job otomatis untuk menerbitkan tagihan massal.
 
-### 14.2. Wallet System (Dompet Digital)
+### 15.2. Wallet System (Dompet Digital)
 - **Tuition Wallet**: Dompet deposit pendidikan (Restricted: hanya untuk bayar tagihan).
 - **Pocket Money**: Dompet uang saku santri (Transactional: limit harian, pin protection).
 
-### 14.3. Treasury (Kasir & Pembayaran)
+### 15.3. Treasury (Kasir & Pembayaran)
 - **Payment Processor**: Input pembayaran manual (Tunai/Transfer) dan verifikasi bukti transfer.
 - **Payment Allocation**: Algoritma prioritas pelunasan otomatis (Prioritas: Madrasah -> Sekolah/Pondok).
 - **Payment Gateway Integrated**: Mendukung Virtual Account(Midtrans/Xendit Ready).
 
-### 14.4. Accounting (Akuntansi)
+### 15.4. Accounting (Akuntansi)
 - **Automated Journaling**: Sistem jurnal otomatis (Event-driven) saat transaksi terjadi (Tagihan terbit -> Piutang bertambah).
 - **Budget Control**: Kontrol anggaran (RAB) dengan fitur Soft Limit Alert.
 - **Reporting**: Laporan Neraca, Arus Kas, dan Realisasi Anggaran.
 - **Integrated Payroll**: Menerima tagihan gaji dari Modul Human Resources untuk dicairkan.
 
-## 15. PAYROLL MODULE (Penggajian)
+## 16. PAYROLL MODULE (Penggajian)
 
 Modul ini mengotomatisasi perhitungan gaji yang kompleks (Gaji Pokok + Tunjangan + Honor Mengajar - Potongan), menangani Kasbon, dan mencetak Slip Gaji.
 
-### 15.1. Payroll Configuration (Konfigurasi Gaji)
+### 16.1. Payroll Configuration (Konfigurasi Gaji)
 
 Mengatur parameter dasar agar sistem tahu cara menghitung uang.
 
@@ -612,7 +612,7 @@ Mengatur parameter dasar agar sistem tahu cara menghitung uang.
   - Mengatur tanggal Cut-off.
   - Contoh: Periode Gaji Januari (dihitung dari tanggal 26 Desember s.d. 25 Januari). Data absensi dan jurnal di luar tanggal ini akan masuk ke periode bulan depan.
 
-### 15.2. Variable Calculation Engine (Kalkulator Otomatis)
+### 16.2. Variable Calculation Engine (Kalkulator Otomatis)
 
 "Otak" dari modul payroll yang menarik data dari modul operasional.
 
@@ -627,7 +627,7 @@ Mengatur parameter dasar agar sistem tahu cara menghitung uang.
 - **Structural Allowance:**
   - Input: Mengambil data dari Modul Employee (3.3) (Jabatan Struktural yang aktif).
 
-### 15.3. Loan Management (Manajemen Kasbon)
+### 16.3. Loan Management (Manajemen Kasbon)
 
 Fitur untuk menangani pinjaman karyawan ke Yayasan/Koperasi.
 
@@ -636,7 +636,7 @@ Fitur untuk menangani pinjaman karyawan ke Yayasan/Koperasi.
   - Mengatur tenor (misal: dicicil 3 bulan).
   - Auto-Deduction: Sistem otomatis memotong gaji bulan berjalan sesuai nominal cicilan. Jika gaji tidak cukup, sistem memberi alert.
 
-### 15.4. Payroll Run (Proses Generate Gaji)
+### 16.4. Payroll Run (Proses Generate Gaji)
 
 Proses bulanan yang dilakukan oleh Bendahara/HRD.
 
@@ -648,7 +648,7 @@ Proses bulanan yang dilakukan oleh Bendahara/HRD.
 - **Approval Workflow:**
   - Draft -> Verified (HRD) -> Approved (Ketua Yayasan) -> Ready to Pay.
 
-### 15.5. Disbursement & Slip (Pencairan & Laporan)
+### 16.5. Disbursement & Slip (Pencairan & Laporan)
 
 Tahap akhir pembayaran.
 
@@ -662,11 +662,11 @@ Tahap akhir pembayaran.
   - Saat status gaji berubah menjadi Paid (Dibayar), modul ini otomatis mengirim data ke Modul Finance (14.4) untuk mencatat pengeluaran kas.
   - Jurnal Otomatis: (Debit) Beban Gaji Pegawai / (Kredit) Kas Yayasan.
 
-### 15.6. THR & Bonus (Tunjangan Hari Raya)
+### 16.6. THR & Bonus (Tunjangan Hari Raya)
 
 - **THR Generator:** Fitur khusus untuk menghitung THR (biasanya 1x Gaji Pokok + Tunjangan Tetap) berdasarkan masa kerja (Pro-rata).
 
-## 16. PUBLISHING MODULE (Publikasi)
+## 17. PUBLISHING MODULE (Publikasi)
 
 Wajah depan aplikasi untuk publik.
 
@@ -679,30 +679,30 @@ Wajah depan aplikasi untuk publik.
 - Internal Announcements (Informasi Insidentil):
   - Fitur pengumuman yang bisa di-set targetnya: Public (Web) atau Internal (Dashboard Guru/Wali). Contoh: "Himbauan Sholat Gerhana", "Rapat Koordinasi Yayasan".
 
-## 17. AUDIT & LOG MODULE (Keamanan & Jejak Digital)
+## 18. AUDIT & LOG MODULE (Keamanan & Jejak Digital)
 
 Modul ini bekerja secara background process untuk mencatat perubahan data, aktivitas login, dan kesehatan sistem.
 
-### 17.1. User Activity Log (Jejak Aktivitas Data)
+### 18.1. User Activity Log (Jejak Aktivitas Data)
 Fitur ini merekam "Siapa melakukan Apa, Kapan, dan Bagaimana" terhadap data sensitif.
 - **Data Change Tracking**: Mencatat aksi CREATE, UPDATE, DELETE, dan RESTORE. Menyimpan Snapshot Data (Old vs New).
 - **Actor Identification**: Mencatat User ID pelaku, IP Address, dan Device (Browser/HP).
 - **Contextual Logging**: Mencatat URL dan Input Data saat aksi dilakukan.
 - **Search & Filter**: Fitur pencarian log berdasarkan User, Tanggal, atau Jenis Data.
 
-### 17.2. Authentication History (Riwayat Keamanan)
+### 18.2. Authentication History (Riwayat Keamanan)
 Fitur ini fokus memantau akses masuk ke dalam aplikasi untuk mendeteksi penyusupan.
 - **Session Tracking**: Mencatat Login (Berhasil/Gagal), Logout, IP Address, Browser, dan OS.
 - **Anomaly Detection**: Deteksi Brute Force (5x gagal/menit) dan Impossible Travel (Login beda lokasi drastis).
 - **User Dashboard**: Menampilkan "Riwayat Login Terakhir" di dashboard user.
 
-### 17.3. System Health & Error Monitoring (Pemantauan Sistem)
+### 18.3. System Health & Error Monitoring (Pemantauan Sistem)
 Fitur teknis untuk Developer agar bisa memperbaiki bug sebelum user komplain.
 - **Error Logger**: Menangkap Exception/Crash (Error 500) beserta Stack Trace.
 - **Performance Monitor**: Mencatat Slow Query database yang memperlambat aplikasi.
 - **Job Monitoring**: Memantau status Queue Job (Email/WA/Rapor) dan alert jika Failed.
 
-### 17.4. Data Retention (Kebijakan Penyimpanan)
+### 18.4. Data Retention (Kebijakan Penyimpanan)
 Mengatur siklus hidup data log agar database tidak meledak.
 - **Auto-Pruning**: Scheduler otomatis menghapus log kedaluwarsa (misal: > 1 Tahun).
 - **Log Archiving**: Ekspor log lama ke Cloud Storage (S3/Drive) sebelum dihapus dari database utama.

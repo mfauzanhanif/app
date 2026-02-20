@@ -25,6 +25,7 @@ class StudentParent extends Model
         'last_education',
         'job',
         'income',
+        'address',
         'rt',
         'rw',
         'province_code',
@@ -33,6 +34,7 @@ class StudentParent extends Model
         'village_code',
         'postal_code',
         'is_alive',
+        'is_guardian',
     ];
 
     protected function casts(): array

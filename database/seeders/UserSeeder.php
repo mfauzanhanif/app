@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Modules\Institution\Models\Institution;
+use Modules\User\Models\Role;
 use Modules\User\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -57,21 +58,22 @@ class UserSeeder extends Seeder
 
         foreach ($globalUsers as $userData) {
             $user = User::firstOrCreate(
-                ['email' => $userData['email']],
-                [
-                    'name' => $userData['name'],
-                    'username' => $userData['username'],
-                    'password' => $defaultPassword,
-                    'is_active' => true,
-                    'role_type' => 'staff', // Default
-                    'email_verified_at' => now(),
-                ]
+            ['email' => $userData['email']],
+            [
+                'name' => $userData['name'],
+                'username' => $userData['username'],
+                'password' => $defaultPassword,
+                'is_active' => true,
+                'role_type' => 'employee',
+                'email_verified_at' => now(),
+            ]
             );
 
-            // Assign Global Role
-            setPermissionsTeamId(null); // Explicitly set global context
-            if (!$user->hasRole($userData['role'])) {
-                $user->assignRole($userData['role']);
+            // Assign Global Role (pass Role object, not string)
+            $role = Role::findByName($userData['role'], 'web');
+            setPermissionsTeamId(null);
+            if (!$user->hasRole($role)) {
+                $user->spatieAssignRole($role);
             }
         }
 
@@ -107,15 +109,15 @@ class UserSeeder extends Seeder
                 $name = "{$roleLabel} " . strtoupper($institution->code);
 
                 $user = User::firstOrCreate(
-                    ['email' => $email],
-                    [
-                        'name' => $name,
-                        'username' => $username,
-                        'password' => $defaultPassword,
-                        'is_active' => true,
-                        'role_type' => 'staff',
-                        'email_verified_at' => now(),
-                    ]
+                ['email' => $email],
+                [
+                    'name' => $name,
+                    'username' => $username,
+                    'password' => $defaultPassword,
+                    'is_active' => true,
+                    'role_type' => 'employee',
+                    'email_verified_at' => now(),
+                ]
                 );
 
                 // Assign Scoped Role
@@ -129,7 +131,8 @@ class UserSeeder extends Seeder
                 // Method 2: Use helper (Recommended)
                 try {
                     $user->assignRoleInInstitution($roleKey, $institution);
-                } catch (\Exception $e) {
+                }
+                catch (\Exception $e) {
                     // Ignore if role doesn't exist? No, we should log.
                     // But in seeder we assume roles exist via RoleSeeder
                     Log::warning("Failed to assign role $roleKey to user $username: " . $e->getMessage());
@@ -144,21 +147,23 @@ class UserSeeder extends Seeder
         // Based on discussion: Guardian acts for a Student. The role 'guardian' is global (End-User),
         // but access is determined by child relationship.
 
+        $guardianRole = Role::findByName('guardian', 'web');
+
         $guardianUser = User::firstOrCreate(
-            ['email' => 'wali.santri@gmail.com'],
-            [
-                'name' => 'Wali Santri 01',
-                'username' => 'walisantri01',
-                'password' => $defaultPassword,
-                'is_active' => true,
-                'role_type' => 'guardian',
-                'email_verified_at' => now(),
-            ]
+        ['email' => 'wali.santri@gmail.com'],
+        [
+            'name' => 'Wali Santri 01',
+            'username' => 'walisantri01',
+            'password' => $defaultPassword,
+            'is_active' => true,
+            'role_type' => 'guardian',
+            'email_verified_at' => now(),
+        ]
         );
 
         setPermissionsTeamId(null);
-        if (!$guardianUser->hasRole('guardian')) {
-            $guardianUser->assignRole('guardian');
+        if (!$guardianUser->hasRole($guardianRole)) {
+            $guardianUser->spatieAssignRole($guardianRole);
         }
     }
 }

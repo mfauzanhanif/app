@@ -49,8 +49,6 @@ export interface Candidate {
     registration_number: string;
     name: string;
     status: string;
-    guardian_phone: string | null;
-    guardian_email: string | null;
     created_at: string;
     institution: Institution;
     admission_wave: Wave;

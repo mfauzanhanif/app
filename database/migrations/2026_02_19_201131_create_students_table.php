@@ -161,6 +161,7 @@ return new class extends Migration
             $table->string('postal_code', 10)->nullable();
             
             $table->boolean('is_alive')->default(true);
+            $table->boolean('is_guardian')->nullable();
 
             $table->timestamps();
 

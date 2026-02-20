@@ -4,8 +4,9 @@ namespace Modules\Employee\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Modules\Employee\Enums\Gender;
-use Modules\Employee\Enums\LastEducation;
+use App\Enums\Gender;
+use App\Enums\LastEducation;
+use Modules\Employee\Enums\EmploymentStatus;
 
 class UpdateEmployeeRequest extends FormRequest
 {

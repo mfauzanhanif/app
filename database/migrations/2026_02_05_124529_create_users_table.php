@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+return new class extends Migration 
 {
     /**
      * Run the migrations.
@@ -33,7 +33,6 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            // Index as per documentation
             $table->index('email');
         });
 
@@ -93,13 +92,17 @@ return new class extends Migration
         Schema::create($tableNames['roles'], function (Blueprint $table) {
             $table->bigIncrements('id');
 
+            // Teams: institution_id nullable (global roles = null, scoped roles = institution_id)
+            $table->unsignedBigInteger('institution_id')->nullable();
+            $table->index('institution_id', 'roles_team_foreign_key_index');
+
             $table->string('name');
             $table->string('display_name')->nullable();
             $table->string('guard_name');
             $table->timestamps();
 
-            // Unik secara Global (Hanya ada 1 role "teacher" di seluruh aplikasi)
-            $table->unique(['name', 'guard_name']);
+            // Unik per institution (atau global jika institution_id = null)
+            $table->unique(['institution_id', 'name', 'guard_name']);
         });
 
         // 3. Tabel Model Has Permissions

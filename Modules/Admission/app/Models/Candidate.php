@@ -80,9 +80,9 @@ class Candidate extends Model
         return $this->hasMany(CandidateDocument::class);
     }
 
-    public function families(): HasMany
+    public function parents(): HasMany
     {
-        return $this->hasMany(CandidateFamily::class);
+        return $this->hasMany(CandidateParent::class);
     }
 
     public function exams(): HasMany
@@ -105,17 +105,25 @@ class Candidate extends Model
 
     public function father(): HasOne
     {
-        return $this->hasOne(CandidateFamily::class)->where('type', 'ayah');
+        return $this->hasOne(CandidateParent::class)->where('type', 'ayah');
     }
 
     public function mother(): HasOne
     {
-        return $this->hasOne(CandidateFamily::class)->where('type', 'ibu');
+        return $this->hasOne(CandidateParent::class)->where('type', 'ibu');
     }
 
-    public function guardian(): HasOne
+    public function wali(): HasOne
     {
-        return $this->hasOne(CandidateFamily::class)->where('type', 'wali');
+        return $this->hasOne(CandidateParent::class)->where('type', 'wali');
+    }
+
+    /**
+     * Parent yang ditandai sebagai wali (is_guardian = true).
+     */
+    public function guardianParent(): HasOne
+    {
+        return $this->hasOne(CandidateParent::class)->where('is_guardian', true);
     }
 
     // ========================================

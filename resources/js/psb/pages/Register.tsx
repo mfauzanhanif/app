@@ -1,4 +1,4 @@
-import { useForm } from '@inertiajs/react';
+import { useForm, usePage } from '@inertiajs/react';
 import { type FormEvent, useState } from 'react';
 import PsbLayout from '../layouts/psb-layout';
 import type { Wave } from '../types';
@@ -8,37 +8,76 @@ interface RegisterProps {
     wave: Wave;
 }
 
-const STEPS = ['Data Santri', 'Data Keluarga', 'Upload Berkas'];
+const STEPS = ['Data Santri', 'Data Orang Tua', 'Upload Berkas'];
+
+const JOB_OPTIONS = [
+    '', 'Akuntan', 'Apoteker', 'Arsitek', 'Bidan', 'Buruh', 'Buruh Harian Lepas',
+    'Dokter', 'Dosen', 'Guru', 'IRT', 'Karyawan BUMN/BUMD', 'Karyawan Swasta',
+    'Kepala/Perangkat Desa', 'Nelayan', 'Pedagang', 'Pelaut', 'Pensiunan', 'Perawat',
+    'Petani', 'Peternak', 'PNS', 'Polri', 'Seniman', 'Sopir', 'TNI', 'Wartawan',
+    'Wiraswasta', 'Tidak Bekerja', 'Lainnya',
+];
+
+const INCOME_OPTIONS = [
+    { value: '', label: '— Pilih —' },
+    { value: '<_500rb', label: '< Rp 500.000' },
+    { value: 'Rp. 500.000 - Rp. 1.000.000', label: 'Rp 500.000 - Rp 1.000.000' },
+    { value: 'Rp. 1.000.000 - Rp. 3.000.000', label: 'Rp 1.000.000 - Rp 3.000.000' },
+    { value: 'Rp. 3.000.000 - Rp. 5.000.000', label: 'Rp 3.000.000 - Rp 5.000.000' },
+    { value: 'Rp. 5.000.000 - Rp. 10.000.000', label: 'Rp 5.000.000 - Rp 10.000.000' },
+    { value: 'Rp. 10.000.000_>', label: '> Rp 10.000.000' },
+];
+
+const EDUCATION_OPTIONS = [
+    { value: '', label: '— Pilih —' },
+    { value: 'sd', label: 'SD / Sederajat' },
+    { value: 'smp', label: 'SMP / Sederajat' },
+    { value: 'sma', label: 'SMA / Sederajat' },
+    { value: 'd1', label: 'Diploma 1 (D1)' },
+    { value: 'd2', label: 'Diploma 2 (D2)' },
+    { value: 'd3', label: 'Diploma 3 (D3)' },
+    { value: 's1', label: 'Sarjana (S1)' },
+    { value: 's2', label: 'Magister (S2)' },
+    { value: 's3', label: 'Doktor (S3)' },
+    { value: 'tidak_sekolah', label: 'Tidak Sekolah' },
+];
 
 export default function Register({ wave }: RegisterProps) {
     const [step, setStep] = useState(0);
+    const { props } = usePage();
+    const flash = (props as any).flash as { success?: string; error?: string } | undefined;
 
     const { data, setData, post, processing, errors } = useForm({
         // Biodata
         nik: '',
         name: '',
-        gender: 'L' as 'L' | 'P',
+        gender: 'l' as 'l' | 'p',
         pob: '',
         dob: '',
         previous_school: '',
         nisn: '',
         address: '',
-        // Kontak Wali
-        guardian_phone: '',
-        guardian_email: '',
-        // Keluarga
-        families: [
-            { type: 'ayah', nik: '', name: '', phone: '', job: '', income: '' },
-            { type: 'ibu', nik: '', name: '', phone: '', job: '', income: '' },
+        // Orang Tua
+        parents: [
+            { type: 'ayah', nik: '', name: '', phone: '', email: '', last_education: '', job: '', income: '', is_alive: true, is_guardian: true },
+            { type: 'ibu', nik: '', name: '', phone: '', email: '', last_education: '', job: '', income: '', is_alive: true, is_guardian: false },
         ],
         // Dokumen
         documents: {} as Record<string, File | null>,
     });
 
-    function updateFamily(index: number, field: string, value: string) {
-        const updated = [...data.families];
+    function updateParent(index: number, field: string, value: string | boolean) {
+        const updated = [...data.parents];
         (updated[index] as any)[field] = value;
-        setData('families', updated);
+
+        // Jika is_guardian diset true, unset yang lain
+        if (field === 'is_guardian' && value === true) {
+            updated.forEach((p, i) => {
+                if (i !== index) (p as any).is_guardian = false;
+            });
+        }
+
+        setData('parents', updated);
     }
 
     function handleSubmit(e: FormEvent) {
@@ -47,8 +86,8 @@ export default function Register({ wave }: RegisterProps) {
     }
 
     function canGoNext() {
-        if (step === 0) return data.nik && data.name && data.dob && data.guardian_phone;
-        if (step === 1) return data.families[0].name && data.families[1].name;
+        if (step === 0) return data.nik && data.name && data.dob && data.address;
+        if (step === 1) return data.parents[0].name && data.parents[1].name;
         return true;
     }
 
@@ -65,6 +104,18 @@ export default function Register({ wave }: RegisterProps) {
                         Biaya Formulir: <strong className="text-emerald-600">{formatCurrency(wave.registration_fee)}</strong>
                     </p>
                 </div>
+
+                {/* Flash Messages */}
+                {flash?.success && (
+                    <div className="mb-6 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300">
+                        {flash.success}
+                    </div>
+                )}
+                {flash?.error && (
+                    <div className="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/30 dark:text-red-300">
+                        {flash.error}
+                    </div>
+                )}
 
                 {/* Step Indicator */}
                 <div className="mb-10 flex items-center justify-center gap-2">
@@ -97,58 +148,92 @@ export default function Register({ wave }: RegisterProps) {
                 <form onSubmit={handleSubmit}>
                     <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
                         <div className="p-6 sm:p-8">
-                            {/* Step 1: Biodata + Kontak Wali */}
+                            {/* Step 1: Biodata */}
                             {step === 0 && (
                                 <div className="space-y-6">
                                     <SectionTitle>Data Calon Santri</SectionTitle>
                                     <div className="grid gap-5 sm:grid-cols-2">
-                                        <InputField label="NIK" value={data.nik} onChange={(v) => setData('nik', v)} error={errors.nik} required />
+                                        <InputField label="NIK" value={data.nik} onChange={(v) => setData('nik', v)} error={errors.nik} required maxLength={16} />
                                         <InputField label="Nama Lengkap" value={data.name} onChange={(v) => setData('name', v)} error={errors.name} required />
                                         <SelectField
                                             label="Jenis Kelamin"
                                             value={data.gender}
-                                            onChange={(v) => setData('gender', v as 'L' | 'P')}
+                                            onChange={(v) => setData('gender', v as 'l' | 'p')}
                                             options={[
-                                                { value: 'L', label: 'Laki-laki' },
-                                                { value: 'P', label: 'Perempuan' },
+                                                { value: 'l', label: 'Laki-laki' },
+                                                { value: 'p', label: 'Perempuan' },
                                             ]}
                                         />
-                                        <InputField label="Tempat Lahir" value={data.pob} onChange={(v) => setData('pob', v)} error={errors.pob} />
+                                        <InputField label="Tempat Lahir" value={data.pob} onChange={(v) => setData('pob', v)} error={errors.pob} required />
                                         <InputField label="Tanggal Lahir" type="date" value={data.dob} onChange={(v) => setData('dob', v)} error={errors.dob} required />
-                                        <InputField label="NISN" value={data.nisn} onChange={(v) => setData('nisn', v)} error={errors.nisn} />
+                                        <InputField label="NISN" value={data.nisn} onChange={(v) => setData('nisn', v)} error={errors.nisn} maxLength={10} />
                                         <InputField label="Asal Sekolah" value={data.previous_school} onChange={(v) => setData('previous_school', v)} error={errors.previous_school} className="sm:col-span-2" />
                                     </div>
                                     <div>
-                                        <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">Alamat Lengkap</label>
+                                        <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                            Alamat Lengkap <span className="text-red-400">*</span>
+                                        </label>
                                         <textarea
                                             rows={3}
                                             value={data.address}
                                             onChange={(e) => setData('address', e.target.value)}
                                             className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm transition-colors focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                                         />
-                                    </div>
-
-                                    {/* Kontak Wali */}
-                                    <SectionTitle>Kontak Wali / Orang Tua</SectionTitle>
-                                    <div className="grid gap-5 sm:grid-cols-2">
-                                        <InputField label="No. HP Wali" value={data.guardian_phone} onChange={(v) => setData('guardian_phone', v)} error={errors.guardian_phone} required placeholder="08xxxxxxxxxx" />
-                                        <InputField label="Email Wali (opsional)" value={data.guardian_email} onChange={(v) => setData('guardian_email', v)} error={errors.guardian_email} type="email" placeholder="email@contoh.com" />
+                                        {errors.address && <p className="mt-1 text-xs text-red-500">{errors.address}</p>}
                                     </div>
                                 </div>
                             )}
 
-                            {/* Step 2: Keluarga */}
+                            {/* Step 2: Data Orang Tua */}
                             {step === 1 && (
                                 <div className="space-y-8">
-                                    {data.families.map((fam, idx) => (
-                                        <div key={fam.type}>
-                                            <SectionTitle>{fam.type === 'ayah' ? 'Data Ayah' : 'Data Ibu'}</SectionTitle>
+                                    {data.parents.map((parent, idx) => (
+                                        <div key={parent.type}>
+                                            <SectionTitle>{parent.type === 'ayah' ? 'Data Ayah' : 'Data Ibu'}</SectionTitle>
                                             <div className="mt-4 grid gap-5 sm:grid-cols-2">
-                                                <InputField label="NIK" value={fam.nik} onChange={(v) => updateFamily(idx, 'nik', v)} />
-                                                <InputField label="Nama Lengkap" value={fam.name} onChange={(v) => updateFamily(idx, 'name', v)} required />
-                                                <InputField label="No. Telepon" value={fam.phone} onChange={(v) => updateFamily(idx, 'phone', v)} />
-                                                <InputField label="Pekerjaan" value={fam.job} onChange={(v) => updateFamily(idx, 'job', v)} />
-                                                <InputField label="Penghasilan /bulan" value={fam.income} onChange={(v) => updateFamily(idx, 'income', v)} />
+                                                <InputField label="NIK" value={parent.nik} onChange={(v) => updateParent(idx, 'nik', v)} maxLength={16} />
+                                                <InputField label="Nama Lengkap" value={parent.name} onChange={(v) => updateParent(idx, 'name', v)} required />
+                                                <InputField label="No. Telepon" value={parent.phone} onChange={(v) => updateParent(idx, 'phone', v)} />
+                                                <InputField label="Email" value={parent.email} onChange={(v) => updateParent(idx, 'email', v)} type="email" />
+                                                <SelectField
+                                                    label="Pendidikan Terakhir"
+                                                    value={parent.last_education}
+                                                    onChange={(v) => updateParent(idx, 'last_education', v)}
+                                                    options={EDUCATION_OPTIONS}
+                                                />
+                                                <SelectField
+                                                    label="Pekerjaan"
+                                                    value={parent.job}
+                                                    onChange={(v) => updateParent(idx, 'job', v)}
+                                                    options={JOB_OPTIONS.map((j) => ({ value: j, label: j || '— Pilih —' }))}
+                                                />
+                                                <SelectField
+                                                    label="Penghasilan /bulan"
+                                                    value={parent.income}
+                                                    onChange={(v) => updateParent(idx, 'income', v)}
+                                                    options={INCOME_OPTIONS}
+                                                />
+                                                <div className="flex items-center gap-6">
+                                                    <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={parent.is_alive}
+                                                            onChange={(e) => updateParent(idx, 'is_alive', e.target.checked)}
+                                                            className="h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                                                        />
+                                                        Masih Hidup
+                                                    </label>
+                                                    <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                                                        <input
+                                                            type="radio"
+                                                            name="is_guardian"
+                                                            checked={parent.is_guardian}
+                                                            onChange={() => updateParent(idx, 'is_guardian', true)}
+                                                            className="h-4 w-4 border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                                                        />
+                                                        Sebagai Wali
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     ))}
@@ -167,7 +252,9 @@ export default function Register({ wave }: RegisterProps) {
                                             { key: 'akta_lahir', label: 'Akta Kelahiran' },
                                             { key: 'kk', label: 'Kartu Keluarga' },
                                             { key: 'foto', label: 'Pas Foto (3x4)' },
-                                            { key: 'rapor', label: 'Rapor Terakhir' },
+                                            { key: 'ijazah', label: 'Ijazah / Rapor Terakhir' },
+                                            { key: 'ktp_ortu', label: 'KTP Orang Tua/Wali' },
+                                            { key: 'skl', label: 'Surat Keterangan Lulus' },
                                         ].map((doc) => (
                                             <FileUpload
                                                 key={doc.key}
@@ -254,9 +341,9 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 function InputField({
-    label, value, onChange, error, type = 'text', required, className = '', placeholder,
+    label, value, onChange, error, type = 'text', required, className = '', placeholder, maxLength,
 }: {
-    label: string; value: string; onChange: (v: string) => void; error?: string; type?: string; required?: boolean; className?: string; placeholder?: string;
+    label: string; value: string; onChange: (v: string) => void; error?: string; type?: string; required?: boolean; className?: string; placeholder?: string; maxLength?: number;
 }) {
     return (
         <div className={className}>
@@ -267,6 +354,7 @@ function InputField({
                 type={type}
                 value={value}
                 placeholder={placeholder}
+                maxLength={maxLength}
                 onChange={(e) => onChange(e.target.value)}
                 className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
             />

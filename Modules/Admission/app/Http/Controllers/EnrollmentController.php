@@ -20,66 +20,18 @@ class EnrollmentController extends Controller
      */
     public function migrate(Request $request, Candidate $candidate): RedirectResponse
     {
-        // Validasi: harus berstatus DITERIMA
         if ($candidate->status !== CandidateStatus::DITERIMA) {
             return redirect()->back()->with('error', 'Kandidat belum berstatus Diterima.');
         }
-
-        // Validasi: harus sudah bayar daftar ulang
         if (! $candidate->hasEnrollmentFeePaid()) {
             return redirect()->back()->with('error', 'Kandidat belum membayar biaya daftar ulang.');
         }
-
-        // Validasi: belum pernah dimigrasi
         if ($candidate->student_id !== null) {
             return redirect()->back()->with('error', 'Kandidat sudah dimigrasi sebelumnya.');
         }
 
         DB::transaction(function () use ($candidate) {
-            // ========================================
-            // 1. Create Student dari data Candidate
-            // ========================================
-            $student = Student::create([
-                'institution_id' => $candidate->institution_id,
-                'candidate_id' => $candidate->id,
-                'nik' => $candidate->nik,
-                'name' => $candidate->name,
-                'gender' => $candidate->gender->value,
-                'pob' => $candidate->pob,
-                'dob' => $candidate->dob,
-                'address' => $candidate->address,
-                'nisn' => $candidate->nisn,
-                'status' => 'aktif',
-                'join_date' => now()->toDateString(),
-            ]);
-
-            // ========================================
-            // 2. Migrasi data ayah & ibu → student_parents
-            // ========================================
-            $candidate->load('families');
-
-            foreach ($candidate->families as $family) {
-                StudentParent::create([
-                    'student_id' => $student->id,
-                    'type' => $family->type->value,
-                    'nik' => $family->nik,
-                    'name' => $family->name,
-                    'phone' => $family->phone,
-                    'job' => $family->job,
-                    'income' => $family->income?->value,
-                    'is_alive' => true,
-                ]);
-            }
-
-            // ========================================
-            // 3. Determine & Create/Link Guardian (Wali)
-            // ========================================
-            $this->createGuardianLink($candidate, $student);
-
-            // ========================================
-            // 4. Link candidate → student
-            // ========================================
-            $candidate->update(['student_id' => $student->id]);
+            $this->performMigration($candidate);
         });
 
         return redirect()->back()->with('success', 'Kandidat berhasil dimigrasi menjadi siswa.');
@@ -106,44 +58,12 @@ class EnrollmentController extends Controller
         foreach ($candidates as $candidate) {
             if (! $candidate->hasEnrollmentFeePaid()) {
                 $failed++;
-
                 continue;
             }
-
             try {
                 DB::transaction(function () use ($candidate) {
-                    $student = Student::create([
-                        'institution_id' => $candidate->institution_id,
-                        'candidate_id' => $candidate->id,
-                        'nik' => $candidate->nik,
-                        'name' => $candidate->name,
-                        'gender' => $candidate->gender->value,
-                        'pob' => $candidate->pob,
-                        'dob' => $candidate->dob,
-                        'address' => $candidate->address,
-                        'nisn' => $candidate->nisn,
-                        'status' => 'aktif',
-                        'join_date' => now()->toDateString(),
-                    ]);
-
-                    $candidate->load('families');
-                    foreach ($candidate->families as $family) {
-                        StudentParent::create([
-                            'student_id' => $student->id,
-                            'type' => $family->type->value,
-                            'nik' => $family->nik,
-                            'name' => $family->name,
-                            'phone' => $family->phone,
-                            'job' => $family->job,
-                            'income' => $this->mapIncomeRange($family->income?->value),
-                            'is_alive' => true,
-                        ]);
-                    }
-
-                    $this->createGuardianLink($candidate, $student);
-                    $candidate->update(['student_id' => $student->id]);
+                    $this->performMigration($candidate);
                 });
-
                 $migrated++;
             } catch (\Exception $e) {
                 $failed++;
@@ -162,22 +82,72 @@ class EnrollmentController extends Controller
     // ========================================
 
     /**
+     * Shared migration logic for both single and batch migration.
+     */
+    private function performMigration(Candidate $candidate): void
+    {
+        // 1. Create Student dari data Candidate
+        $student = Student::create([
+            'institution_id' => $candidate->institution_id,
+            'candidate_id' => $candidate->id,
+            'nik' => $candidate->nik,
+            'name' => $candidate->name,
+            'gender' => $candidate->gender->value,
+            'pob' => $candidate->pob,
+            'dob' => $candidate->dob,
+            'address' => $candidate->address,
+            'nisn' => $candidate->nisn,
+            'status' => 'aktif',
+            'join_date' => now()->toDateString(),
+        ]);
+
+        // 2. Migrasi data orang tua → student_parents
+        $candidate->load('parents');
+
+        foreach ($candidate->parents as $parent) {
+            StudentParent::create([
+                'student_id' => $student->id,
+                'type' => $parent->type->value,
+                'nik' => $parent->nik,
+                'name' => $parent->name,
+                'phone' => $parent->phone,
+                'email' => $parent->email,
+                'last_education' => $parent->last_education?->value,
+                'job' => $parent->job?->value,
+                'income' => $parent->income?->value,
+                'address' => $candidate->address,
+                'is_alive' => $parent->is_alive ?? true,
+                'is_guardian' => $parent->is_guardian ?? false,
+            ]);
+        }
+
+        // 3. Determine & Create/Link Guardian (Wali)
+        $this->createGuardianLink($candidate, $student);
+
+        // 4. Link candidate → student
+        $candidate->update(['student_id' => $student->id]);
+    }
+
+    /**
      * Buat atau link Guardian untuk student.
      *
      * Logic dedup:
-     * 1. Ambil data wali dari candidate (guardian_phone + guardian_email + family data)
-     * 2. Cari di tabel guardians berdasarkan NIK atau phone
-     * 3. Jika ditemukan → reuse, buat pivot saja
-     * 4. Jika tidak → buat guardian baru + pivot
+     * 1. Ambil data wali dari candidate_parents (is_guardian = true)
+     * 2. Fallback: ayah → ibu → parent pertama
+     * 3. Cari di tabel guardians berdasarkan NIK atau phone
+     * 4. Jika ditemukan → reuse, buat pivot saja
+     * 5. Jika tidak → buat guardian baru + pivot
      */
     private function createGuardianLink(Candidate $candidate, Student $student): void
     {
-        // Tentukan siapa wali-nya dari data keluarga
-        // Default: ayah kandung. Jika tidak ada ayah, gunakan ibu.
-        $waliFamilyData = $candidate->father ?? $candidate->mother ?? $candidate->families->first();
+        // Prioritas: parent yang ditandai is_guardian, lalu ayah, lalu ibu, lalu pertama
+        $waliFamilyData = $candidate->guardianParent
+            ?? $candidate->father
+            ?? $candidate->mother
+            ?? $candidate->parents->first();
 
         if (! $waliFamilyData) {
-            return; // Tidak ada data keluarga untuk dijadikan wali
+            return;
         }
 
         // Tentukan relationship berdasarkan tipe keluarga
@@ -190,18 +160,17 @@ class EnrollmentController extends Controller
         // Dedup: cari guardian yang sudah ada
         $guardian = Guardian::findByNikOrPhone(
             $waliFamilyData->nik,
-            $waliFamilyData->phone ?? $candidate->guardian_phone
+            $waliFamilyData->phone
         );
 
         if (! $guardian) {
-            // Buat guardian baru
             $guardian = Guardian::create([
-                'nik' => $waliFamilyData->nik ?? $candidate->nik.'_wali',
+                'nik' => $waliFamilyData->nik ?? $candidate->nik . '_wali',
                 'name' => $waliFamilyData->name,
                 'gender' => $waliFamilyData->type->value === 'ibu' ? 'p' : 'l',
-                'phone' => $waliFamilyData->phone ?? $candidate->guardian_phone,
-                'email' => $candidate->guardian_email,
-                'job' => $waliFamilyData->job,
+                'phone' => $waliFamilyData->phone,
+                'email' => $waliFamilyData->email,
+                'job' => $waliFamilyData->job?->value,
                 'income' => $waliFamilyData->income?->value,
             ]);
         }

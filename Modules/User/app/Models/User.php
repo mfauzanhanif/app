@@ -30,8 +30,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'username',
         'password',
         'phone_number',
+        'role_type',
+        'is_active',
     ];
 
     /**
@@ -169,14 +172,23 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if user is a global admin (role without institution_id).
+     * Cek apakah user punya GLOBAL role (institution_id = null pada pivot).
+     * Global roles: administrator, foundation_head, ppdb_committee, treasurer, cashier
+     *
+     * @param string|null $roleName Jika diisi, cek role spesifik. Jika null, cek semua global role.
      */
-    public function isGlobalAdmin(): bool
+    public function hasGlobalRole(?string $roleName = null): bool
     {
-        return $this->roles()
-            ->wherePivot('institution_id', null)
-            ->where('name', 'super_admin') // Best practice: Check specific role
-            ->exists();
+        $query = DB::table('model_has_roles')
+            ->where('model_id', $this->id)
+            ->where('model_type', self::class)
+            ->whereNull('institution_id');
+
+        if ($roleName) {
+            $query->whereIn('role_id', Role::where('name', $roleName)->pluck('id'));
+        }
+
+        return $query->exists();
     }
 
     /**
@@ -191,7 +203,7 @@ class User extends Authenticatable
             ->whereNotNull('institution_id')
             ->value('institution_id');
 
-        return $institutionId ? Institution::find($institutionId) : null;
+        return $institutionId ?Institution::find($institutionId) : null;
     }
 
     // ========================================
@@ -231,9 +243,7 @@ class User extends Authenticatable
      */
     public function isWaliSantri(): bool
     {
-        return $this->roles()
-            ->where('name', 'Wali Santri')
-            ->exists();
+        return $this->role_type === 'guardian';
     }
 
     // ========================================
@@ -253,12 +263,12 @@ class User extends Authenticatable
         // Check for institution-scoped roles
         $institutions = $this->getInstitutions();
         if ($institutions->isNotEmpty()) {
-            $portals['institutions'] = $institutions->map(fn (Institution $i) => [
-                'id' => $i->id,
-                'code' => $i->code,
-                'name' => $i->name,
-                'type' => $i->type,
-                'url' => $i->getDashboardUrl(),
+            $portals['institutions'] = $institutions->map(fn(Institution $i) => [
+            'id' => $i->id,
+            'code' => $i->code,
+            'name' => $i->name,
+            'type' => $i->type,
+            'url' => $i->getDashboardUrl(),
             ])->toArray();
         }
 
@@ -266,17 +276,17 @@ class User extends Authenticatable
         if ($this->isWaliSantri()) {
             $students = $this->getStudents();
             if ($students->isNotEmpty()) {
-                $portals['students'] = $students->map(fn ($s) => [
-                    'id' => $s->id ?? null,
-                    'public_id' => $s->public_id ?? null,
-                    'name' => $s->name ?? null,
-                    'url' => url("/wali/{$s->public_id}/dashboard"),
+                $portals['students'] = $students->map(fn($s) => [
+                'id' => $s->id ?? null,
+                'public_id' => $s->public_id ?? null,
+                'name' => $s->name ?? null,
+                'url' => url("/wali/{$s->public_id}/dashboard"),
                 ])->toArray();
             }
         }
 
         // Check for global admin
-        if ($this->isGlobalAdmin()) {
+        if ($this->hasGlobalRole()) {
             $portals['admin'] = [
                 'name' => 'Admin Yayasan',
                 'url' => root_dashboard_url(),
@@ -294,7 +304,7 @@ class User extends Authenticatable
     {
         $institutionCount = count($this->getInstitutionIds());
         $isWali = $this->isWaliSantri();
-        $isGlobal = $this->isGlobalAdmin();
+        $isGlobal = $this->hasGlobalRole();
 
         // Needs selection if: multiple institutions, or is wali + has other roles
         return $institutionCount > 1
@@ -309,7 +319,7 @@ class User extends Authenticatable
     public function getDefaultPortalUrl(): string
     {
         // Global admin goes to admin dashboard
-        if ($this->isGlobalAdmin() && ! $this->hasRoleInAnyInstitution()) {
+        if ($this->hasGlobalRole() && !$this->hasRoleInAnyInstitution()) {
             return root_dashboard_url();
         }
 
@@ -345,9 +355,9 @@ class User extends Authenticatable
             // Kita memaksa developer memakai assignRoleInInstitution agar jelas lembaga mana.
             if (is_string($role)) {
                 throw new \InvalidArgumentException(
-                    "DILARANG menggunakan assignRole('nama_role') karena ambigu (satu nama role bisa ada di banyak lembaga). ".
+                    "DILARANG menggunakan assignRole('nama_role') karena ambigu (satu nama role bisa ada di banyak lembaga). " .
                     "Gunakan assignRoleInInstitution('nama_role', \$institution) atau pass object Role secara langsung."
-                );
+                    );
             }
         }
 
@@ -377,21 +387,47 @@ class User extends Authenticatable
 
         $role = Role::where('name', $roleName)->firstOrFail();
 
-        // Set Team ID, Assign, Reset
-        setPermissionsTeamId($institutionId);
-        $this->assignRole($role);
-        // We don't necessarily need to reset immediately if this is called within a request that needs this context,
-        // but to be safe/side-effect free for the caller:
-        // However, usually this is called in a controller where we might redirect afterwards.
-        // Let's keep the team ID set only for the assignment if possible, OR assume the caller handles context.
-        // To be safe: save current, set, assign, restore.
-
         $previousTeamId = getPermissionsTeamId();
         setPermissionsTeamId($institutionId);
         $this->spatieAssignRole($role);
         setPermissionsTeamId($previousTeamId);
 
         return $this;
+    }
+
+    /**
+     * Switch konteks user ke lembaga tertentu (dipanggil dari Institution Selection page).
+     * Berbeda dari middleware yang hanya baca URL — ini adalah AKSI EKSPLISIT dari user.
+     */
+    public function switchToInstitution(Institution $institution): void
+    {
+        // Validasi: punya role di lembaga ini ATAU punya global role
+        if (!$this->hasRoleInInstitution($institution) && !$this->hasGlobalRole()) {
+            abort(403, 'Anda tidak memiliki akses ke lembaga ini.');
+        }
+
+        session([
+            'current_institution_id' => $institution->id,
+            'current_institution_code' => $institution->code,
+            'current_institution_name' => $institution->name,
+        ]);
+
+        setPermissionsTeamId($institution->id);
+    }
+
+    /**
+     * Ambil institution yang sedang aktif.
+     */
+    public function currentInstitution(): ?Institution
+    {
+        if (app()->bound('current_institution') && app('current_institution')) {
+            /** @var Institution */
+            $institution = app('current_institution');
+            return $institution;
+        }
+
+        $id = session('current_institution_id');
+        return $id ?Institution::find($id) : null;
     }
 
     /**
@@ -404,10 +440,10 @@ class User extends Authenticatable
         $role = Role::where('name', $roleName)->first();
 
         if ($role) {
-             $previousTeamId = getPermissionsTeamId();
-             setPermissionsTeamId($institutionId);
-             $this->removeRole($role);
-             setPermissionsTeamId($previousTeamId);
+            $previousTeamId = getPermissionsTeamId();
+            setPermissionsTeamId($institutionId);
+            $this->removeRole($role);
+            setPermissionsTeamId($previousTeamId);
         }
 
         return $this;

@@ -1,4 +1,4 @@
-import { useForm } from '@inertiajs/react';
+import { useForm, usePage } from '@inertiajs/react';
 import { type FormEvent } from 'react';
 import PsbLayout from '../layouts/psb-layout';
 import type { Candidate } from '../types';
@@ -11,6 +11,9 @@ interface StatusProps {
 }
 
 export default function Status({ candidates, searched, filters }: StatusProps) {
+    const { props } = usePage();
+    const flash = (props as any).flash as { success?: string; error?: string } | undefined;
+
     return (
         <PsbLayout title="Status Pendaftaran">
             <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
@@ -21,6 +24,23 @@ export default function Status({ candidates, searched, filters }: StatusProps) {
                         Masukkan nomor pendaftaran dan NIK untuk melihat status
                     </p>
                 </div>
+
+                {/* Flash Messages */}
+                {flash?.success && (
+                    <div className="mx-auto mb-6 max-w-xl rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300">
+                        <div className="flex items-start gap-3">
+                            <svg className="mt-0.5 h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                            </svg>
+                            <span>{flash.success}</span>
+                        </div>
+                    </div>
+                )}
+                {flash?.error && (
+                    <div className="mx-auto mb-6 max-w-xl rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/30 dark:text-red-300">
+                        {flash.error}
+                    </div>
+                )}
 
                 {/* Lookup Form */}
                 <LookupForm action="/status" filters={filters} />
