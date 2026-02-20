@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
-// use Modules\Employee\Models\Employee;
+use Modules\Employee\Models\Employee;
 use Modules\Student\Models\Student;
 
 class Institution extends Model
@@ -64,8 +64,13 @@ class Institution extends Model
         'phone',
         'website_url',
         'address',
-        'district',
-        'city',
+        'rt',
+        'rw',
+        'province_code',
+        'city_code',
+        'district_code',
+        'village_code',
+        'postal_code',
         'logo_path',
         'letterhead_path',
         'parent_id',
@@ -94,24 +99,31 @@ class Institution extends Model
      */
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(Institution::class, 'parent_id');
+        return $this->belongsTo(Institution::class , 'parent_id');
     }
 
     /**
      * Get the headmaster (Kepala Lembaga) of this institution.
      */
-    // TODO: Implement this
-    // public function headmaster(): BelongsTo
-    // {
-    //     return $this->belongsTo(Employee::class, 'headmaster_id');
-    // }
+    public function headmaster(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class , 'headmaster_id');
+    }
+
+    /**
+     * Get institution documents.
+     */
+    public function documents(): HasMany
+    {
+        return $this->hasMany(\Modules\Institution\Models\InstitutionDocument::class);
+    }
 
     /**
      * Get the child institutions.
      */
     public function children(): HasMany
     {
-        return $this->hasMany(Institution::class, 'parent_id');
+        return $this->hasMany(Institution::class , 'parent_id');
     }
 
     /**

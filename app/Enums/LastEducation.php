@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Admission\Enums;
+namespace App\Enums;
 
 enum LastEducation: string
 {

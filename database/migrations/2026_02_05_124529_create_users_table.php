@@ -15,7 +15,7 @@ return new class extends Migration
         // 1. TABLE USERS
         // ==============================
         Schema::create('users', function (Blueprint $table) {
-            $table->id()->autoIncrement();
+            $table->id();
             $table->string('name');
             $table->string('username')->unique()->nullable();
             $table->string('email')->unique();

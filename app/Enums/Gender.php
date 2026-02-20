@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Admission\Enums;
+namespace App\Enums;
 
-enum Gender: string
+enum Gender
 {
     case LAKI_LAKI = 'l';
     case PEREMPUAN = 'p';

@@ -25,17 +25,23 @@ class StudentParent extends Model
         'last_education',
         'job',
         'income',
-        'address',
+        'rt',
+        'rw',
+        'province_code',
+        'city_code',
+        'district_code',
+        'village_code',
+        'postal_code',
         'is_alive',
     ];
 
     protected function casts(): array
     {
         return [
-            'type' => ParentType::class,
-            'last_education' => LastEducation::class,
-            'job' => JobType::class,
-            'income' => IncomeRange::class,
+            'type' => ParentType::class ,
+            'last_education' => LastEducation::class ,
+            'job' => JobType::class ,
+            'income' => IncomeRange::class ,
             'is_alive' => 'boolean',
         ];
     }

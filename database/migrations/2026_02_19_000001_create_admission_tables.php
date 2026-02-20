@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+return new class extends Migration 
 {
     /**
      * Run the migrations.
@@ -61,26 +61,39 @@ return new class extends Migration
                 ->constrained('admission_waves')
                 ->cascadeOnDelete();
 
-            $table->string('registration_number')->unique(); // PSB/2026/MI/001
+            $table->string('registration_number')->unique();
 
             // Nullable: khusus jalur lanjut jenjang (siswa internal)
             $table->unsignedBigInteger('internal_student_id')->nullable();
 
             // Biodata Calon Santri
-            $table->string('nik', 16);
+            $table->string('nik', 16)->unique();
+            $table->string('nisn', 10)->unique()->nullable();
             $table->string('name');
-            $table->enum('gender', ['l', 'p']);
             $table->string('pob', 100);
             $table->date('dob');
-            $table->string('previous_school')->nullable();
-            $table->string('nisn', 10)->unique()->nullable();
+            $table->enum('gender', ['l', 'p']);
+            
+            //  Kontak dan Alamat Calon Santri
+            $table->string('phone', 20)->nullable();
+            $table->string('email')->nullable();
             $table->text('address');
-
-            // Kontak Wali (untuk pendaftar publik tanpa akun)
-            $table->string('guardian_phone', 20)->nullable();
-            $table->string('guardian_email')->nullable();
-
-            // Status Flow
+            $table->string('rt', 5)->nullable();
+            $table->string('rw', 5)->nullable();
+            $table->char('province_code', 2)->nullable();
+            $table->foreign('province_code')->references('code')->on('provinces');
+            $table->char('city_code', 4)->nullable();
+            $table->foreign('city_code')->references('code')->on('cities');
+            $table->char('district_code', 7)->nullable();
+            $table->foreign('district_code')->references('code')->on('districts');
+            $table->char('village_code', 10)->nullable();
+            $table->foreign('village_code')->references('code')->on('villages');
+            $table->string('postal_code', 10)->nullable();
+            
+            $table->string('previous_school')->nullable();
+            $table->string('previous_class')->nullable();
+            $table->string('previous_school_address')->nullable();
+            
             $table->enum('status', [
                 'draft',
                 'diajukan',
@@ -114,10 +127,11 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             $table->enum('file_type', [
-                'kk', 'akta', 'ktp_wali', 'ijazah', 'foto', 'skl', 'kip',
+                'foto', 'kk', 'akta_lahir', 'ijazah', 'skl', 'kip','ktp_ortu', 'lainnya',
             ]);
+            $table->string('file_name');
             $table->string('file_path');
-            $table->boolean('is_valid')->nullable(); // null=belum dicek, true=valid, false=ditolak
+            $table->boolean('is_valid')->nullable();
             $table->text('notes')->nullable();
 
             $table->timestamps();

@@ -1,10 +1,13 @@
 {
-    "Admission": true,
+    
     "Institution": true,
-    "User": true,
     "Periode": true,
-    "Finance": true,
-    "Web": true,
+    "User": true,
+    "Employee": true,
+    "Asset": true,
+    "Admission": true,
     "Student": true,
-    "Guardian": true
+    "Guardian": true,
+    "Finance": true,
+    "Web": true
 }

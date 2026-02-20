@@ -1,18 +1,18 @@
 <?php
 
-namespace Modules\Admission\Models;
+namespace Modules\Institution\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Modules\Admission\Enums\DocumentType;
+use Modules\Institution\Enums\DocumentType;
 
-class CandidateDocument extends Model
+class InstitutionDocument extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'candidate_id',
+        'institution_id',
         'file_type',
         'file_name',
         'file_path',
@@ -34,18 +34,18 @@ class CandidateDocument extends Model
 
     protected static function booted(): void
     {
-        static::creating(function (CandidateDocument $doc) {
+        static::creating(function (InstitutionDocument $doc) {
             static::autoFillFileName($doc);
         });
 
-        static::updating(function (CandidateDocument $doc) {
+        static::updating(function (InstitutionDocument $doc) {
             if ($doc->isDirty('file_type')) {
                 static::autoFillFileName($doc);
             }
         });
     }
 
-    private static function autoFillFileName(CandidateDocument $doc): void
+    private static function autoFillFileName(InstitutionDocument $doc): void
     {
         $fileType = $doc->file_type instanceof DocumentType
             ? $doc->file_type
@@ -60,9 +60,9 @@ class CandidateDocument extends Model
     // RELATIONSHIPS
     // ========================================
 
-    public function candidate(): BelongsTo
+    public function institution(): BelongsTo
     {
-        return $this->belongsTo(Candidate::class);
+        return $this->belongsTo(Institution::class);
     }
 
     // ========================================

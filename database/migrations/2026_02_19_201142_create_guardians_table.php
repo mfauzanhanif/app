@@ -73,13 +73,17 @@ return new class extends Migration
             ])->nullable();
 
             // Alamat Lengkap
-            $table->text('address')->nullable();
+            $table->text('address');
             $table->string('rt', 5)->nullable();
             $table->string('rw', 5)->nullable();
-            $table->string('village', 100)->nullable();
-            $table->string('district', 100)->nullable();
-            $table->string('city', 100)->nullable();
-            $table->string('province', 100)->nullable();
+            $table->char('province_code', 2)->nullable();
+            $table->foreign('province_code')->references('code')->on('provinces');
+            $table->char('city_code', 4)->nullable();
+            $table->foreign('city_code')->references('code')->on('cities');
+            $table->char('district_code', 7)->nullable();
+            $table->foreign('district_code')->references('code')->on('districts');
+            $table->char('village_code', 10)->nullable();
+            $table->foreign('village_code')->references('code')->on('villages');
             $table->string('postal_code', 10)->nullable();
 
             // Status

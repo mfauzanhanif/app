@@ -268,7 +268,10 @@ Pintu gerbang data siswa. Modul ini sering memiliki siklus hidup yang berbeda (m
   - Input Jadwal Wawancara/Tes Fisik.
   - Input Hasil Seleksi (Lulus/Tidak) secara manual oleh admin.
 - Migration (Lanjut Jenjang): Fitur untuk memindahkan data siswa internal (misal: dari MI ke SMP) tanpa input ulang.
-- One Click Migration: Fitur untuk memindahkan data dari candidates ke students + guardians secara otomatis saat dinyatakan LULUS dan DAFTAR ULANG.
+- One Click Migration: Fitur untuk memindahkan data dari candidates ke students + guardians secara otomatis saat dinyatakan LULUS dan DAFTAR ULANG. Yang perlu diperhatikan:
+  - Saat migrasi candidate → student (One Click Migration), NISN akan di-copy. Karena keduanya unique(), tidak akan ada konflik selama NISN di candidates tidak bentrok dengan NISN di students yang sudah ada sebelumnya — ini aman selama logika migrasi benar.
+  - unique() + nullable() — Di MySQL, NULL tidak dihitung dalam unique constraint (multiple NULL dibolehkan). Jadi ini aman untuk siswa yang belum punya NISN. ✅
+  - Potensi masalah: Jika satu anak mendaftar ulang (misal pindah jenjang), NISN yang sama bisa masuk ke candidates lagi padahal sudah ada di students. Pastikan ada validasi di application level untuk cek duplikat NISN lintas kedua tabel.
 
 ## 6. STUDENT MODULE (Siswa)
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+return new class extends Migration 
 {
     public function up(): void
     {
@@ -32,9 +32,9 @@ return new class extends Migration
             $table->char('public_id', 10)->unique();
 
             // Triple ID System
-            $table->string('nisy', 20)->unique()->nullable();     // Nomor Induk Santri Yayasan (seumur hidup)
-            $table->string('nis', 20)->nullable();                 // Nomor Induk Siswa (lokal sekolah)
-            $table->string('nisn', 10)->unique()->nullable();      // Nomor Induk Siswa Nasional
+            $table->string('nisy', 20)->unique()->nullable(); // Nomor Induk Santri Yayasan (seumur hidup)
+            $table->string('nis', 20)->nullable(); // Nomor Induk Siswa (lokal sekolah)
+            $table->string('nisn', 10)->unique()->nullable(); // Nomor Induk Siswa Nasional
 
             // NIK — kunci lintas jenjang
             $table->string('nik', 16)->index();
@@ -43,8 +43,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('nickname', 50)->nullable();
             $table->enum('gender', ['l', 'p']);
-            $table->string('pob', 100);                            // Tempat lahir
-            $table->date('dob');                                    // Tanggal lahir
+            $table->string('pob', 100); // Tempat lahir
+            $table->date('dob'); // Tanggal lahir
             $table->enum('blood_type', ['a', 'b', 'ab', 'o', 'tidak_diketahui'])->default('tidak_diketahui');
             $table->enum('religion', ['islam'])->default('islam');
 
@@ -52,10 +52,14 @@ return new class extends Migration
             $table->text('address');
             $table->string('rt', 5)->nullable();
             $table->string('rw', 5)->nullable();
-            $table->string('village', 100)->nullable();            // Desa/Kelurahan
-            $table->string('district', 100)->nullable();           // Kecamatan
-            $table->string('city', 100)->nullable();               // Kota/Kabupaten
-            $table->string('province', 100)->nullable();
+            $table->char('province_code', 2)->nullable();
+            $table->foreign('province_code')->references('code')->on('provinces');
+            $table->char('city_code', 4)->nullable();
+            $table->foreign('city_code')->references('code')->on('cities');
+            $table->char('district_code', 7)->nullable();
+            $table->foreign('district_code')->references('code')->on('districts');
+            $table->char('village_code', 10)->nullable();
+            $table->foreign('village_code')->references('code')->on('villages');
             $table->string('postal_code', 10)->nullable();
 
             // Kontekstual Sekolah
@@ -143,7 +147,19 @@ return new class extends Migration
                 'Rp. 5.000.000 - Rp. 10.000.000',
                 'Rp. 10.000.000_>',
             ])->nullable();
-            $table->text('address')->nullable();
+            $table->text('address');
+            $table->string('rt', 5)->nullable();
+            $table->string('rw', 5)->nullable();
+            $table->char('province_code', 2)->nullable();
+            $table->foreign('province_code')->references('code')->on('provinces');
+            $table->char('city_code', 4)->nullable();
+            $table->foreign('city_code')->references('code')->on('cities');
+            $table->char('district_code', 7)->nullable();
+            $table->foreign('district_code')->references('code')->on('districts');
+            $table->char('village_code', 10)->nullable();
+            $table->foreign('village_code')->references('code')->on('villages');
+            $table->string('postal_code', 10)->nullable();
+            
             $table->boolean('is_alive')->default(true);
 
             $table->timestamps();
@@ -152,10 +168,35 @@ return new class extends Migration
             $table->index('student_id');
             $table->index(['student_id', 'type']);
         });
+
+        // ==============================
+        // 3. STUDENT DOCUMENTS (Berkas Persyaratan)
+        // ==============================
+        Schema::create('student_documents', function (Blueprint $table) {
+            $table->id();
+
+            $table->foreignId('student_id')
+                ->constrained('students')
+                ->cascadeOnDelete();
+
+            $table->enum('file_type', [
+                'foto', 'kk', 'akta_lahir', 'ijazah', 'skl', 'kip','ktp_ortu', 'lainnya',
+            ]);
+            $table->string('file_name');
+            $table->string('file_path');
+            $table->boolean('is_valid')->nullable();
+            $table->text('notes')->nullable();
+
+            $table->timestamps();
+
+            // Index
+            $table->index(['student_id', 'file_type']);
+        });
     }
 
     public function down(): void
     {
+        Schema::dropIfExists('student_documents');
         Schema::dropIfExists('student_parents');
         Schema::dropIfExists('students');
     }

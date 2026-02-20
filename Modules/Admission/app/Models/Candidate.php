@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Modules\Admission\Enums\CandidateStatus;
-use Modules\Admission\Enums\Gender;
+use App\Enums\Gender;
 use Modules\Institution\Models\Institution;
 use Modules\Student\Models\Student;
 use Modules\User\Models\User;
@@ -25,15 +25,24 @@ class Candidate extends Model
         'registration_number',
         'internal_student_id',
         'nik',
+        'nisn',
         'name',
-        'gender',
         'pob',
         'dob',
-        'previous_school',
-        'nisn',
+        'gender',
+        'phone',
+        'email',
         'address',
-        'guardian_phone',
-        'guardian_email',
+        'rt',
+        'rw',
+        'province_code',
+        'city_code',
+        'district_code',
+        'village_code',
+        'postal_code',
+        'previous_school',
+        'previous_class',
+        'previous_school_address',
         'status',
         'student_id',
     ];
@@ -42,8 +51,8 @@ class Candidate extends Model
     {
         return [
             'dob' => 'date',
-            'status' => CandidateStatus::class,
-            'gender' => Gender::class,
+            'status' => CandidateStatus::class ,
+            'gender' => Gender::class ,
         ];
     }
 
@@ -153,7 +162,7 @@ class Candidate extends Model
 
         $lastNumber = 0;
         if ($lastCandidate && preg_match('/(\d+)$/', $lastCandidate->registration_number, $matches)) {
-            $lastNumber = (int) $matches[1];
+            $lastNumber = (int)$matches[1];
         }
 
         $nextNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
@@ -171,7 +180,7 @@ class Candidate extends Model
             return false;
         }
 
-        return $docs->every(fn ($doc) => $doc->is_valid === true);
+        return $docs->every(fn($doc) => $doc->is_valid === true);
     }
 
     /**

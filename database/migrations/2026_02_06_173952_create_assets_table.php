@@ -66,7 +66,7 @@ return new class extends Migration
             $table->integer('useful_life_years')->default(5);
 
             // Status Lifecycle
-            $table->enum('condition', ['baik', 'sedikit_ringan', 'rusak_berat']);
+            $table->enum('condition', ['baik', 'rusak_ringan', 'rusak_berat']);
             $table->enum('status', [
                 'aktif',       // Ada di tempat, siap pakai
                 'dipinjam',     // Sedang dipinjam

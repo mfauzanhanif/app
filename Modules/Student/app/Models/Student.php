@@ -42,10 +42,10 @@ class Student extends Model
         'address',
         'rt',
         'rw',
-        'village',
-        'district',
-        'city',
-        'province',
+        'province_code',
+        'city_code',
+        'district_code',
+        'village_code',
         'postal_code',
         'transportation',
         'residence_type',
@@ -65,9 +65,9 @@ class Student extends Model
             'join_date' => 'date',
             'graduate_date' => 'date',
             'distance_to_school' => 'decimal:2',
-            'status' => StudentStatus::class,
-            'blood_type' => BloodType::class,
-            'residence_type' => ResidenceType::class,
+            'status' => StudentStatus::class ,
+            'blood_type' => BloodType::class ,
+            'residence_type' => ResidenceType::class ,
         ];
     }
 
@@ -127,7 +127,7 @@ class Student extends Model
      */
     public function guardians(): BelongsToMany
     {
-        return $this->belongsToMany(Guardian::class, 'guardian_student')
+        return $this->belongsToMany(Guardian::class , 'guardian_student')
             ->withPivot(['relationship', 'is_legal_guardian', 'is_financial_guardian'])
             ->withTimestamps();
     }
@@ -146,6 +146,11 @@ class Student extends Model
     public function parents(): HasMany
     {
         return $this->hasMany(StudentParent::class);
+    }
+
+    public function documents(): HasMany
+    {
+        return $this->hasMany(StudentDocument::class);
     }
 
     public function father(): HasOne
@@ -190,10 +195,10 @@ class Student extends Model
 
         return $query->where(function (Builder $q) use ($search) {
             $q->where('name', 'like', "%{$search}%")
-              ->orWhere('nik', 'like', "%{$search}%")
-              ->orWhere('nisy', 'like', "%{$search}%")
-              ->orWhere('nis', 'like', "%{$search}%")
-              ->orWhere('nisn', 'like', "%{$search}%");
+                ->orWhere('nik', 'like', "%{$search}%")
+                ->orWhere('nisy', 'like', "%{$search}%")
+                ->orWhere('nis', 'like', "%{$search}%")
+                ->orWhere('nisn', 'like', "%{$search}%");
         });
     }
 
