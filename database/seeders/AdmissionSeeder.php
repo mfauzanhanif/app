@@ -70,6 +70,5 @@ class AdmissionSeeder extends Seeder
             );
         }
 
-        $this->command->info('AdmissionSeeder: Gelombang PSB berhasil dibuat untuk ' . $institutions->count() . ' lembaga.');
     }
 }
