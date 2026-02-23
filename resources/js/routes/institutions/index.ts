@@ -272,7 +272,7 @@ store.post = (args: { institution: string | number } | [institution: string | nu
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-export const show = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -287,7 +287,7 @@ show.definition = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-show.url = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions) => {
+show.url = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -315,7 +315,7 @@ show.url = (args: { institution: string | { code: string }, inst: string | numbe
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-show.get = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -324,7 +324,7 @@ show.get = (args: { institution: string | { code: string }, inst: string | numbe
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-show.head = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -334,7 +334,7 @@ show.head = (args: { institution: string | { code: string }, inst: string | numb
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-    const showForm = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const showForm = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: show.url(args, options),
         method: 'get',
     })
@@ -344,7 +344,7 @@ show.head = (args: { institution: string | { code: string }, inst: string | numb
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-        showForm.get = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showForm.get = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: show.url(args, options),
             method: 'get',
         })
@@ -353,7 +353,7 @@ show.head = (args: { institution: string | { code: string }, inst: string | numb
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-        showForm.head = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showForm.head = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: show.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -369,7 +369,7 @@ show.head = (args: { institution: string | { code: string }, inst: string | numb
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-export const edit = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -384,7 +384,7 @@ edit.definition = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-edit.url = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions) => {
+edit.url = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -412,7 +412,7 @@ edit.url = (args: { institution: string | { code: string }, inst: string | numbe
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-edit.get = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -421,7 +421,7 @@ edit.get = (args: { institution: string | { code: string }, inst: string | numbe
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-edit.head = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -431,7 +431,7 @@ edit.head = (args: { institution: string | { code: string }, inst: string | numb
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-    const editForm = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const editForm = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: edit.url(args, options),
         method: 'get',
     })
@@ -441,7 +441,7 @@ edit.head = (args: { institution: string | { code: string }, inst: string | numb
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-        editForm.get = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.get = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, options),
             method: 'get',
         })
@@ -450,7 +450,7 @@ edit.head = (args: { institution: string | { code: string }, inst: string | numb
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-        editForm.head = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.head = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -466,7 +466,7 @@ edit.head = (args: { institution: string | { code: string }, inst: string | numb
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-export const update = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -481,7 +481,7 @@ update.definition = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-update.url = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions) => {
+update.url = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -509,7 +509,7 @@ update.url = (args: { institution: string | { code: string }, inst: string | num
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-update.put = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -518,7 +518,7 @@ update.put = (args: { institution: string | { code: string }, inst: string | num
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-update.patch = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -528,7 +528,7 @@ update.patch = (args: { institution: string | { code: string }, inst: string | n
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-    const updateForm = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updateForm = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -543,7 +543,7 @@ update.patch = (args: { institution: string | { code: string }, inst: string | n
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-        updateForm.put = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.put = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -557,7 +557,7 @@ update.patch = (args: { institution: string | { code: string }, inst: string | n
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-        updateForm.patch = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.patch = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PATCH',
@@ -573,7 +573,7 @@ update.patch = (args: { institution: string | { code: string }, inst: string | n
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-export const destroy = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -588,7 +588,7 @@ destroy.definition = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-destroy.url = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions) => {
+destroy.url = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -616,7 +616,7 @@ destroy.url = (args: { institution: string | { code: string }, inst: string | nu
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-destroy.delete = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -626,7 +626,7 @@ destroy.delete = (args: { institution: string | { code: string }, inst: string |
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-    const destroyForm = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const destroyForm = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: destroy.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -641,7 +641,7 @@ destroy.delete = (args: { institution: string | { code: string }, inst: string |
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-        destroyForm.delete = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        destroyForm.delete = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: destroy.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',

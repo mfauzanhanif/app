@@ -320,7 +320,7 @@ export const store = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '/api/v1/institutions/{institution}'
  */
-const showf247ea6641e6e7b3fd674c5f9959f91e = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+const showf247ea6641e6e7b3fd674c5f9959f91e = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showf247ea6641e6e7b3fd674c5f9959f91e.url(args, options),
     method: 'get',
 })
@@ -335,7 +335,7 @@ showf247ea6641e6e7b3fd674c5f9959f91e.definition = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '/api/v1/institutions/{institution}'
  */
-showf247ea6641e6e7b3fd674c5f9959f91e.url = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions) => {
+showf247ea6641e6e7b3fd674c5f9959f91e.url = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { institution: args }
     }
@@ -368,7 +368,7 @@ showf247ea6641e6e7b3fd674c5f9959f91e.url = (args: { institution: string | { code
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '/api/v1/institutions/{institution}'
  */
-showf247ea6641e6e7b3fd674c5f9959f91e.get = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+showf247ea6641e6e7b3fd674c5f9959f91e.get = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showf247ea6641e6e7b3fd674c5f9959f91e.url(args, options),
     method: 'get',
 })
@@ -377,7 +377,7 @@ showf247ea6641e6e7b3fd674c5f9959f91e.get = (args: { institution: string | { code
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '/api/v1/institutions/{institution}'
  */
-showf247ea6641e6e7b3fd674c5f9959f91e.head = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+showf247ea6641e6e7b3fd674c5f9959f91e.head = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: showf247ea6641e6e7b3fd674c5f9959f91e.url(args, options),
     method: 'head',
 })
@@ -387,7 +387,7 @@ showf247ea6641e6e7b3fd674c5f9959f91e.head = (args: { institution: string | { cod
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '/api/v1/institutions/{institution}'
  */
-    const showf247ea6641e6e7b3fd674c5f9959f91eForm = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const showf247ea6641e6e7b3fd674c5f9959f91eForm = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: showf247ea6641e6e7b3fd674c5f9959f91e.url(args, options),
         method: 'get',
     })
@@ -397,7 +397,7 @@ showf247ea6641e6e7b3fd674c5f9959f91e.head = (args: { institution: string | { cod
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '/api/v1/institutions/{institution}'
  */
-        showf247ea6641e6e7b3fd674c5f9959f91eForm.get = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showf247ea6641e6e7b3fd674c5f9959f91eForm.get = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: showf247ea6641e6e7b3fd674c5f9959f91e.url(args, options),
             method: 'get',
         })
@@ -406,7 +406,7 @@ showf247ea6641e6e7b3fd674c5f9959f91e.head = (args: { institution: string | { cod
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '/api/v1/institutions/{institution}'
  */
-        showf247ea6641e6e7b3fd674c5f9959f91eForm.head = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showf247ea6641e6e7b3fd674c5f9959f91eForm.head = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: showf247ea6641e6e7b3fd674c5f9959f91e.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -422,7 +422,7 @@ showf247ea6641e6e7b3fd674c5f9959f91e.head = (args: { institution: string | { cod
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-const show07e8d969e1a6a5f0c5e5e32ee55138b6 = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+const show07e8d969e1a6a5f0c5e5e32ee55138b6 = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, options),
     method: 'get',
 })
@@ -437,7 +437,7 @@ show07e8d969e1a6a5f0c5e5e32ee55138b6.definition = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-show07e8d969e1a6a5f0c5e5e32ee55138b6.url = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions) => {
+show07e8d969e1a6a5f0c5e5e32ee55138b6.url = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -465,7 +465,7 @@ show07e8d969e1a6a5f0c5e5e32ee55138b6.url = (args: { institution: string | { code
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-show07e8d969e1a6a5f0c5e5e32ee55138b6.get = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show07e8d969e1a6a5f0c5e5e32ee55138b6.get = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, options),
     method: 'get',
 })
@@ -474,7 +474,7 @@ show07e8d969e1a6a5f0c5e5e32ee55138b6.get = (args: { institution: string | { code
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-show07e8d969e1a6a5f0c5e5e32ee55138b6.head = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show07e8d969e1a6a5f0c5e5e32ee55138b6.head = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, options),
     method: 'head',
 })
@@ -484,7 +484,7 @@ show07e8d969e1a6a5f0c5e5e32ee55138b6.head = (args: { institution: string | { cod
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-    const show07e8d969e1a6a5f0c5e5e32ee55138b6Form = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const show07e8d969e1a6a5f0c5e5e32ee55138b6Form = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: show07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, options),
         method: 'get',
     })
@@ -494,7 +494,7 @@ show07e8d969e1a6a5f0c5e5e32ee55138b6.head = (args: { institution: string | { cod
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-        show07e8d969e1a6a5f0c5e5e32ee55138b6Form.get = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        show07e8d969e1a6a5f0c5e5e32ee55138b6Form.get = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: show07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, options),
             method: 'get',
         })
@@ -503,7 +503,7 @@ show07e8d969e1a6a5f0c5e5e32ee55138b6.head = (args: { institution: string | { cod
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:60
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-        show07e8d969e1a6a5f0c5e5e32ee55138b6Form.head = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        show07e8d969e1a6a5f0c5e5e32ee55138b6Form.head = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: show07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -525,7 +525,7 @@ export const show = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '/api/v1/institutions/{institution}'
  */
-const updatef247ea6641e6e7b3fd674c5f9959f91e = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+const updatef247ea6641e6e7b3fd674c5f9959f91e = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updatef247ea6641e6e7b3fd674c5f9959f91e.url(args, options),
     method: 'put',
 })
@@ -540,7 +540,7 @@ updatef247ea6641e6e7b3fd674c5f9959f91e.definition = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '/api/v1/institutions/{institution}'
  */
-updatef247ea6641e6e7b3fd674c5f9959f91e.url = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions) => {
+updatef247ea6641e6e7b3fd674c5f9959f91e.url = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { institution: args }
     }
@@ -573,7 +573,7 @@ updatef247ea6641e6e7b3fd674c5f9959f91e.url = (args: { institution: string | { co
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '/api/v1/institutions/{institution}'
  */
-updatef247ea6641e6e7b3fd674c5f9959f91e.put = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+updatef247ea6641e6e7b3fd674c5f9959f91e.put = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updatef247ea6641e6e7b3fd674c5f9959f91e.url(args, options),
     method: 'put',
 })
@@ -582,7 +582,7 @@ updatef247ea6641e6e7b3fd674c5f9959f91e.put = (args: { institution: string | { co
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '/api/v1/institutions/{institution}'
  */
-updatef247ea6641e6e7b3fd674c5f9959f91e.patch = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+updatef247ea6641e6e7b3fd674c5f9959f91e.patch = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: updatef247ea6641e6e7b3fd674c5f9959f91e.url(args, options),
     method: 'patch',
 })
@@ -592,7 +592,7 @@ updatef247ea6641e6e7b3fd674c5f9959f91e.patch = (args: { institution: string | { 
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '/api/v1/institutions/{institution}'
  */
-    const updatef247ea6641e6e7b3fd674c5f9959f91eForm = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updatef247ea6641e6e7b3fd674c5f9959f91eForm = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: updatef247ea6641e6e7b3fd674c5f9959f91e.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -607,7 +607,7 @@ updatef247ea6641e6e7b3fd674c5f9959f91e.patch = (args: { institution: string | { 
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '/api/v1/institutions/{institution}'
  */
-        updatef247ea6641e6e7b3fd674c5f9959f91eForm.put = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updatef247ea6641e6e7b3fd674c5f9959f91eForm.put = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: updatef247ea6641e6e7b3fd674c5f9959f91e.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -621,7 +621,7 @@ updatef247ea6641e6e7b3fd674c5f9959f91e.patch = (args: { institution: string | { 
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '/api/v1/institutions/{institution}'
  */
-        updatef247ea6641e6e7b3fd674c5f9959f91eForm.patch = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updatef247ea6641e6e7b3fd674c5f9959f91eForm.patch = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: updatef247ea6641e6e7b3fd674c5f9959f91e.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PATCH',
@@ -637,7 +637,7 @@ updatef247ea6641e6e7b3fd674c5f9959f91e.patch = (args: { institution: string | { 
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-const update07e8d969e1a6a5f0c5e5e32ee55138b6 = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+const update07e8d969e1a6a5f0c5e5e32ee55138b6 = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, options),
     method: 'put',
 })
@@ -652,7 +652,7 @@ update07e8d969e1a6a5f0c5e5e32ee55138b6.definition = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-update07e8d969e1a6a5f0c5e5e32ee55138b6.url = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions) => {
+update07e8d969e1a6a5f0c5e5e32ee55138b6.url = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -680,7 +680,7 @@ update07e8d969e1a6a5f0c5e5e32ee55138b6.url = (args: { institution: string | { co
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-update07e8d969e1a6a5f0c5e5e32ee55138b6.put = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update07e8d969e1a6a5f0c5e5e32ee55138b6.put = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, options),
     method: 'put',
 })
@@ -689,7 +689,7 @@ update07e8d969e1a6a5f0c5e5e32ee55138b6.put = (args: { institution: string | { co
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-update07e8d969e1a6a5f0c5e5e32ee55138b6.patch = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update07e8d969e1a6a5f0c5e5e32ee55138b6.patch = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, options),
     method: 'patch',
 })
@@ -699,7 +699,7 @@ update07e8d969e1a6a5f0c5e5e32ee55138b6.patch = (args: { institution: string | { 
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-    const update07e8d969e1a6a5f0c5e5e32ee55138b6Form = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const update07e8d969e1a6a5f0c5e5e32ee55138b6Form = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -714,7 +714,7 @@ update07e8d969e1a6a5f0c5e5e32ee55138b6.patch = (args: { institution: string | { 
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-        update07e8d969e1a6a5f0c5e5e32ee55138b6Form.put = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        update07e8d969e1a6a5f0c5e5e32ee55138b6Form.put = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -728,7 +728,7 @@ update07e8d969e1a6a5f0c5e5e32ee55138b6.patch = (args: { institution: string | { 
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:91
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-        update07e8d969e1a6a5f0c5e5e32ee55138b6Form.patch = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        update07e8d969e1a6a5f0c5e5e32ee55138b6Form.patch = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PATCH',
@@ -750,7 +750,7 @@ export const update = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '/api/v1/institutions/{institution}'
  */
-const destroyf247ea6641e6e7b3fd674c5f9959f91e = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+const destroyf247ea6641e6e7b3fd674c5f9959f91e = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroyf247ea6641e6e7b3fd674c5f9959f91e.url(args, options),
     method: 'delete',
 })
@@ -765,7 +765,7 @@ destroyf247ea6641e6e7b3fd674c5f9959f91e.definition = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '/api/v1/institutions/{institution}'
  */
-destroyf247ea6641e6e7b3fd674c5f9959f91e.url = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions) => {
+destroyf247ea6641e6e7b3fd674c5f9959f91e.url = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { institution: args }
     }
@@ -798,7 +798,7 @@ destroyf247ea6641e6e7b3fd674c5f9959f91e.url = (args: { institution: string | { c
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '/api/v1/institutions/{institution}'
  */
-destroyf247ea6641e6e7b3fd674c5f9959f91e.delete = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroyf247ea6641e6e7b3fd674c5f9959f91e.delete = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroyf247ea6641e6e7b3fd674c5f9959f91e.url(args, options),
     method: 'delete',
 })
@@ -808,7 +808,7 @@ destroyf247ea6641e6e7b3fd674c5f9959f91e.delete = (args: { institution: string | 
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '/api/v1/institutions/{institution}'
  */
-    const destroyf247ea6641e6e7b3fd674c5f9959f91eForm = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const destroyf247ea6641e6e7b3fd674c5f9959f91eForm = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: destroyf247ea6641e6e7b3fd674c5f9959f91e.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -823,7 +823,7 @@ destroyf247ea6641e6e7b3fd674c5f9959f91e.delete = (args: { institution: string | 
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '/api/v1/institutions/{institution}'
  */
-        destroyf247ea6641e6e7b3fd674c5f9959f91eForm.delete = (args: { institution: string | { code: string } } | [institution: string | { code: string } ] | string | { code: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        destroyf247ea6641e6e7b3fd674c5f9959f91eForm.delete = (args: { institution: string | number | { code: string | number } } | [institution: string | number | { code: string | number } ] | string | number | { code: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: destroyf247ea6641e6e7b3fd674c5f9959f91e.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',
@@ -839,7 +839,7 @@ destroyf247ea6641e6e7b3fd674c5f9959f91e.delete = (args: { institution: string | 
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-const destroy07e8d969e1a6a5f0c5e5e32ee55138b6 = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+const destroy07e8d969e1a6a5f0c5e5e32ee55138b6 = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, options),
     method: 'delete',
 })
@@ -854,7 +854,7 @@ destroy07e8d969e1a6a5f0c5e5e32ee55138b6.definition = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-destroy07e8d969e1a6a5f0c5e5e32ee55138b6.url = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions) => {
+destroy07e8d969e1a6a5f0c5e5e32ee55138b6.url = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -882,7 +882,7 @@ destroy07e8d969e1a6a5f0c5e5e32ee55138b6.url = (args: { institution: string | { c
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-destroy07e8d969e1a6a5f0c5e5e32ee55138b6.delete = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy07e8d969e1a6a5f0c5e5e32ee55138b6.delete = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, options),
     method: 'delete',
 })
@@ -892,7 +892,7 @@ destroy07e8d969e1a6a5f0c5e5e32ee55138b6.delete = (args: { institution: string | 
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-    const destroy07e8d969e1a6a5f0c5e5e32ee55138b6Form = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const destroy07e8d969e1a6a5f0c5e5e32ee55138b6Form = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: destroy07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -907,7 +907,7 @@ destroy07e8d969e1a6a5f0c5e5e32ee55138b6.delete = (args: { institution: string | 
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:103
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}'
  */
-        destroy07e8d969e1a6a5f0c5e5e32ee55138b6Form.delete = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        destroy07e8d969e1a6a5f0c5e5e32ee55138b6Form.delete = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: destroy07e8d969e1a6a5f0c5e5e32ee55138b6.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',
@@ -1026,7 +1026,7 @@ create.head = (args: { institution: string | number } | [institution: string | n
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-export const edit = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -1041,7 +1041,7 @@ edit.definition = {
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-edit.url = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions) => {
+edit.url = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -1069,7 +1069,7 @@ edit.url = (args: { institution: string | { code: string }, inst: string | numbe
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-edit.get = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -1078,7 +1078,7 @@ edit.get = (args: { institution: string | { code: string }, inst: string | numbe
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-edit.head = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -1088,7 +1088,7 @@ edit.head = (args: { institution: string | { code: string }, inst: string | numb
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-    const editForm = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const editForm = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: edit.url(args, options),
         method: 'get',
     })
@@ -1098,7 +1098,7 @@ edit.head = (args: { institution: string | { code: string }, inst: string | numb
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-        editForm.get = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.get = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, options),
             method: 'get',
         })
@@ -1107,7 +1107,7 @@ edit.head = (args: { institution: string | { code: string }, inst: string | numb
  * @see Modules/Institution/app/Http/Controllers/InstitutionController.php:72
  * @route '//app.daraltauhid.test/{institution}/institutions/{inst}/edit'
  */
-        editForm.head = (args: { institution: string | { code: string }, inst: string | number } | [institution: string | { code: string }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.head = (args: { institution: string | number | { code: string | number }, inst: string | number } | [institution: string | number | { code: string | number }, inst: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',

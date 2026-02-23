@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:17
  * @route '/employees/{employee}/assignments'
  */
-export const store = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const store = (args: { employee: string | number | { id: string | number } } | [employee: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(args, options),
     method: 'post',
 })
@@ -19,7 +19,7 @@ store.definition = {
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:17
  * @route '/employees/{employee}/assignments'
  */
-store.url = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+store.url = (args: { employee: string | number | { id: string | number } } | [employee: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { employee: args }
     }
@@ -52,7 +52,7 @@ store.url = (args: { employee: number | { id: number } } | [employee: number | {
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:17
  * @route '/employees/{employee}/assignments'
  */
-store.post = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+store.post = (args: { employee: string | number | { id: string | number } } | [employee: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(args, options),
     method: 'post',
 })
@@ -62,7 +62,7 @@ store.post = (args: { employee: number | { id: number } } | [employee: number | 
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:17
  * @route '/employees/{employee}/assignments'
  */
-    const storeForm = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const storeForm = (args: { employee: string | number | { id: string | number } } | [employee: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: store.url(args, options),
         method: 'post',
     })
@@ -72,7 +72,7 @@ store.post = (args: { employee: number | { id: number } } | [employee: number | 
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:17
  * @route '/employees/{employee}/assignments'
  */
-        storeForm.post = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        storeForm.post = (args: { employee: string | number | { id: string | number } } | [employee: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: store.url(args, options),
             method: 'post',
         })
@@ -83,7 +83,7 @@ store.post = (args: { employee: number | { id: number } } | [employee: number | 
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:48
  * @route '/employees/{employee}/assignments/{assignment}'
  */
-export const update = (args: { employee: number | { id: number }, assignment: number | { id: number } } | [employee: number | { id: number }, assignment: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } } | [employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -98,7 +98,7 @@ update.definition = {
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:48
  * @route '/employees/{employee}/assignments/{assignment}'
  */
-update.url = (args: { employee: number | { id: number }, assignment: number | { id: number } } | [employee: number | { id: number }, assignment: number | { id: number } ], options?: RouteQueryOptions) => {
+update.url = (args: { employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } } | [employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     employee: args[0],
@@ -128,7 +128,7 @@ update.url = (args: { employee: number | { id: number }, assignment: number | { 
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:48
  * @route '/employees/{employee}/assignments/{assignment}'
  */
-update.put = (args: { employee: number | { id: number }, assignment: number | { id: number } } | [employee: number | { id: number }, assignment: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } } | [employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -138,7 +138,7 @@ update.put = (args: { employee: number | { id: number }, assignment: number | { 
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:48
  * @route '/employees/{employee}/assignments/{assignment}'
  */
-    const updateForm = (args: { employee: number | { id: number }, assignment: number | { id: number } } | [employee: number | { id: number }, assignment: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updateForm = (args: { employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } } | [employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -153,7 +153,7 @@ update.put = (args: { employee: number | { id: number }, assignment: number | { 
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:48
  * @route '/employees/{employee}/assignments/{assignment}'
  */
-        updateForm.put = (args: { employee: number | { id: number }, assignment: number | { id: number } } | [employee: number | { id: number }, assignment: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.put = (args: { employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } } | [employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -169,7 +169,7 @@ update.put = (args: { employee: number | { id: number }, assignment: number | { 
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:75
  * @route '/employees/{employee}/assignments/{assignment}'
  */
-export const destroy = (args: { employee: number | { id: number }, assignment: number | { id: number } } | [employee: number | { id: number }, assignment: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } } | [employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -184,7 +184,7 @@ destroy.definition = {
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:75
  * @route '/employees/{employee}/assignments/{assignment}'
  */
-destroy.url = (args: { employee: number | { id: number }, assignment: number | { id: number } } | [employee: number | { id: number }, assignment: number | { id: number } ], options?: RouteQueryOptions) => {
+destroy.url = (args: { employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } } | [employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     employee: args[0],
@@ -214,7 +214,7 @@ destroy.url = (args: { employee: number | { id: number }, assignment: number | {
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:75
  * @route '/employees/{employee}/assignments/{assignment}'
  */
-destroy.delete = (args: { employee: number | { id: number }, assignment: number | { id: number } } | [employee: number | { id: number }, assignment: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } } | [employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -224,7 +224,7 @@ destroy.delete = (args: { employee: number | { id: number }, assignment: number 
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:75
  * @route '/employees/{employee}/assignments/{assignment}'
  */
-    const destroyForm = (args: { employee: number | { id: number }, assignment: number | { id: number } } | [employee: number | { id: number }, assignment: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const destroyForm = (args: { employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } } | [employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: destroy.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -239,7 +239,7 @@ destroy.delete = (args: { employee: number | { id: number }, assignment: number 
  * @see Modules/Employee/app/Http/Controllers/EmployeeAssignmentController.php:75
  * @route '/employees/{employee}/assignments/{assignment}'
  */
-        destroyForm.delete = (args: { employee: number | { id: number }, assignment: number | { id: number } } | [employee: number | { id: number }, assignment: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        destroyForm.delete = (args: { employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } } | [employee: string | number | { id: string | number }, assignment: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: destroy.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',

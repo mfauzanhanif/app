@@ -82,7 +82,7 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
-export const showForm = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const showForm = (args: { wave: string | number | { id: string | number } } | [wave: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showForm.url(args, options),
     method: 'get',
 })
@@ -97,7 +97,7 @@ showForm.definition = {
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
-showForm.url = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+showForm.url = (args: { wave: string | number | { id: string | number } } | [wave: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { wave: args }
     }
@@ -130,7 +130,7 @@ showForm.url = (args: { wave: number | { id: number } } | [wave: number | { id: 
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
-showForm.get = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+showForm.get = (args: { wave: string | number | { id: string | number } } | [wave: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showForm.url(args, options),
     method: 'get',
 })
@@ -139,7 +139,7 @@ showForm.get = (args: { wave: number | { id: number } } | [wave: number | { id: 
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
-showForm.head = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+showForm.head = (args: { wave: string | number | { id: string | number } } | [wave: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: showForm.url(args, options),
     method: 'head',
 })
@@ -149,7 +149,7 @@ showForm.head = (args: { wave: number | { id: number } } | [wave: number | { id:
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
-    const showFormForm = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const showFormForm = (args: { wave: string | number | { id: string | number } } | [wave: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: showForm.url(args, options),
         method: 'get',
     })
@@ -159,7 +159,7 @@ showForm.head = (args: { wave: number | { id: number } } | [wave: number | { id:
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
-        showFormForm.get = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showFormForm.get = (args: { wave: string | number | { id: string | number } } | [wave: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: showForm.url(args, options),
             method: 'get',
         })
@@ -168,7 +168,7 @@ showForm.head = (args: { wave: number | { id: number } } | [wave: number | { id:
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
-        showFormForm.head = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showFormForm.head = (args: { wave: string | number | { id: string | number } } | [wave: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: showForm.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -184,7 +184,7 @@ showForm.head = (args: { wave: number | { id: number } } | [wave: number | { id:
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:57
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
-export const register = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const register = (args: { wave: string | number | { id: string | number } } | [wave: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: register.url(args, options),
     method: 'post',
 })
@@ -199,7 +199,7 @@ register.definition = {
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:57
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
-register.url = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+register.url = (args: { wave: string | number | { id: string | number } } | [wave: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { wave: args }
     }
@@ -232,7 +232,7 @@ register.url = (args: { wave: number | { id: number } } | [wave: number | { id: 
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:57
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
-register.post = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+register.post = (args: { wave: string | number | { id: string | number } } | [wave: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: register.url(args, options),
     method: 'post',
 })
@@ -242,7 +242,7 @@ register.post = (args: { wave: number | { id: number } } | [wave: number | { id:
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:57
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
-    const registerForm = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const registerForm = (args: { wave: string | number | { id: string | number } } | [wave: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: register.url(args, options),
         method: 'post',
     })
@@ -252,7 +252,7 @@ register.post = (args: { wave: number | { id: number } } | [wave: number | { id:
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:57
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
-        registerForm.post = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        registerForm.post = (args: { wave: string | number | { id: string | number } } | [wave: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: register.url(args, options),
             method: 'post',
         })
@@ -529,7 +529,7 @@ announcementLookup.post = (options?: RouteQueryOptions): RouteDefinition<'post'>
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:217
  * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
-export const uploadProof = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const uploadProof = (args: { invoice: string | number | { id: string | number } } | [invoice: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: uploadProof.url(args, options),
     method: 'post',
 })
@@ -544,7 +544,7 @@ uploadProof.definition = {
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:217
  * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
-uploadProof.url = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+uploadProof.url = (args: { invoice: string | number | { id: string | number } } | [invoice: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { invoice: args }
     }
@@ -577,7 +577,7 @@ uploadProof.url = (args: { invoice: number | { id: number } } | [invoice: number
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:217
  * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
-uploadProof.post = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+uploadProof.post = (args: { invoice: string | number | { id: string | number } } | [invoice: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: uploadProof.url(args, options),
     method: 'post',
 })
@@ -587,7 +587,7 @@ uploadProof.post = (args: { invoice: number | { id: number } } | [invoice: numbe
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:217
  * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
-    const uploadProofForm = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const uploadProofForm = (args: { invoice: string | number | { id: string | number } } | [invoice: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: uploadProof.url(args, options),
         method: 'post',
     })
@@ -597,7 +597,7 @@ uploadProof.post = (args: { invoice: number | { id: number } } | [invoice: numbe
  * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:217
  * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
-        uploadProofForm.post = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        uploadProofForm.post = (args: { invoice: string | number | { id: string | number } } | [invoice: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: uploadProof.url(args, options),
             method: 'post',
         })
