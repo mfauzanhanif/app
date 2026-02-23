@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
+import React, { useState } from 'react';
 import PsbLayout from '@/psb/layouts/psb-layout';
 
 // Types for pricing
@@ -564,7 +564,7 @@ function PersyaratanSection() {
 }
 
 function PricingSection({
-    registrationFees = [],
+    // registrationFees = [],
     monthlyFees = [],
 }: HomeProps) {
     const [pricingType, setPricingType] = useState<'pendaftaran' | 'syahriah'>(

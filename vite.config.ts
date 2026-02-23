@@ -9,12 +9,13 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/app.css', 
-                'resources/css/psb.css', 
-                'resources/css/misdt.css', 
-                'resources/js/app.tsx', 
-                'resources/js/psb.tsx', 
-                'resources/js/misdt.tsx'
+                'resources/css/app.css',
+                'resources/css/psb.css',
+                'resources/css/misdt.css',
+                'resources/css/ppdt.css',
+                'resources/js/app.tsx',
+                'resources/js/psb.tsx',
+                'resources/js/ppdt.tsx'
             ],
             ssr: 'resources/js/ssr.tsx',
             refresh: true,
