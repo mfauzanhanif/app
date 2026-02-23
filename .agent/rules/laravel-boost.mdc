@@ -1,0 +1,125 @@
+---
+alwaysApply: true
+---
+<laravel-boost-guidelines>
+=== foundation rules ===
+
+# Laravel Boost Guidelines
+
+The Laravel Boost guidelines are specifically curated by Laravel maintainers for this application. These guidelines should be followed closely to ensure the best experience when building Laravel applications.
+
+## Foundational Context
+
+This application is a **Modular Monolith** built for a **Shared Hosting** environment. Its main Laravel ecosystems package & versions are below. You are an expert with them all. Ensure you abide by these specific packages & versions.
+
+- php - 8.4.16
+- inertiajs/inertia-laravel (INERTIA) - v2
+- laravel/framework (LARAVEL) - v12
+- laravel/wayfinder (WAYFINDER) - v0
+- pestphp/pest (PEST) - v4
+- @inertiajs/react (INERTIA) - v2
+- react (REACT) - v19
+- tailwindcss (TAILWINDCSS) - v4
+- nwidart/laravel-modules (MODULAR)
+- spatie/laravel-permission (RBAC)
+
+## Skills Activation (CRITICAL!)
+
+This project relies heavily on domain-specific skills located in `.agent/skills/`. You MUST activate the relevant skill whenever you work in that domain:
+
+- `modules-index` — ALWAYS read this first to find out which business logic module (e.g., Finance, Academic, Admission) you should use for a task.
+- `database-schemas` — Activates when designing database tables, defining Eloquent relations, or handling `public_id` (NanoID) and `institution_id` (Multi-tenant).
+- `laravel-modules-artisan` — Activates whenever you need to generate a new file (Controller, Model, Test, etc). This app uses `php artisan module:make-...`, NOT standard `make:`.
+- `background-jobs-development` — Activates when writing heavy tasks (PDF generation, mass billing) to ensure it survives Shared Hosting limitations.
+- `wayfinder-development` — Activates whenever referencing backend routes in frontend components. DO NOT USE ZIGGY.
+- `pest-testing-development` — Tests applications using Pest 4 functional syntax (`it()`, `test()`). Do NOT use PHPUnit classes.
+- `inertia-react-development` — Develops Inertia v2 React applications. Activates when using `<Link>`, `<Form>`, or deferred props.
+- `tailwindcss-development` — Styles applications using Tailwind CSS v4 (`@theme`). Activates when styling UI. Prioritize Flowbite-React components.
+
+## Application Structure & Architecture
+
+- **CRITICAL**: Stick to the `nwidart/laravel-modules` directory structure (`Modules/`). Do not create controllers or models in the base `app/` folder unless it's a global core file.
+- Do not change the application's dependencies without approval.
+
+=== boost rules ===
+
+# Laravel Boost Tools
+
+- Laravel Boost is an MCP server that comes with powerful tools designed specifically for this application. Use them (e.g., `list-artisan-commands`, `tinker`, `database-query`, `search-docs`).
+- **Searching Documentation**: Boost comes with a powerful `search-docs` tool. Use it before guessing syntax for v12, Tailwind v4, or Inertia v2.
+
+=== php rules ===
+
+# PHP
+
+- Always use curly braces for control structures.
+- Use PHP 8 constructor property promotion in `__construct()`.
+- Always use explicit return type declarations for methods and functions.
+- Prefer PHPDoc blocks over inline comments.
+
+=== tests rules ===
+
+# Test Enforcement
+
+- Every change must be programmatically tested using **Pest**. 
+- Write tests in the respective Module's test folder (e.g., `Modules/Finance/Tests/`).
+
+=== inertia-laravel/v2 rules ===
+
+# Inertia v2
+
+- Use Inertia v2 features: deferred props, infinite scrolling, polling, prefetching.
+- When using deferred props, add an empty state with a pulsing or animated skeleton.
+- ALWAYS use `search-docs` tool for version-specific Inertia documentation.
+
+=== laravel/core rules ===
+
+# Do Things the Laravel Way (MODULAR MODIFIED)
+
+## Artisan & File Generation
+- **DO NOT** use standard `php artisan make:` commands for module files. 
+- You MUST use `php artisan module:make-...` (e.g., `module:make-controller`). Check the `laravel-modules-artisan` skill.
+- *Exception*: Database Migrations, Seeders, and Factories MUST be placed in the standard Laravel root folders (`database/migrations`). Use standard `make:migration` for these.
+
+## Database
+- Always use proper Eloquent relationship methods with return type hints.
+- Generate code that prevents N+1 query problems by using eager loading.
+- **Security**: For public URLs, route binding MUST use the `public_id` (NanoID) column, not the auto-increment `id`.
+
+## Authentication & Authorization
+- Use Laravel's built-in features and `spatie/laravel-permission`.
+
+## Queues (Shared Hosting)
+- Heavy operations MUST use queued jobs with the `ShouldQueue` interface.
+- Jobs MUST implement `chunk()` for database queries and define explicit `$timeout` to survive Shared Hosting environments. Check the `background-jobs-development` skill.
+
+=== laravel/v12 rules ===
+
+# Laravel 12
+
+- `bootstrap/app.php` is the file to register middleware, exceptions, and routing files.
+- The `app\Console\Kernel.php` file no longer exists.
+- Casts should be set in a `casts()` method on a model rather than the `$casts` property.
+
+=== wayfinder/core rules ===
+
+# Laravel Wayfinder
+
+- **CRITICAL**: This project DOES NOT use Ziggy. Do not use `route()`.
+- Import from `@/actions/` (controllers) or `@/routes/` (named routes).
+- Inertia: Use `.form()` with `<Form>` component.
+
+=== pint/core rules ===
+
+# Laravel Pint Code Formatter
+
+- You must run `vendor/bin/pint --dirty` before finalizing changes to ensure your code matches the project's expected style.
+
+=== pest/core rules ===
+
+## Pest
+
+- This project strictly uses Pest PHP. 
+- Run tests: `./vendor/bin/pest`.
+- IMPORTANT: Activate `pest-testing-development` for syntax rules.
+</laravel-boost-guidelines>
