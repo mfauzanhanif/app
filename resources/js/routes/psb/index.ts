@@ -81,7 +81,7 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     home.form = homeForm
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::form
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:48
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 export const form = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -96,7 +96,7 @@ form.definition = {
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::form
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:48
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 form.url = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -129,7 +129,7 @@ form.url = (args: { wave: number | { id: number } } | [wave: number | { id: numb
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::form
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:48
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 form.get = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -138,7 +138,7 @@ form.get = (args: { wave: number | { id: number } } | [wave: number | { id: numb
 })
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::form
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:48
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 form.head = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -148,7 +148,7 @@ form.head = (args: { wave: number | { id: number } } | [wave: number | { id: num
 
     /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::form
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:48
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
     const formForm = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -158,7 +158,7 @@ form.head = (args: { wave: number | { id: number } } | [wave: number | { id: num
 
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::form
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:48
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
         formForm.get = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -167,7 +167,7 @@ form.head = (args: { wave: number | { id: number } } | [wave: number | { id: num
         })
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::form
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:41
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:48
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
         formForm.head = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -183,7 +183,7 @@ form.head = (args: { wave: number | { id: number } } | [wave: number | { id: num
     form.form = formForm
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::register
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:57
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:64
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 export const register = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -198,7 +198,7 @@ register.definition = {
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::register
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:57
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:64
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 register.url = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -231,7 +231,7 @@ register.url = (args: { wave: number | { id: number } } | [wave: number | { id: 
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::register
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:57
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:64
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
 register.post = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -241,7 +241,7 @@ register.post = (args: { wave: number | { id: number } } | [wave: number | { id:
 
     /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::register
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:57
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:64
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
     const registerForm = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -251,7 +251,7 @@ register.post = (args: { wave: number | { id: number } } | [wave: number | { id:
 
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::register
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:57
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:64
  * @route '//psb.daraltauhid.test/daftar/{wave}'
  */
         registerForm.post = (args: { wave: number | { id: number } } | [wave: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -262,7 +262,7 @@ register.post = (args: { wave: number | { id: number } } | [wave: number | { id:
     register.form = registerForm
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:137
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:144
  * @route '//psb.daraltauhid.test/status'
  */
 export const status = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -277,7 +277,7 @@ status.definition = {
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:137
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:144
  * @route '//psb.daraltauhid.test/status'
  */
 status.url = (options?: RouteQueryOptions) => {
@@ -286,7 +286,7 @@ status.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:137
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:144
  * @route '//psb.daraltauhid.test/status'
  */
 status.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -295,7 +295,7 @@ status.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:137
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:144
  * @route '//psb.daraltauhid.test/status'
  */
 status.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -305,7 +305,7 @@ status.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:137
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:144
  * @route '//psb.daraltauhid.test/status'
  */
     const statusForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -315,7 +315,7 @@ status.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:137
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:144
  * @route '//psb.daraltauhid.test/status'
  */
         statusForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -324,7 +324,7 @@ status.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::status
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:137
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:144
  * @route '//psb.daraltauhid.test/status'
  */
         statusForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -340,7 +340,7 @@ status.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     status.form = statusForm
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:175
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:182
  * @route '//psb.daraltauhid.test/pengumuman'
  */
 export const announcement = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -355,7 +355,7 @@ announcement.definition = {
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:175
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:182
  * @route '//psb.daraltauhid.test/pengumuman'
  */
 announcement.url = (options?: RouteQueryOptions) => {
@@ -364,7 +364,7 @@ announcement.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:175
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:182
  * @route '//psb.daraltauhid.test/pengumuman'
  */
 announcement.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -373,7 +373,7 @@ announcement.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:175
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:182
  * @route '//psb.daraltauhid.test/pengumuman'
  */
 announcement.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -383,7 +383,7 @@ announcement.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:175
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:182
  * @route '//psb.daraltauhid.test/pengumuman'
  */
     const announcementForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -393,7 +393,7 @@ announcement.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:175
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:182
  * @route '//psb.daraltauhid.test/pengumuman'
  */
         announcementForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -402,7 +402,7 @@ announcement.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::announcement
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:175
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:182
  * @route '//psb.daraltauhid.test/pengumuman'
  */
         announcementForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -418,7 +418,7 @@ announcement.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     announcement.form = announcementForm
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::uploadProof
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:217
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:224
  * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
 export const uploadProof = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -433,7 +433,7 @@ uploadProof.definition = {
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::uploadProof
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:217
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:224
  * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
 uploadProof.url = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -466,7 +466,7 @@ uploadProof.url = (args: { invoice: number | { id: number } } | [invoice: number
 
 /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::uploadProof
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:217
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:224
  * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
 uploadProof.post = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -476,7 +476,7 @@ uploadProof.post = (args: { invoice: number | { id: number } } | [invoice: numbe
 
     /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::uploadProof
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:217
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:224
  * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
     const uploadProofForm = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -486,7 +486,7 @@ uploadProof.post = (args: { invoice: number | { id: number } } | [invoice: numbe
 
             /**
 * @see \Modules\Admission\Http\Controllers\AdmissionController::uploadProof
- * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:217
+ * @see Modules/Admission/app/Http/Controllers/AdmissionController.php:224
  * @route '//psb.daraltauhid.test/invoices/{invoice}/upload-proof'
  */
         uploadProofForm.post = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
