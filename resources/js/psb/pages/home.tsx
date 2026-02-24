@@ -1,5 +1,6 @@
 import { Link } from '@inertiajs/react';
 
+import Navbar from '@/psb/components/Navbar';
 import PsbLayout from '@/psb/layouts/psb-layout';
 import type { Wave } from '@/psb/types';
 import { formatCurrency, formatDate } from '@/psb/types';
@@ -18,27 +19,22 @@ interface HomeProps {
 }
 
 export default function Home({ waves, fees }: HomeProps) {
+    const firstWaveId = waves.length > 0 ? waves[0].id : null;
+    const daftarHref = firstWaveId ? `/daftar/${firstWaveId}` : '/#gelombang';
+
     return (
         <PsbLayout
             title="PSB Dar Al Tauhid — Penerimaan Santri Baru"
             hideFooter
+            navbar={<Navbar firstWaveId={firstWaveId} />}
         >
-            {/* ══════════ SECTION 1: HERO ══════════ */}
+            {/* ══════════ SECTION 1+2: HERO + BANNER (digabung) ══════════ */}
             <section className="relative overflow-hidden bg-linear-to-br from-emerald-600 via-emerald-700 to-teal-800">
+                {/* Dots background */}
                 <div className="pointer-events-none absolute inset-0 opacity-10">
-                    <svg
-                        className="h-full w-full"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
                         <defs>
-                            <pattern
-                                id="dots"
-                                x="0"
-                                y="0"
-                                width="40"
-                                height="40"
-                                patternUnits="userSpaceOnUse"
-                            >
+                            <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
                                 <circle cx="2" cy="2" r="1.5" fill="white" />
                             </pattern>
                         </defs>
@@ -46,7 +42,8 @@ export default function Home({ waves, fees }: HomeProps) {
                     </svg>
                 </div>
 
-                <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-2 lg:px-8">
+                {/* Hero content */}
+                <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 pt-16 pb-10 sm:px-6 md:pt-24 md:pb-16 lg:grid-cols-2 lg:px-8">
                     <div className="order-2 text-center lg:order-1 lg:text-left">
                         <span className="mb-6 inline-block cursor-default rounded-full bg-yellow-400 px-6 py-2 text-lg font-bold tracking-wider text-yellow-900 shadow-md transition hover:scale-105 md:text-xl">
                             Telah Dibuka!
@@ -62,41 +59,21 @@ export default function Home({ waves, fees }: HomeProps) {
                         </p>
 
                         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
-                            <a
-                                href="#gelombang"
+                            <Link
+                                href={daftarHref}
                                 className="inline-flex items-center justify-center rounded-lg border-2 border-white bg-white px-8 py-4 text-lg font-bold text-emerald-700 shadow-[0_0_20px_rgba(255,255,255,.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-emerald-50 hover:shadow-[0_0_25px_rgba(255,255,255,.5)]"
                             >
-                                <svg
-                                    className="mr-2 h-5 w-5"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                                    />
+                                <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                 </svg>
                                 Daftar Sekarang
-                            </a>
+                            </Link>
                             <Link
                                 href="/status"
                                 className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 bg-white/5 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/10"
                             >
-                                <svg
-                                    className="mr-2 h-5 w-5"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                    />
+                                <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 Cek Status
                             </Link>
@@ -116,66 +93,43 @@ export default function Home({ waves, fees }: HomeProps) {
                     </div>
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 z-10">
-                    <svg
-                        className="h-10 w-full md:h-14"
-                        viewBox="0 0 1440 54"
-                        fill="none"
-                        preserveAspectRatio="none"
-                    >
-                        <path
-                            d="M0 22L60 27C120 32 240 42 360 47C480 52 600 52 720 44C840 36 960 22 1080 17C1200 12 1320 17 1380 19L1440 22V54H0V22Z"
-                            fill="#f0fdf4"
-                        />
-                    </svg>
-                </div>
-            </section>
-
-            {/* ══════════ SECTION 2: INFO BANNER ══════════ */}
-            <section className="relative z-20 border-b border-emerald-200 bg-emerald-50">
-                <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-5 sm:px-6 md:flex-row lg:px-8">
-                    <div className="flex items-start text-center md:items-center md:text-left">
-                        <div className="mr-4 hidden h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-100 md:flex">
-                            <svg
-                                className="h-6 w-6 text-emerald-600"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                                />
-                            </svg>
+                {/* Info banner (di dalam section yang sama) */}
+                <div className="relative z-10 border-t border-emerald-500/40 bg-emerald-800/60 backdrop-blur-sm">
+                    <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-5 sm:px-6 md:flex-row lg:px-8">
+                        <div className="flex items-start text-center md:items-center md:text-left">
+                            <div className="mr-4 hidden h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-700 md:flex">
+                                <svg className="h-6 w-6 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p className="font-medium text-white">
+                                    Melayani Pendaftaran Offline di Kantor Pondok Pesantren
+                                </p>
+                                <p className="text-sm text-emerald-200">
+                                    Jam Operasional: 08.00 s.d. 15.00 WIB (Setiap Hari)
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <p className="font-medium text-emerald-800">
-                                Melayani Pendaftaran Offline di Kantor Pondok
-                                Pesantren
-                            </p>
-                            <p className="text-sm text-emerald-700">
-                                Jam Operasional: 08.00 s.d. 15.00 WIB (Setiap
-                                Hari)
-                            </p>
-                        </div>
-                    </div>
-                    <a
-                        href="https://wa.me/6285624568440"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex shrink-0 items-center rounded-lg bg-emerald-600 px-5 py-2.5 font-medium text-white shadow-sm transition hover:bg-emerald-700"
-                    >
-                        <svg
-                            className="mr-2 h-5 w-5"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
+                        <a
+                            href="https://wa.me/6285624568440"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex shrink-0 items-center rounded-lg bg-white px-5 py-2.5 font-medium text-emerald-700 shadow-sm transition hover:bg-emerald-50"
                         >
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                        </svg>
-                        Hubungi via WhatsApp
-                    </a>
+                            <svg className="mr-2 h-5 w-5 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            Hubungi via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                {/* Wave divider */}
+                <div className="relative z-10">
+                    <svg className="h-10 w-full md:h-14" viewBox="0 0 1440 54" fill="none" preserveAspectRatio="none">
+                        <path d="M0 22L60 27C120 32 240 42 360 47C480 52 600 52 720 44C840 36 960 22 1080 17C1200 12 1320 17 1380 19L1440 22V54H0V22Z" fill="#f0fdf4" />
+                    </svg>
                 </div>
             </section>
 
@@ -589,11 +543,12 @@ export default function Home({ waves, fees }: HomeProps) {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="mb-12 text-center">
                         <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl md:text-4xl">
-                            Daftar Sekarang
+                            Tunggu Apa Lagi?<br />
+                            <span className="text-emerald-600">Daftarkan Putra-Putri Anda Sekarang!</span>
                         </h2>
                         <p className="mx-auto mt-3 max-w-2xl text-gray-500">
                             Pilih gelombang pendaftaran dan segera daftarkan
-                            putra‑putri Anda
+                            putra‑putri Anda untuk tahun ajaran 2026–2027
                         </p>
                     </div>
 
@@ -675,8 +630,8 @@ export default function Home({ waves, fees }: HomeProps) {
                                             <div className="text-2xl font-extrabold text-emerald-600">
                                                 {wave.registration_fee > 0
                                                     ? formatCurrency(
-                                                          wave.registration_fee,
-                                                      )
+                                                        wave.registration_fee,
+                                                    )
                                                     : 'Gratis'}
                                             </div>
                                         </div>
@@ -705,26 +660,36 @@ export default function Home({ waves, fees }: HomeProps) {
                         </div>
                     )}
 
-                    {/* WhatsApp CTA */}
-                    <div className="mt-12 text-center">
-                        <p className="mb-4 text-gray-500">
-                            Ada pertanyaan? Hubungi kami langsung
+                    {/* CTA bawah */}
+                    <div className="mt-12 rounded-2xl bg-linear-to-br from-emerald-600 to-teal-700 p-8 text-center shadow-xl md:p-10">
+                        <h3 className="text-2xl font-bold text-white md:text-3xl">
+                            Tunggu Apa Lagi?
+                        </h3>
+                        <p className="mx-auto mt-3 max-w-xl text-emerald-100">
+                            Daftarkan putra-putri Anda sekarang dan raih masa depan yang lebih cerah bersama Pondok Pesantren Dar Al Tauhid.
                         </p>
-                        <a
-                            href="https://wa.me/6285624568440"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center rounded-lg border-2 border-emerald-600 px-8 py-3 text-lg font-semibold text-emerald-700 transition hover:bg-emerald-50"
-                        >
-                            <svg
-                                className="mr-2 h-6 w-6"
-                                fill="currentColor"
-                                viewBox="0 0 24 24"
+                        <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                            <Link
+                                href={daftarHref}
+                                className="inline-flex items-center rounded-lg border-2 border-white bg-white px-8 py-3 text-lg font-bold text-emerald-700 shadow-md transition hover:-translate-y-1 hover:bg-emerald-50"
                             >
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                            </svg>
-                            Tanya via WhatsApp
-                        </a>
+                                <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                                Daftar Sekarang
+                            </Link>
+                            <a
+                                href="https://wa.me/6285624568440"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center rounded-lg border-2 border-white/50 bg-white/10 px-8 py-3 text-lg font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+                            >
+                                <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                                </svg>
+                                Hubungi via WA
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>

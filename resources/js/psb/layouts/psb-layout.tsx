@@ -8,18 +8,20 @@ interface PsbLayoutProps {
     children: ReactNode;
     title?: string;
     hideFooter?: boolean;
+    navbar?: ReactNode;
 }
 
 export default function PsbLayout({
     children,
     title,
     hideFooter,
+    navbar,
 }: PsbLayoutProps) {
     return (
         <>
             <Head title={title} />
             <div className="flex min-h-screen flex-col bg-linear-to-br from-emerald-50 via-white to-amber-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
-                <Navbar />
+                {navbar ? navbar : <Navbar />}
                 <main className="flex-1">{children}</main>
                 {!hideFooter && <Footer />}
             </div>

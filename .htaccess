@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Meneruskan header authorization (Krusial untuk autentikasi API/Sanctum)
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+    # Menyembunyikan daftar direktori jika index file tidak ditemukan
+    Options -Indexes
+
+    # Mengabaikan aturan ini jika request sudah mengarah ke dalam folder /public/
+    RewriteCond %{REQUEST_URI} !^/public/
+
+    # Mengarahkan semua request ke folder public
+    RewriteRule ^(.*)$ public/$1 [L,QSA]
+</IfModule>
