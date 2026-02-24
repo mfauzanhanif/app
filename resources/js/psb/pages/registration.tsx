@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Head, router } from '@inertiajs/react';
-import PsbLayout from '../layouts/psb-layout';
-import { Card, Button, Spinner } from 'flowbite-react';
+import { useState } from 'react';
+import { router, usePage } from '@inertiajs/react';
 
-// Import subcomponents
+import PsbLayout from '@/psb/layouts/psb-layout';
+import type { Wave } from '@/psb/types';
+
 import StepIndicator from '@/psb/components/registration/StepIndicator';
 import Step1Santri from '@/psb/components/registration/Step1Santri';
 import Step2Parents from '@/psb/components/registration/Step2Parents';
@@ -12,70 +12,56 @@ import Step4Documents from '@/psb/components/registration/Step4Documents';
 import Step5Review from '@/psb/components/registration/Step5Review';
 import Success from '@/psb/components/registration/Success';
 
-// Note: For a real app, combine the typings in a separate types file or within context
-export default function Registration() {
+interface RegistrationProps {
+    wave: Wave;
+}
+
+export default function Registration({ wave }: RegistrationProps) {
+    const { flash } = usePage<{
+        flash?: { success?: string; error?: string };
+    }>().props;
     const [currentStep, setCurrentStep] = useState(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
-    // Initial state matching all merged fields
     const [data, setData] = useState<any>({
-        // Santri
-        full_name: '',
+        // Santri — match StoreCandidateRequest
+        name: '',
         nik: '',
         nisn: '',
-        place_of_birth: '',
-        date_of_birth: '',
+        pob: '',
+        dob: '',
         gender: '',
-        child_number: '',
-        total_siblings: '',
-        province_id: '',
-        regency_id: '',
-        district_id: '',
-        village_id: '',
-        address_street: '',
+        address: '',
         // Parents
         father_name: '',
         father_life_status: 'alive',
         father_education: '',
-        father_has_pesantren: false,
-        father_pesantren_name: '',
         father_job: '',
-        father_job_other: '',
         father_phone: '',
-        father_no_whatsapp: false,
+        father_income: '',
         mother_name: '',
         mother_life_status: 'alive',
         mother_education: '',
-        mother_has_pesantren: false,
-        mother_pesantren_name: '',
         mother_job: '',
-        mother_job_other: '',
         mother_phone: '',
-        mother_no_whatsapp: false,
+        mother_income: '',
         wali_type: 'father',
         guardian_name: '',
-        guardian_life_status: 'alive',
-        guardian_education: '',
-        guardian_has_pesantren: false,
-        guardian_pesantren_name: '',
         guardian_job: '',
-        guardian_job_other: '',
         guardian_phone: '',
-        guardian_no_whatsapp: false,
+        guardian_education: '',
+        guardian_income: '',
         // School
-        previous_school_level: '',
-        previous_school_name: '',
-        target_school: '',
-        target_class: '',
-        // Documents
-        kartu_keluarga: null,
-        akta_kelahiran: null,
-        ktp_ortu: null,
-        ijazah: null,
-        kartu_nisn: null,
-        kip_kis: null,
-        pas_foto: null,
+        previous_school: '',
+        // Documents — keys match backend validation (documents.kk, documents.akta_lahir, etc.)
+        kk: null as File | null,
+        akta_lahir: null as File | null,
+        ktp_ortu: null as File | null,
+        ijazah: null as File | null,
+        foto: null as File | null,
+        skl: null as File | null,
+        kip: null as File | null,
     });
 
     const [errors, setErrors] = useState<Record<string, string>>({});
@@ -84,32 +70,29 @@ export default function Registration() {
         setData((prev: any) => ({ ...prev, [field]: value }));
         if (errors[field]) {
             setErrors((prev) => {
-                const newErrors = { ...prev };
-                delete newErrors[field];
-                return newErrors;
+                const next = { ...prev };
+                delete next[field];
+                return next;
             });
         }
     };
 
     const nextStep = () => {
-        // Validate current step before proceeding
         const newErrors: Record<string, string> = {};
 
-        // Simplified validation logic for demonstration
         if (currentStep === 1) {
-            if (!data.full_name) newErrors.full_name = 'Nama wajib diisi';
-            if (!data.nik) newErrors.nik = 'NIK wajib diisi';
-            if (!data.place_of_birth)
-                newErrors.place_of_birth = 'Tempat lahir wajib diisi';
+            if (!data.name) newErrors.name = 'Nama wajib diisi';
+            if (!data.nik || data.nik.length !== 16)
+                newErrors.nik = 'NIK harus 16 digit';
+            if (!data.pob) newErrors.pob = 'Tempat lahir wajib diisi';
+            if (!data.dob) newErrors.dob = 'Tanggal lahir wajib diisi';
+            if (!data.gender) newErrors.gender = 'Jenis kelamin wajib dipilih';
+            if (!data.address) newErrors.address = 'Alamat wajib diisi';
         } else if (currentStep === 2) {
             if (!data.father_name)
                 newErrors.father_name = 'Nama ayah wajib diisi';
             if (!data.mother_name)
                 newErrors.mother_name = 'Nama ibu wajib diisi';
-        } else if (currentStep === 3) {
-            if (!data.previous_school_level)
-                newErrors.previous_school_level = 'Wajib dipilih';
-            if (!data.target_school) newErrors.target_school = 'Wajib dipilih';
         }
 
         if (Object.keys(newErrors).length > 0) {
@@ -127,40 +110,123 @@ export default function Registration() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const submitForm = async () => {
+    const submitForm = () => {
         setIsSubmitting(true);
-        // Simulate an API POST request delay
-        setTimeout(() => {
-            setIsSubmitting(false);
-            setIsSuccess(true);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 1500);
 
-        // Actual implementation would be:
-        /*
-        router.post('/psb/registration', data, {
-            onSuccess: () => setIsSuccess(true),
-            onError: (errs) => setErrors(errs as any),
-            onFinish: () => setIsSubmitting(false)
+        // Build FormData matching StoreCandidateRequest exactly
+        const formData = new FormData();
+
+        formData.append('name', data.name);
+        formData.append('nik', data.nik);
+        if (data.nisn) formData.append('nisn', data.nisn);
+        formData.append('gender', data.gender);
+        formData.append('pob', data.pob);
+        formData.append('dob', data.dob);
+        formData.append('address', data.address);
+        if (data.previous_school)
+            formData.append('previous_school', data.previous_school);
+
+        // Parents array — match 'parents.*.type/name/phone/last_education/job/income/is_alive/is_guardian'
+        const parents: Record<string, any>[] = [];
+
+        if (data.father_name) {
+            parents.push({
+                type: 'ayah',
+                name: data.father_name,
+                phone: data.father_phone || null,
+                last_education: data.father_education || null,
+                job: data.father_job || null,
+                income: data.father_income || null,
+                is_alive: data.father_life_status === 'alive' ? '1' : '0',
+                is_guardian: data.wali_type === 'father' ? '1' : '0',
+            });
+        }
+
+        if (data.mother_name) {
+            parents.push({
+                type: 'ibu',
+                name: data.mother_name,
+                phone: data.mother_phone || null,
+                last_education: data.mother_education || null,
+                job: data.mother_job || null,
+                income: data.mother_income || null,
+                is_alive: data.mother_life_status === 'alive' ? '1' : '0',
+                is_guardian: data.wali_type === 'mother' ? '1' : '0',
+            });
+        }
+
+        if (data.wali_type === 'other' && data.guardian_name) {
+            parents.push({
+                type: 'wali',
+                name: data.guardian_name,
+                phone: data.guardian_phone || null,
+                last_education: data.guardian_education || null,
+                job: data.guardian_job || null,
+                income: data.guardian_income || null,
+                is_alive: '1',
+                is_guardian: '1',
+            });
+        }
+
+        parents.forEach((parent, idx) => {
+            Object.entries(parent).forEach(([key, val]) => {
+                if (val !== null && val !== undefined) {
+                    formData.append(`parents[${idx}][${key}]`, String(val));
+                }
+            });
         });
-        */
+
+        // Documents — keys match backend: documents.kk, documents.akta_lahir, etc.
+        const docKeys = [
+            'kk',
+            'akta_lahir',
+            'ktp_ortu',
+            'ijazah',
+            'foto',
+            'skl',
+            'kip',
+        ] as const;
+        docKeys.forEach((key) => {
+            if (data[key]) {
+                formData.append(`documents[${key}]`, data[key]);
+            }
+        });
+
+        router.post(`/daftar/${wave.id}`, formData, {
+            forceFormData: true,
+            onSuccess: () => {
+                setIsSuccess(true);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            },
+            onError: (errs) => {
+                setErrors(errs as Record<string, string>);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            },
+            onFinish: () => setIsSubmitting(false),
+        });
     };
 
     return (
-        <PsbLayout title="Pendaftaran Santri Baru - Dar Al Tauhid">
-            {/* Background Header Decoration */}
-            <div className='bg-dat-primary bg-[url(&apos;data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&apos;)] absolute top-0 left-0 -z-10 h-64 w-full md:h-80'></div>
+        <PsbLayout title="Pendaftaran Santri Baru — Dar Al Tauhid">
+            {/* Background Header */}
+            <div className="pointer-events-none absolute top-0 left-0 -z-10 h-64 w-full bg-emerald-700 md:h-80" />
 
-            <div className="mx-auto mt-16 max-w-4xl px-4 py-10 pt-8 sm:px-6 md:mt-24 lg:px-8">
+            <div className="mx-auto mt-16 max-w-4xl px-4 pt-8 pb-10 sm:px-6 md:mt-24 lg:px-8">
                 {!isSuccess && (
-                    <div className="animate-fade-in relative z-10 mb-8 text-center">
-                        <h2 className="mb-2 text-2xl font-extrabold text-white drop-shadow-md md:text-4xl">
+                    <div className="relative z-10 mb-8 text-center">
+                        <h1 className="mb-2 text-2xl font-extrabold text-white drop-shadow-md md:text-4xl">
                             Formulir Pendaftaran
-                        </h2>
-                        <p className="text-sm text-green-100 drop-shadow-sm md:text-base">
-                            Lengkapi data pendaftaran dengan benar dan sesuai
-                            dokumen asli
+                        </h1>
+                        <p className="text-sm text-emerald-100 drop-shadow-sm md:text-base">
+                            {wave.name} — {wave.institution.name}
                         </p>
+                    </div>
+                )}
+
+                {/* Flash */}
+                {flash?.success && (
+                    <div className="relative z-10 mb-6 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-emerald-800">
+                        <p className="text-sm font-medium">{flash.success}</p>
                     </div>
                 )}
 
@@ -169,11 +235,10 @@ export default function Registration() {
                         <Success data={data} />
                     </div>
                 ) : (
-                    <Card className="animate-fade-in-up relative z-10 overflow-hidden border-0 shadow-2xl">
+                    <div className="relative z-10 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl">
                         <StepIndicator currentStep={currentStep} />
 
-                        <div className="p-1">
-                            {/* Render Steps Based on currentStep */}
+                        <div className="p-4 md:p-6">
                             {currentStep === 1 && (
                                 <Step1Santri
                                     data={data}
@@ -204,14 +269,14 @@ export default function Registration() {
                             )}
                             {currentStep === 5 && <Step5Review data={data} />}
 
-                            {/* Standard Navigation Footer */}
+                            {/* Navigation Footer */}
                             <div className="mt-10 flex items-center justify-between border-t border-gray-100 pt-5">
                                 {currentStep > 1 ? (
-                                    <Button
-                                        color="light"
+                                    <button
+                                        type="button"
                                         onClick={prevStep}
                                         disabled={isSubmitting}
-                                        className="px-4 transition-transform active:scale-95"
+                                        className="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 active:scale-95 disabled:opacity-50"
                                     >
                                         <svg
                                             className="mr-2 h-5 w-5"
@@ -222,21 +287,22 @@ export default function Registration() {
                                             <path
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
-                                                strokeWidth="2"
+                                                strokeWidth={2}
                                                 d="M15 19l-7-7 7-7"
                                             />
                                         </svg>
                                         Kembali
-                                    </Button>
+                                    </button>
                                 ) : (
-                                    <div></div>
+                                    <div />
                                 )}
 
                                 {currentStep < 5 ? (
-                                    <Button
+                                    <button
+                                        type="button"
                                         onClick={nextStep}
-                                        className="bg-dat-primary hover:bg-dat-secondary px-6 text-white shadow-md transition-transform active:scale-95"
                                         disabled={isSubmitting}
+                                        className="inline-flex items-center rounded-lg bg-emerald-600 px-6 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-emerald-700 active:scale-95 disabled:opacity-50"
                                     >
                                         Selanjutnya
                                         <svg
@@ -248,24 +314,39 @@ export default function Registration() {
                                             <path
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
-                                                strokeWidth="2"
+                                                strokeWidth={2}
                                                 d="M9 5l7 7-7 7"
                                             />
                                         </svg>
-                                    </Button>
+                                    </button>
                                 ) : (
-                                    <Button
+                                    <button
+                                        type="button"
                                         onClick={submitForm}
-                                        className="bg-green-600 px-8 text-white shadow-md transition-transform hover:bg-green-700 active:scale-95"
                                         disabled={isSubmitting}
+                                        className="inline-flex items-center rounded-lg bg-emerald-600 px-8 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-emerald-700 active:scale-95 disabled:opacity-50"
                                     >
                                         {isSubmitting ? (
                                             <>
-                                                <Spinner
-                                                    size="sm"
-                                                    light={true}
-                                                    className="mr-2"
-                                                />
+                                                <svg
+                                                    className="mr-2 h-5 w-5 animate-spin"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <circle
+                                                        className="opacity-25"
+                                                        cx="12"
+                                                        cy="12"
+                                                        r="10"
+                                                        stroke="currentColor"
+                                                        strokeWidth="4"
+                                                    />
+                                                    <path
+                                                        className="opacity-75"
+                                                        fill="currentColor"
+                                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                                                    />
+                                                </svg>
                                                 Memproses...
                                             </>
                                         ) : (
@@ -279,18 +360,18 @@ export default function Registration() {
                                                     <path
                                                         strokeLinecap="round"
                                                         strokeLinejoin="round"
-                                                        strokeWidth="2"
+                                                        strokeWidth={2}
                                                         d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
                                                     />
                                                 </svg>
                                                 Kirim Pendaftaran
                                             </>
                                         )}
-                                    </Button>
+                                    </button>
                                 )}
                             </div>
                         </div>
-                    </Card>
+                    </div>
                 )}
             </div>
         </PsbLayout>

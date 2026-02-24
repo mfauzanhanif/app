@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Web\MISDTController::beranda
- * @see app/Http/Controllers/Web/MISDTController.php:16
+ * @see app/Http/Controllers/Web/MISDTController.php:13
  * @route '//mis.daraltauhid.test/'
  */
 export const beranda = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ beranda.definition = {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::beranda
- * @see app/Http/Controllers/Web/MISDTController.php:16
+ * @see app/Http/Controllers/Web/MISDTController.php:13
  * @route '//mis.daraltauhid.test/'
  */
 beranda.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ beranda.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::beranda
- * @see app/Http/Controllers/Web/MISDTController.php:16
+ * @see app/Http/Controllers/Web/MISDTController.php:13
  * @route '//mis.daraltauhid.test/'
  */
 beranda.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ beranda.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Web\MISDTController::beranda
- * @see app/Http/Controllers/Web/MISDTController.php:16
+ * @see app/Http/Controllers/Web/MISDTController.php:13
  * @route '//mis.daraltauhid.test/'
  */
 beranda.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,7 +44,7 @@ beranda.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Web\MISDTController::beranda
- * @see app/Http/Controllers/Web/MISDTController.php:16
+ * @see app/Http/Controllers/Web/MISDTController.php:13
  * @route '//mis.daraltauhid.test/'
  */
     const berandaForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -54,7 +54,7 @@ beranda.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Web\MISDTController::beranda
- * @see app/Http/Controllers/Web/MISDTController.php:16
+ * @see app/Http/Controllers/Web/MISDTController.php:13
  * @route '//mis.daraltauhid.test/'
  */
         berandaForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -63,7 +63,7 @@ beranda.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Web\MISDTController::beranda
- * @see app/Http/Controllers/Web/MISDTController.php:16
+ * @see app/Http/Controllers/Web/MISDTController.php:13
  * @route '//mis.daraltauhid.test/'
  */
         berandaForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -79,7 +79,7 @@ beranda.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     beranda.form = berandaForm
 /**
 * @see \App\Http\Controllers\Web\MISDTController::profil
- * @see app/Http/Controllers/Web/MISDTController.php:22
+ * @see app/Http/Controllers/Web/MISDTController.php:19
  * @route '//mis.daraltauhid.test/profil'
  */
 export const profil = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -94,7 +94,7 @@ profil.definition = {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::profil
- * @see app/Http/Controllers/Web/MISDTController.php:22
+ * @see app/Http/Controllers/Web/MISDTController.php:19
  * @route '//mis.daraltauhid.test/profil'
  */
 profil.url = (options?: RouteQueryOptions) => {
@@ -103,7 +103,7 @@ profil.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::profil
- * @see app/Http/Controllers/Web/MISDTController.php:22
+ * @see app/Http/Controllers/Web/MISDTController.php:19
  * @route '//mis.daraltauhid.test/profil'
  */
 profil.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -112,7 +112,7 @@ profil.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Web\MISDTController::profil
- * @see app/Http/Controllers/Web/MISDTController.php:22
+ * @see app/Http/Controllers/Web/MISDTController.php:19
  * @route '//mis.daraltauhid.test/profil'
  */
 profil.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -122,7 +122,7 @@ profil.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Web\MISDTController::profil
- * @see app/Http/Controllers/Web/MISDTController.php:22
+ * @see app/Http/Controllers/Web/MISDTController.php:19
  * @route '//mis.daraltauhid.test/profil'
  */
     const profilForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -132,7 +132,7 @@ profil.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Web\MISDTController::profil
- * @see app/Http/Controllers/Web/MISDTController.php:22
+ * @see app/Http/Controllers/Web/MISDTController.php:19
  * @route '//mis.daraltauhid.test/profil'
  */
         profilForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -141,7 +141,7 @@ profil.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Web\MISDTController::profil
- * @see app/Http/Controllers/Web/MISDTController.php:22
+ * @see app/Http/Controllers/Web/MISDTController.php:19
  * @route '//mis.daraltauhid.test/profil'
  */
         profilForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -157,7 +157,7 @@ profil.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     profil.form = profilForm
 /**
 * @see \App\Http\Controllers\Web\MISDTController::program
- * @see app/Http/Controllers/Web/MISDTController.php:27
+ * @see app/Http/Controllers/Web/MISDTController.php:24
  * @route '//mis.daraltauhid.test/program'
  */
 export const program = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -172,7 +172,7 @@ program.definition = {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::program
- * @see app/Http/Controllers/Web/MISDTController.php:27
+ * @see app/Http/Controllers/Web/MISDTController.php:24
  * @route '//mis.daraltauhid.test/program'
  */
 program.url = (options?: RouteQueryOptions) => {
@@ -181,7 +181,7 @@ program.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::program
- * @see app/Http/Controllers/Web/MISDTController.php:27
+ * @see app/Http/Controllers/Web/MISDTController.php:24
  * @route '//mis.daraltauhid.test/program'
  */
 program.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -190,7 +190,7 @@ program.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Web\MISDTController::program
- * @see app/Http/Controllers/Web/MISDTController.php:27
+ * @see app/Http/Controllers/Web/MISDTController.php:24
  * @route '//mis.daraltauhid.test/program'
  */
 program.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -200,7 +200,7 @@ program.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Web\MISDTController::program
- * @see app/Http/Controllers/Web/MISDTController.php:27
+ * @see app/Http/Controllers/Web/MISDTController.php:24
  * @route '//mis.daraltauhid.test/program'
  */
     const programForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -210,7 +210,7 @@ program.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Web\MISDTController::program
- * @see app/Http/Controllers/Web/MISDTController.php:27
+ * @see app/Http/Controllers/Web/MISDTController.php:24
  * @route '//mis.daraltauhid.test/program'
  */
         programForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -219,7 +219,7 @@ program.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Web\MISDTController::program
- * @see app/Http/Controllers/Web/MISDTController.php:27
+ * @see app/Http/Controllers/Web/MISDTController.php:24
  * @route '//mis.daraltauhid.test/program'
  */
         programForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -235,7 +235,7 @@ program.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     program.form = programForm
 /**
 * @see \App\Http\Controllers\Web\MISDTController::fasilitas
- * @see app/Http/Controllers/Web/MISDTController.php:32
+ * @see app/Http/Controllers/Web/MISDTController.php:29
  * @route '//mis.daraltauhid.test/fasilitas'
  */
 export const fasilitas = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -250,7 +250,7 @@ fasilitas.definition = {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::fasilitas
- * @see app/Http/Controllers/Web/MISDTController.php:32
+ * @see app/Http/Controllers/Web/MISDTController.php:29
  * @route '//mis.daraltauhid.test/fasilitas'
  */
 fasilitas.url = (options?: RouteQueryOptions) => {
@@ -259,7 +259,7 @@ fasilitas.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::fasilitas
- * @see app/Http/Controllers/Web/MISDTController.php:32
+ * @see app/Http/Controllers/Web/MISDTController.php:29
  * @route '//mis.daraltauhid.test/fasilitas'
  */
 fasilitas.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -268,7 +268,7 @@ fasilitas.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Web\MISDTController::fasilitas
- * @see app/Http/Controllers/Web/MISDTController.php:32
+ * @see app/Http/Controllers/Web/MISDTController.php:29
  * @route '//mis.daraltauhid.test/fasilitas'
  */
 fasilitas.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -278,7 +278,7 @@ fasilitas.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Web\MISDTController::fasilitas
- * @see app/Http/Controllers/Web/MISDTController.php:32
+ * @see app/Http/Controllers/Web/MISDTController.php:29
  * @route '//mis.daraltauhid.test/fasilitas'
  */
     const fasilitasForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -288,7 +288,7 @@ fasilitas.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Web\MISDTController::fasilitas
- * @see app/Http/Controllers/Web/MISDTController.php:32
+ * @see app/Http/Controllers/Web/MISDTController.php:29
  * @route '//mis.daraltauhid.test/fasilitas'
  */
         fasilitasForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -297,7 +297,7 @@ fasilitas.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Web\MISDTController::fasilitas
- * @see app/Http/Controllers/Web/MISDTController.php:32
+ * @see app/Http/Controllers/Web/MISDTController.php:29
  * @route '//mis.daraltauhid.test/fasilitas'
  */
         fasilitasForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -313,7 +313,7 @@ fasilitas.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     fasilitas.form = fasilitasForm
 /**
 * @see \App\Http\Controllers\Web\MISDTController::ppdb
- * @see app/Http/Controllers/Web/MISDTController.php:37
+ * @see app/Http/Controllers/Web/MISDTController.php:34
  * @route '//mis.daraltauhid.test/ppdb'
  */
 export const ppdb = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -328,7 +328,7 @@ ppdb.definition = {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::ppdb
- * @see app/Http/Controllers/Web/MISDTController.php:37
+ * @see app/Http/Controllers/Web/MISDTController.php:34
  * @route '//mis.daraltauhid.test/ppdb'
  */
 ppdb.url = (options?: RouteQueryOptions) => {
@@ -337,7 +337,7 @@ ppdb.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::ppdb
- * @see app/Http/Controllers/Web/MISDTController.php:37
+ * @see app/Http/Controllers/Web/MISDTController.php:34
  * @route '//mis.daraltauhid.test/ppdb'
  */
 ppdb.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -346,7 +346,7 @@ ppdb.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Web\MISDTController::ppdb
- * @see app/Http/Controllers/Web/MISDTController.php:37
+ * @see app/Http/Controllers/Web/MISDTController.php:34
  * @route '//mis.daraltauhid.test/ppdb'
  */
 ppdb.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -356,7 +356,7 @@ ppdb.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Web\MISDTController::ppdb
- * @see app/Http/Controllers/Web/MISDTController.php:37
+ * @see app/Http/Controllers/Web/MISDTController.php:34
  * @route '//mis.daraltauhid.test/ppdb'
  */
     const ppdbForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -366,7 +366,7 @@ ppdb.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Web\MISDTController::ppdb
- * @see app/Http/Controllers/Web/MISDTController.php:37
+ * @see app/Http/Controllers/Web/MISDTController.php:34
  * @route '//mis.daraltauhid.test/ppdb'
  */
         ppdbForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -375,7 +375,7 @@ ppdb.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Web\MISDTController::ppdb
- * @see app/Http/Controllers/Web/MISDTController.php:37
+ * @see app/Http/Controllers/Web/MISDTController.php:34
  * @route '//mis.daraltauhid.test/ppdb'
  */
         ppdbForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -391,7 +391,7 @@ ppdb.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     ppdb.form = ppdbForm
 /**
 * @see \App\Http\Controllers\Web\MISDTController::kontak
- * @see app/Http/Controllers/Web/MISDTController.php:42
+ * @see app/Http/Controllers/Web/MISDTController.php:39
  * @route '//mis.daraltauhid.test/kontak'
  */
 export const kontak = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -406,7 +406,7 @@ kontak.definition = {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::kontak
- * @see app/Http/Controllers/Web/MISDTController.php:42
+ * @see app/Http/Controllers/Web/MISDTController.php:39
  * @route '//mis.daraltauhid.test/kontak'
  */
 kontak.url = (options?: RouteQueryOptions) => {
@@ -415,7 +415,7 @@ kontak.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::kontak
- * @see app/Http/Controllers/Web/MISDTController.php:42
+ * @see app/Http/Controllers/Web/MISDTController.php:39
  * @route '//mis.daraltauhid.test/kontak'
  */
 kontak.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -424,7 +424,7 @@ kontak.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Web\MISDTController::kontak
- * @see app/Http/Controllers/Web/MISDTController.php:42
+ * @see app/Http/Controllers/Web/MISDTController.php:39
  * @route '//mis.daraltauhid.test/kontak'
  */
 kontak.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -434,7 +434,7 @@ kontak.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Web\MISDTController::kontak
- * @see app/Http/Controllers/Web/MISDTController.php:42
+ * @see app/Http/Controllers/Web/MISDTController.php:39
  * @route '//mis.daraltauhid.test/kontak'
  */
     const kontakForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -444,7 +444,7 @@ kontak.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Web\MISDTController::kontak
- * @see app/Http/Controllers/Web/MISDTController.php:42
+ * @see app/Http/Controllers/Web/MISDTController.php:39
  * @route '//mis.daraltauhid.test/kontak'
  */
         kontakForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -453,7 +453,7 @@ kontak.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Web\MISDTController::kontak
- * @see app/Http/Controllers/Web/MISDTController.php:42
+ * @see app/Http/Controllers/Web/MISDTController.php:39
  * @route '//mis.daraltauhid.test/kontak'
  */
         kontakForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -469,7 +469,7 @@ kontak.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     kontak.form = kontakForm
 /**
 * @see \App\Http\Controllers\Web\MISDTController::bio
- * @see app/Http/Controllers/Web/MISDTController.php:47
+ * @see app/Http/Controllers/Web/MISDTController.php:44
  * @route '//mis.daraltauhid.test/bio'
  */
 export const bio = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -484,7 +484,7 @@ bio.definition = {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::bio
- * @see app/Http/Controllers/Web/MISDTController.php:47
+ * @see app/Http/Controllers/Web/MISDTController.php:44
  * @route '//mis.daraltauhid.test/bio'
  */
 bio.url = (options?: RouteQueryOptions) => {
@@ -493,7 +493,7 @@ bio.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Web\MISDTController::bio
- * @see app/Http/Controllers/Web/MISDTController.php:47
+ * @see app/Http/Controllers/Web/MISDTController.php:44
  * @route '//mis.daraltauhid.test/bio'
  */
 bio.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -502,7 +502,7 @@ bio.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Web\MISDTController::bio
- * @see app/Http/Controllers/Web/MISDTController.php:47
+ * @see app/Http/Controllers/Web/MISDTController.php:44
  * @route '//mis.daraltauhid.test/bio'
  */
 bio.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -512,7 +512,7 @@ bio.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Web\MISDTController::bio
- * @see app/Http/Controllers/Web/MISDTController.php:47
+ * @see app/Http/Controllers/Web/MISDTController.php:44
  * @route '//mis.daraltauhid.test/bio'
  */
     const bioForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -522,7 +522,7 @@ bio.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Web\MISDTController::bio
- * @see app/Http/Controllers/Web/MISDTController.php:47
+ * @see app/Http/Controllers/Web/MISDTController.php:44
  * @route '//mis.daraltauhid.test/bio'
  */
         bioForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -531,7 +531,7 @@ bio.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Web\MISDTController::bio
- * @see app/Http/Controllers/Web/MISDTController.php:47
+ * @see app/Http/Controllers/Web/MISDTController.php:44
  * @route '//mis.daraltauhid.test/bio'
  */
         bioForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

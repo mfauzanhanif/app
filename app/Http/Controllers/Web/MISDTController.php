@@ -1,18 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class MISDTController extends Controller
 {
-    public function __construct()
-    {
-        Inertia::setRootView('misdt');
-    }
     public function beranda(): Response
     {
         // View components usually map directly to the location assuming resolvePageComponent handles it.

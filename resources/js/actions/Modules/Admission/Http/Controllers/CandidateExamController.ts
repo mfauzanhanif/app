@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:20
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams'
  */
-export const index = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const index = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(args, options),
     method: 'get',
 })
@@ -19,7 +19,7 @@ index.definition = {
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:20
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams'
  */
-index.url = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
+index.url = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -47,7 +47,7 @@ index.url = (args: { institution: string | number, candidate: string | number | 
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:20
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams'
  */
-index.get = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+index.get = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(args, options),
     method: 'get',
 })
@@ -56,7 +56,7 @@ index.get = (args: { institution: string | number, candidate: string | number | 
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:20
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams'
  */
-index.head = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+index.head = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(args, options),
     method: 'head',
 })
@@ -66,7 +66,7 @@ index.head = (args: { institution: string | number, candidate: string | number |
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:20
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams'
  */
-    const indexForm = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const indexForm = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: index.url(args, options),
         method: 'get',
     })
@@ -76,7 +76,7 @@ index.head = (args: { institution: string | number, candidate: string | number |
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:20
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams'
  */
-        indexForm.get = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        indexForm.get = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: index.url(args, options),
             method: 'get',
         })
@@ -85,7 +85,7 @@ index.head = (args: { institution: string | number, candidate: string | number |
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:20
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams'
  */
-        indexForm.head = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        indexForm.head = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: index.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -101,7 +101,7 @@ index.head = (args: { institution: string | number, candidate: string | number |
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:38
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams'
  */
-export const store = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const store = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(args, options),
     method: 'post',
 })
@@ -116,7 +116,7 @@ store.definition = {
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:38
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams'
  */
-store.url = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
+store.url = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -144,7 +144,7 @@ store.url = (args: { institution: string | number, candidate: string | number | 
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:38
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams'
  */
-store.post = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+store.post = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(args, options),
     method: 'post',
 })
@@ -154,7 +154,7 @@ store.post = (args: { institution: string | number, candidate: string | number |
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:38
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams'
  */
-    const storeForm = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const storeForm = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: store.url(args, options),
         method: 'post',
     })
@@ -164,7 +164,7 @@ store.post = (args: { institution: string | number, candidate: string | number |
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:38
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams'
  */
-        storeForm.post = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        storeForm.post = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: store.url(args, options),
             method: 'post',
         })
@@ -175,7 +175,7 @@ store.post = (args: { institution: string | number, candidate: string | number |
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:55
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams/{exam}'
  */
-export const update = (args: { institution: string | number, candidate: string | number | { id: string | number }, exam: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number }, exam: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { institution: string | number, candidate: number | { id: number }, exam: number | { id: number } } | [institution: string | number, candidate: number | { id: number }, exam: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -190,7 +190,7 @@ update.definition = {
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:55
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams/{exam}'
  */
-update.url = (args: { institution: string | number, candidate: string | number | { id: string | number }, exam: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number }, exam: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
+update.url = (args: { institution: string | number, candidate: number | { id: number }, exam: number | { id: number } } | [institution: string | number, candidate: number | { id: number }, exam: number | { id: number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -223,7 +223,7 @@ update.url = (args: { institution: string | number, candidate: string | number |
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:55
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams/{exam}'
  */
-update.put = (args: { institution: string | number, candidate: string | number | { id: string | number }, exam: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number }, exam: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { institution: string | number, candidate: number | { id: number }, exam: number | { id: number } } | [institution: string | number, candidate: number | { id: number }, exam: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -233,7 +233,7 @@ update.put = (args: { institution: string | number, candidate: string | number |
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:55
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams/{exam}'
  */
-    const updateForm = (args: { institution: string | number, candidate: string | number | { id: string | number }, exam: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number }, exam: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updateForm = (args: { institution: string | number, candidate: number | { id: number }, exam: number | { id: number } } | [institution: string | number, candidate: number | { id: number }, exam: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -248,7 +248,7 @@ update.put = (args: { institution: string | number, candidate: string | number |
  * @see Modules/Admission/app/Http/Controllers/CandidateExamController.php:55
  * @route '//app.daraltauhid.test/{institution}/candidates/{candidate}/exams/{exam}'
  */
-        updateForm.put = (args: { institution: string | number, candidate: string | number | { id: string | number }, exam: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number }, exam: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.put = (args: { institution: string | number, candidate: number | { id: number }, exam: number | { id: number } } | [institution: string | number, candidate: number | { id: number }, exam: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',

@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\RegionController::getProvinces
- * @see app/Http/Controllers/RegionController.php:18
+ * @see app/Http/Controllers/RegionController.php:21
  * @route '/api/v1/location/provinces'
  */
 export const getProvinces = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ getProvinces.definition = {
 
 /**
 * @see \App\Http\Controllers\RegionController::getProvinces
- * @see app/Http/Controllers/RegionController.php:18
+ * @see app/Http/Controllers/RegionController.php:21
  * @route '/api/v1/location/provinces'
  */
 getProvinces.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ getProvinces.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\RegionController::getProvinces
- * @see app/Http/Controllers/RegionController.php:18
+ * @see app/Http/Controllers/RegionController.php:21
  * @route '/api/v1/location/provinces'
  */
 getProvinces.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ getProvinces.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\RegionController::getProvinces
- * @see app/Http/Controllers/RegionController.php:18
+ * @see app/Http/Controllers/RegionController.php:21
  * @route '/api/v1/location/provinces'
  */
 getProvinces.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,7 +44,7 @@ getProvinces.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\RegionController::getProvinces
- * @see app/Http/Controllers/RegionController.php:18
+ * @see app/Http/Controllers/RegionController.php:21
  * @route '/api/v1/location/provinces'
  */
     const getProvincesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -54,7 +54,7 @@ getProvinces.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\RegionController::getProvinces
- * @see app/Http/Controllers/RegionController.php:18
+ * @see app/Http/Controllers/RegionController.php:21
  * @route '/api/v1/location/provinces'
  */
         getProvincesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -63,7 +63,7 @@ getProvinces.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\RegionController::getProvinces
- * @see app/Http/Controllers/RegionController.php:18
+ * @see app/Http/Controllers/RegionController.php:21
  * @route '/api/v1/location/provinces'
  */
         getProvincesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -79,7 +79,7 @@ getProvinces.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     getProvinces.form = getProvincesForm
 /**
 * @see \App\Http\Controllers\RegionController::getCities
- * @see app/Http/Controllers/RegionController.php:28
+ * @see app/Http/Controllers/RegionController.php:33
  * @route '/api/v1/location/cities'
  */
 export const getCities = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -94,7 +94,7 @@ getCities.definition = {
 
 /**
 * @see \App\Http\Controllers\RegionController::getCities
- * @see app/Http/Controllers/RegionController.php:28
+ * @see app/Http/Controllers/RegionController.php:33
  * @route '/api/v1/location/cities'
  */
 getCities.url = (options?: RouteQueryOptions) => {
@@ -103,7 +103,7 @@ getCities.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\RegionController::getCities
- * @see app/Http/Controllers/RegionController.php:28
+ * @see app/Http/Controllers/RegionController.php:33
  * @route '/api/v1/location/cities'
  */
 getCities.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -112,7 +112,7 @@ getCities.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\RegionController::getCities
- * @see app/Http/Controllers/RegionController.php:28
+ * @see app/Http/Controllers/RegionController.php:33
  * @route '/api/v1/location/cities'
  */
 getCities.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -122,7 +122,7 @@ getCities.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\RegionController::getCities
- * @see app/Http/Controllers/RegionController.php:28
+ * @see app/Http/Controllers/RegionController.php:33
  * @route '/api/v1/location/cities'
  */
     const getCitiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -132,7 +132,7 @@ getCities.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\RegionController::getCities
- * @see app/Http/Controllers/RegionController.php:28
+ * @see app/Http/Controllers/RegionController.php:33
  * @route '/api/v1/location/cities'
  */
         getCitiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -141,7 +141,7 @@ getCities.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\RegionController::getCities
- * @see app/Http/Controllers/RegionController.php:28
+ * @see app/Http/Controllers/RegionController.php:33
  * @route '/api/v1/location/cities'
  */
         getCitiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -157,7 +157,7 @@ getCities.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     getCities.form = getCitiesForm
 /**
 * @see \App\Http\Controllers\RegionController::getDistricts
- * @see app/Http/Controllers/RegionController.php:46
+ * @see app/Http/Controllers/RegionController.php:53
  * @route '/api/v1/location/districts'
  */
 export const getDistricts = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -172,7 +172,7 @@ getDistricts.definition = {
 
 /**
 * @see \App\Http\Controllers\RegionController::getDistricts
- * @see app/Http/Controllers/RegionController.php:46
+ * @see app/Http/Controllers/RegionController.php:53
  * @route '/api/v1/location/districts'
  */
 getDistricts.url = (options?: RouteQueryOptions) => {
@@ -181,7 +181,7 @@ getDistricts.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\RegionController::getDistricts
- * @see app/Http/Controllers/RegionController.php:46
+ * @see app/Http/Controllers/RegionController.php:53
  * @route '/api/v1/location/districts'
  */
 getDistricts.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -190,7 +190,7 @@ getDistricts.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\RegionController::getDistricts
- * @see app/Http/Controllers/RegionController.php:46
+ * @see app/Http/Controllers/RegionController.php:53
  * @route '/api/v1/location/districts'
  */
 getDistricts.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -200,7 +200,7 @@ getDistricts.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\RegionController::getDistricts
- * @see app/Http/Controllers/RegionController.php:46
+ * @see app/Http/Controllers/RegionController.php:53
  * @route '/api/v1/location/districts'
  */
     const getDistrictsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -210,7 +210,7 @@ getDistricts.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\RegionController::getDistricts
- * @see app/Http/Controllers/RegionController.php:46
+ * @see app/Http/Controllers/RegionController.php:53
  * @route '/api/v1/location/districts'
  */
         getDistrictsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -219,7 +219,7 @@ getDistricts.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\RegionController::getDistricts
- * @see app/Http/Controllers/RegionController.php:46
+ * @see app/Http/Controllers/RegionController.php:53
  * @route '/api/v1/location/districts'
  */
         getDistrictsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -235,7 +235,7 @@ getDistricts.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     getDistricts.form = getDistrictsForm
 /**
 * @see \App\Http\Controllers\RegionController::getVillages
- * @see app/Http/Controllers/RegionController.php:64
+ * @see app/Http/Controllers/RegionController.php:73
  * @route '/api/v1/location/villages'
  */
 export const getVillages = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -250,7 +250,7 @@ getVillages.definition = {
 
 /**
 * @see \App\Http\Controllers\RegionController::getVillages
- * @see app/Http/Controllers/RegionController.php:64
+ * @see app/Http/Controllers/RegionController.php:73
  * @route '/api/v1/location/villages'
  */
 getVillages.url = (options?: RouteQueryOptions) => {
@@ -259,7 +259,7 @@ getVillages.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\RegionController::getVillages
- * @see app/Http/Controllers/RegionController.php:64
+ * @see app/Http/Controllers/RegionController.php:73
  * @route '/api/v1/location/villages'
  */
 getVillages.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -268,7 +268,7 @@ getVillages.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\RegionController::getVillages
- * @see app/Http/Controllers/RegionController.php:64
+ * @see app/Http/Controllers/RegionController.php:73
  * @route '/api/v1/location/villages'
  */
 getVillages.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -278,7 +278,7 @@ getVillages.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\RegionController::getVillages
- * @see app/Http/Controllers/RegionController.php:64
+ * @see app/Http/Controllers/RegionController.php:73
  * @route '/api/v1/location/villages'
  */
     const getVillagesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -288,7 +288,7 @@ getVillages.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\RegionController::getVillages
- * @see app/Http/Controllers/RegionController.php:64
+ * @see app/Http/Controllers/RegionController.php:73
  * @route '/api/v1/location/villages'
  */
         getVillagesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -297,7 +297,7 @@ getVillages.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\RegionController::getVillages
- * @see app/Http/Controllers/RegionController.php:64
+ * @see app/Http/Controllers/RegionController.php:73
  * @route '/api/v1/location/villages'
  */
         getVillagesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

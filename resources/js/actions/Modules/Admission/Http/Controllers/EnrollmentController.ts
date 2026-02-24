@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
  * @see Modules/Admission/app/Http/Controllers/EnrollmentController.php:21
  * @route '//app.daraltauhid.test/{institution}/enrollment/{candidate}/migrate'
  */
-export const migrate = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const migrate = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: migrate.url(args, options),
     method: 'post',
 })
@@ -19,7 +19,7 @@ migrate.definition = {
  * @see Modules/Admission/app/Http/Controllers/EnrollmentController.php:21
  * @route '//app.daraltauhid.test/{institution}/enrollment/{candidate}/migrate'
  */
-migrate.url = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
+migrate.url = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -47,7 +47,7 @@ migrate.url = (args: { institution: string | number, candidate: string | number 
  * @see Modules/Admission/app/Http/Controllers/EnrollmentController.php:21
  * @route '//app.daraltauhid.test/{institution}/enrollment/{candidate}/migrate'
  */
-migrate.post = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+migrate.post = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: migrate.url(args, options),
     method: 'post',
 })
@@ -57,7 +57,7 @@ migrate.post = (args: { institution: string | number, candidate: string | number
  * @see Modules/Admission/app/Http/Controllers/EnrollmentController.php:21
  * @route '//app.daraltauhid.test/{institution}/enrollment/{candidate}/migrate'
  */
-    const migrateForm = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const migrateForm = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: migrate.url(args, options),
         method: 'post',
     })
@@ -67,7 +67,7 @@ migrate.post = (args: { institution: string | number, candidate: string | number
  * @see Modules/Admission/app/Http/Controllers/EnrollmentController.php:21
  * @route '//app.daraltauhid.test/{institution}/enrollment/{candidate}/migrate'
  */
-        migrateForm.post = (args: { institution: string | number, candidate: string | number | { id: string | number } } | [institution: string | number, candidate: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        migrateForm.post = (args: { institution: string | number, candidate: number | { id: number } } | [institution: string | number, candidate: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: migrate.url(args, options),
             method: 'post',
         })

@@ -19,13 +19,32 @@ class HandleInertiaRequests extends Middleware
 
     /**
      * Dynamically set the root template based on the domain.
+     *
+     * Domain → Blade root view mapping:
+     * - psb.*             → 'psb'
+     * - PPDT_DOMAIN       → 'ppdt'
+     * - MISDT_DOMAIN      → 'misdt'
+     * - default           → 'app'
      */
     public function rootView(Request $request): string
     {
         $host = $request->getHost();
 
+        // Subdomain-based portals
         if (str_starts_with($host, 'psb.')) {
             return 'psb';
+        }
+
+        // MISDT domain (e.g. mis.daraltauhid.test)
+        $misdtDomain = env('MISDT_DOMAIN');
+        if ($misdtDomain && $host === $misdtDomain) {
+            return 'misdt';
+        }
+
+        // Direct domain for PPDT public profile
+        $ppdtDomain = env('PPDT_DOMAIN', 'daraltauhid.com');
+        if ($host === $ppdtDomain || $host === 'www.' . $ppdtDomain) {
+            return 'ppdt';
         }
 
         return $this->rootView;

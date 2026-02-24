@@ -101,7 +101,7 @@ index.head = (args: { institution: string | number } | [institution: string | nu
  * @see Modules/Admission/app/Http/Controllers/AdmissionInvoiceController.php:42
  * @route '//app.daraltauhid.test/{institution}/admission-invoices/{invoice}/verify'
  */
-export const verify = (args: { institution: string | number, invoice: string | number | { id: string | number } } | [institution: string | number, invoice: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const verify = (args: { institution: string | number, invoice: number | { id: number } } | [institution: string | number, invoice: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: verify.url(args, options),
     method: 'put',
 })
@@ -116,7 +116,7 @@ verify.definition = {
  * @see Modules/Admission/app/Http/Controllers/AdmissionInvoiceController.php:42
  * @route '//app.daraltauhid.test/{institution}/admission-invoices/{invoice}/verify'
  */
-verify.url = (args: { institution: string | number, invoice: string | number | { id: string | number } } | [institution: string | number, invoice: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
+verify.url = (args: { institution: string | number, invoice: number | { id: number } } | [institution: string | number, invoice: number | { id: number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -144,7 +144,7 @@ verify.url = (args: { institution: string | number, invoice: string | number | {
  * @see Modules/Admission/app/Http/Controllers/AdmissionInvoiceController.php:42
  * @route '//app.daraltauhid.test/{institution}/admission-invoices/{invoice}/verify'
  */
-verify.put = (args: { institution: string | number, invoice: string | number | { id: string | number } } | [institution: string | number, invoice: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+verify.put = (args: { institution: string | number, invoice: number | { id: number } } | [institution: string | number, invoice: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: verify.url(args, options),
     method: 'put',
 })
@@ -154,7 +154,7 @@ verify.put = (args: { institution: string | number, invoice: string | number | {
  * @see Modules/Admission/app/Http/Controllers/AdmissionInvoiceController.php:42
  * @route '//app.daraltauhid.test/{institution}/admission-invoices/{invoice}/verify'
  */
-    const verifyForm = (args: { institution: string | number, invoice: string | number | { id: string | number } } | [institution: string | number, invoice: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const verifyForm = (args: { institution: string | number, invoice: number | { id: number } } | [institution: string | number, invoice: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: verify.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -169,7 +169,7 @@ verify.put = (args: { institution: string | number, invoice: string | number | {
  * @see Modules/Admission/app/Http/Controllers/AdmissionInvoiceController.php:42
  * @route '//app.daraltauhid.test/{institution}/admission-invoices/{invoice}/verify'
  */
-        verifyForm.put = (args: { institution: string | number, invoice: string | number | { id: string | number } } | [institution: string | number, invoice: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        verifyForm.put = (args: { institution: string | number, invoice: number | { id: number } } | [institution: string | number, invoice: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: verify.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -185,7 +185,7 @@ verify.put = (args: { institution: string | number, invoice: string | number | {
  * @see Modules/Admission/app/Http/Controllers/AdmissionInvoiceController.php:54
  * @route '//app.daraltauhid.test/{institution}/admission-invoices/{invoice}/cancel'
  */
-export const cancel = (args: { institution: string | number, invoice: string | number | { id: string | number } } | [institution: string | number, invoice: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const cancel = (args: { institution: string | number, invoice: number | { id: number } } | [institution: string | number, invoice: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: cancel.url(args, options),
     method: 'put',
 })
@@ -200,7 +200,7 @@ cancel.definition = {
  * @see Modules/Admission/app/Http/Controllers/AdmissionInvoiceController.php:54
  * @route '//app.daraltauhid.test/{institution}/admission-invoices/{invoice}/cancel'
  */
-cancel.url = (args: { institution: string | number, invoice: string | number | { id: string | number } } | [institution: string | number, invoice: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
+cancel.url = (args: { institution: string | number, invoice: number | { id: number } } | [institution: string | number, invoice: number | { id: number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -228,7 +228,7 @@ cancel.url = (args: { institution: string | number, invoice: string | number | {
  * @see Modules/Admission/app/Http/Controllers/AdmissionInvoiceController.php:54
  * @route '//app.daraltauhid.test/{institution}/admission-invoices/{invoice}/cancel'
  */
-cancel.put = (args: { institution: string | number, invoice: string | number | { id: string | number } } | [institution: string | number, invoice: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+cancel.put = (args: { institution: string | number, invoice: number | { id: number } } | [institution: string | number, invoice: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: cancel.url(args, options),
     method: 'put',
 })
@@ -238,7 +238,7 @@ cancel.put = (args: { institution: string | number, invoice: string | number | {
  * @see Modules/Admission/app/Http/Controllers/AdmissionInvoiceController.php:54
  * @route '//app.daraltauhid.test/{institution}/admission-invoices/{invoice}/cancel'
  */
-    const cancelForm = (args: { institution: string | number, invoice: string | number | { id: string | number } } | [institution: string | number, invoice: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const cancelForm = (args: { institution: string | number, invoice: number | { id: number } } | [institution: string | number, invoice: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: cancel.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -253,7 +253,7 @@ cancel.put = (args: { institution: string | number, invoice: string | number | {
  * @see Modules/Admission/app/Http/Controllers/AdmissionInvoiceController.php:54
  * @route '//app.daraltauhid.test/{institution}/admission-invoices/{invoice}/cancel'
  */
-        cancelForm.put = (args: { institution: string | number, invoice: string | number | { id: string | number } } | [institution: string | number, invoice: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        cancelForm.put = (args: { institution: string | number, invoice: number | { id: number } } | [institution: string | number, invoice: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: cancel.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',

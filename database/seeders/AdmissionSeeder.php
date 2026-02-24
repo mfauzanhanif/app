@@ -21,54 +21,35 @@ class AdmissionSeeder extends Seeder
             return;
         }
 
-        // Ambil lembaga internal yang bisa menerima santri baru
+        // Ambil lembaga internal (SMP, MA, PONDOK)
         $institutions = Institution::internal()
             ->active()
-            ->whereIn('code', ['PONDOK', 'MI', 'SMP', 'MA'])
+            ->whereIn('code', ['PONDOK', 'SMP', 'MA'])
             ->get();
 
         if ($institutions->isEmpty()) {
-            $this->command->warn('Tidak ada institution internal. Jalankan InstitutionSeeder terlebih dahulu.');
+            $this->command->warn('Tidak ada institution internal SMP/MA/PONDOK. Jalankan InstitutionSeeder terlebih dahulu.');
             return;
         }
 
         foreach ($institutions as $institution) {
-            // Gelombang 1 — Jalur Reguler
-            AdmissionWave::firstOrCreate(
+            // Gelombang Umum
+            AdmissionWave::updateOrCreate(
                 [
                     'institution_id' => $institution->id,
                     'academic_year_id' => $academicYear->id,
-                    'name' => 'Gelombang 1 - Jalur Reguler',
+                    'name' => 'Gelombang Umum PSB 2026',
                 ],
                 [
-                    'start_date' => '2026-01-01',
-                    'end_date' => '2026-03-31',
-                    'exam_date' => '2026-04-10',
-                    'announcement_date' => '2026-04-20',
+                    'start_date' => '2026-02-01',
+                    'end_date' => '2026-07-31',
+                    'exam_date' => '2026-08-05',
+                    'announcement_date' => '2026-08-10',
                     'registration_fee' => 250000,
                     'is_active' => true,
-                    'description' => "Pendaftaran santri baru {$institution->name} Gelombang 1 Tahun Ajaran {$academicYear->name}.",
-                ]
-            );
-
-            // Gelombang 2 — Jalur Prestasi
-            AdmissionWave::firstOrCreate(
-                [
-                    'institution_id' => $institution->id,
-                    'academic_year_id' => $academicYear->id,
-                    'name' => 'Gelombang 2 - Jalur Prestasi',
-                ],
-                [
-                    'start_date' => '2026-04-01',
-                    'end_date' => '2026-05-31',
-                    'exam_date' => '2026-06-05',
-                    'announcement_date' => '2026-06-15',
-                    'registration_fee' => 200000,
-                    'is_active' => false,
-                    'description' => "Pendaftaran santri baru {$institution->name} Gelombang 2 (Jalur Prestasi) Tahun Ajaran {$academicYear->name}.",
+                    'description' => "Pendaftaran Gelombang Umum Santri Baru {$institution->name} Tahun Ajaran {$academicYear->name}.",
                 ]
             );
         }
-
     }
 }

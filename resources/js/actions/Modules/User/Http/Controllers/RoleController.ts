@@ -272,7 +272,7 @@ store.post = (args: { institution: string | number } | [institution: string | nu
  * @see Modules/User/app/Http/Controllers/RoleController.php:86
  * @route '//app.daraltauhid.test/{institution}/roles/{role}/edit'
  */
-export const edit = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -287,7 +287,7 @@ edit.definition = {
  * @see Modules/User/app/Http/Controllers/RoleController.php:86
  * @route '//app.daraltauhid.test/{institution}/roles/{role}/edit'
  */
-edit.url = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
+edit.url = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -315,7 +315,7 @@ edit.url = (args: { institution: string | number, role: string | number | { id: 
  * @see Modules/User/app/Http/Controllers/RoleController.php:86
  * @route '//app.daraltauhid.test/{institution}/roles/{role}/edit'
  */
-edit.get = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -324,7 +324,7 @@ edit.get = (args: { institution: string | number, role: string | number | { id: 
  * @see Modules/User/app/Http/Controllers/RoleController.php:86
  * @route '//app.daraltauhid.test/{institution}/roles/{role}/edit'
  */
-edit.head = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -334,7 +334,7 @@ edit.head = (args: { institution: string | number, role: string | number | { id:
  * @see Modules/User/app/Http/Controllers/RoleController.php:86
  * @route '//app.daraltauhid.test/{institution}/roles/{role}/edit'
  */
-    const editForm = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const editForm = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: edit.url(args, options),
         method: 'get',
     })
@@ -344,7 +344,7 @@ edit.head = (args: { institution: string | number, role: string | number | { id:
  * @see Modules/User/app/Http/Controllers/RoleController.php:86
  * @route '//app.daraltauhid.test/{institution}/roles/{role}/edit'
  */
-        editForm.get = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.get = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, options),
             method: 'get',
         })
@@ -353,7 +353,7 @@ edit.head = (args: { institution: string | number, role: string | number | { id:
  * @see Modules/User/app/Http/Controllers/RoleController.php:86
  * @route '//app.daraltauhid.test/{institution}/roles/{role}/edit'
  */
-        editForm.head = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.head = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -369,7 +369,7 @@ edit.head = (args: { institution: string | number, role: string | number | { id:
  * @see Modules/User/app/Http/Controllers/RoleController.php:102
  * @route '//app.daraltauhid.test/{institution}/roles/{role}'
  */
-export const update = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -384,7 +384,7 @@ update.definition = {
  * @see Modules/User/app/Http/Controllers/RoleController.php:102
  * @route '//app.daraltauhid.test/{institution}/roles/{role}'
  */
-update.url = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
+update.url = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -412,7 +412,7 @@ update.url = (args: { institution: string | number, role: string | number | { id
  * @see Modules/User/app/Http/Controllers/RoleController.php:102
  * @route '//app.daraltauhid.test/{institution}/roles/{role}'
  */
-update.put = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -421,7 +421,7 @@ update.put = (args: { institution: string | number, role: string | number | { id
  * @see Modules/User/app/Http/Controllers/RoleController.php:102
  * @route '//app.daraltauhid.test/{institution}/roles/{role}'
  */
-update.patch = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -431,7 +431,7 @@ update.patch = (args: { institution: string | number, role: string | number | { 
  * @see Modules/User/app/Http/Controllers/RoleController.php:102
  * @route '//app.daraltauhid.test/{institution}/roles/{role}'
  */
-    const updateForm = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updateForm = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -446,7 +446,7 @@ update.patch = (args: { institution: string | number, role: string | number | { 
  * @see Modules/User/app/Http/Controllers/RoleController.php:102
  * @route '//app.daraltauhid.test/{institution}/roles/{role}'
  */
-        updateForm.put = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.put = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -460,7 +460,7 @@ update.patch = (args: { institution: string | number, role: string | number | { 
  * @see Modules/User/app/Http/Controllers/RoleController.php:102
  * @route '//app.daraltauhid.test/{institution}/roles/{role}'
  */
-        updateForm.patch = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.patch = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PATCH',
@@ -476,7 +476,7 @@ update.patch = (args: { institution: string | number, role: string | number | { 
  * @see Modules/User/app/Http/Controllers/RoleController.php:118
  * @route '//app.daraltauhid.test/{institution}/roles/{role}'
  */
-export const destroy = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -491,7 +491,7 @@ destroy.definition = {
  * @see Modules/User/app/Http/Controllers/RoleController.php:118
  * @route '//app.daraltauhid.test/{institution}/roles/{role}'
  */
-destroy.url = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
+destroy.url = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     institution: args[0],
@@ -519,7 +519,7 @@ destroy.url = (args: { institution: string | number, role: string | number | { i
  * @see Modules/User/app/Http/Controllers/RoleController.php:118
  * @route '//app.daraltauhid.test/{institution}/roles/{role}'
  */
-destroy.delete = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -529,7 +529,7 @@ destroy.delete = (args: { institution: string | number, role: string | number | 
  * @see Modules/User/app/Http/Controllers/RoleController.php:118
  * @route '//app.daraltauhid.test/{institution}/roles/{role}'
  */
-    const destroyForm = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const destroyForm = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: destroy.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -544,7 +544,7 @@ destroy.delete = (args: { institution: string | number, role: string | number | 
  * @see Modules/User/app/Http/Controllers/RoleController.php:118
  * @route '//app.daraltauhid.test/{institution}/roles/{role}'
  */
-        destroyForm.delete = (args: { institution: string | number, role: string | number | { id: string | number } } | [institution: string | number, role: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        destroyForm.delete = (args: { institution: string | number, role: number | { id: number } } | [institution: string | number, role: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: destroy.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',

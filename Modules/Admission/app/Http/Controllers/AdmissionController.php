@@ -30,8 +30,15 @@ class AdmissionController extends Controller
             ->open()
             ->get();
 
-        return Inertia::render('Home', [
+        $fees = \Modules\Admission\Models\AdmissionFeeComponent::with('institution:id,name,code')
+            ->whereHas('academicYear', fn($q) => $q->orderByDesc('id')->limit(1))
+            ->orderBy('sort_order')
+            ->get()
+            ->groupBy('institution.name');
+
+        return Inertia::render('home', [
             'waves' => $waves,
+            'fees' => $fees,
         ]);
     }
 
@@ -46,7 +53,7 @@ class AdmissionController extends Controller
 
         $wave->load('institution:id,name,code,type');
 
-        return Inertia::render('Register', [
+        return Inertia::render('registration', [
             'wave' => $wave,
         ]);
     }
@@ -68,9 +75,9 @@ class AdmissionController extends Controller
                 'institution_id' => $wave->institution_id,
                 'admission_wave_id' => $wave->id,
                 'registration_number' => Candidate::generateRegistrationNumber(
-                $wave->institution_id,
-                $wave->id
-            ),
+                    $wave->institution_id,
+                    $wave->id
+                ),
                 'nik' => $request->nik,
                 'name' => $request->name,
                 'gender' => $request->gender,
@@ -136,7 +143,7 @@ class AdmissionController extends Controller
      */
     public function status(Request $request): Response
     {
-        return Inertia::render('Status', [
+        return Inertia::render('cek-status', [
             'candidates' => [],
             'searched' => false,
         ]);
@@ -155,14 +162,14 @@ class AdmissionController extends Controller
         $candidates = Candidate::where('registration_number', $request->registration_number)
             ->where('nik', $request->nik)
             ->with([
-            'institution:id,name,code',
-            'admissionWave:id,name',
-            'invoices',
-            'documents',
-        ])
+                'institution:id,name,code',
+                'admissionWave:id,name',
+                'invoices',
+                'documents',
+            ])
             ->get();
 
-        return Inertia::render('Status', [
+        return Inertia::render('cek-status', [
             'candidates' => $candidates,
             'searched' => true,
             'filters' => $request->only('registration_number', 'nik'),
@@ -174,7 +181,7 @@ class AdmissionController extends Controller
      */
     public function announcement(Request $request): Response
     {
-        return Inertia::render('Announcement', [
+        return Inertia::render('announcement', [
             'candidates' => [],
             'searched' => false,
         ]);
@@ -193,18 +200,18 @@ class AdmissionController extends Controller
         $candidates = Candidate::where('registration_number', $request->registration_number)
             ->where('nik', $request->nik)
             ->whereIn('status', [
-            CandidateStatus::LULUS,
-            CandidateStatus::TIDAK_LULUS,
-            CandidateStatus::DITERIMA,
-        ])
+                CandidateStatus::LULUS,
+                CandidateStatus::TIDAK_LULUS,
+                CandidateStatus::DITERIMA,
+            ])
             ->with([
-            'institution:id,name,code',
-            'admissionWave:id,name,announcement_date',
-            'exams',
-        ])
+                'institution:id,name,code',
+                'admissionWave:id,name,announcement_date',
+                'exams',
+            ])
             ->get();
 
-        return Inertia::render('Announcement', [
+        return Inertia::render('announcement', [
             'candidates' => $candidates,
             'searched' => true,
             'filters' => $request->only('registration_number', 'nik'),

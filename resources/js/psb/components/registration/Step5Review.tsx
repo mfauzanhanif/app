@@ -1,4 +1,3 @@
-import React from 'react';
 import type { SantriData } from '@/psb/components/registration/Step1Santri';
 import type { ParentsData } from '@/psb/components/registration/Step2Parents';
 import type { SchoolData } from '@/psb/components/registration/Step3School';
@@ -11,7 +10,7 @@ interface Step5ReviewProps {
 export default function Step5Review({ data }: Step5ReviewProps) {
     return (
         <div>
-            <h3 className="text-dat-text mb-2 border-b border-gray-100 pb-2 text-lg font-bold md:text-xl">
+            <h3 className="mb-2 border-b border-gray-100 pb-2 text-lg font-bold text-gray-800 md:text-xl">
                 Review Data Pendaftaran
             </h3>
             <p className="mb-6 text-sm text-gray-500">
@@ -22,64 +21,32 @@ export default function Step5Review({ data }: Step5ReviewProps) {
             <div className="space-y-6 text-sm">
                 {/* Data Santri */}
                 <div className="rounded-lg border border-green-100 bg-green-50 p-4 shadow-sm">
-                    <h4 className="text-dat-primary mb-3 font-bold">
+                    <h4 className="mb-3 font-bold text-emerald-700">
                         Data Santri
                     </h4>
                     <div className="grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2">
-                        <p>
-                            <span className="block text-xs tracking-wider text-gray-500 uppercase">
-                                Nama Lengkap
-                            </span>{' '}
-                            <strong className="text-gray-900">
-                                {data.full_name || '-'}
-                            </strong>
-                        </p>
-                        <p>
-                            <span className="block text-xs tracking-wider text-gray-500 uppercase">
-                                NIK
-                            </span>{' '}
-                            <strong className="text-gray-900">
-                                {data.nik || '-'}
-                            </strong>
-                        </p>
-                        <p>
-                            <span className="block text-xs tracking-wider text-gray-500 uppercase">
-                                NISN
-                            </span>{' '}
-                            <strong className="text-gray-900">
-                                {data.nisn || '-'}
-                            </strong>
-                        </p>
-                        <p>
-                            <span className="block text-xs tracking-wider text-gray-500 uppercase">
-                                Tempat, Tanggal Lahir
-                            </span>{' '}
-                            <strong className="text-gray-900">
-                                {data.place_of_birth || '-'},{' '}
-                                {data.date_of_birth || '-'}
-                            </strong>
-                        </p>
-                        <p>
-                            <span className="block text-xs tracking-wider text-gray-500 uppercase">
-                                Jenis Kelamin
-                            </span>{' '}
-                            <strong className="text-gray-900">
-                                {data.gender === 'male'
+                        <ReviewItem label="Nama Lengkap" value={data.name} />
+                        <ReviewItem label="NIK" value={data.nik} />
+                        <ReviewItem label="NISN" value={data.nisn} />
+                        <ReviewItem
+                            label="Tempat, Tanggal Lahir"
+                            value={`${data.pob || '-'}, ${data.dob || '-'}`}
+                        />
+                        <ReviewItem
+                            label="Jenis Kelamin"
+                            value={
+                                data.gender === 'l'
                                     ? 'Laki-laki'
-                                    : data.gender === 'female'
+                                    : data.gender === 'p'
                                       ? 'Perempuan'
-                                      : '-'}
-                            </strong>
-                        </p>
-                        <p>
-                            <span className="block text-xs tracking-wider text-gray-500 uppercase">
-                                Anak Ke
-                            </span>{' '}
-                            <strong className="text-gray-900">
-                                {data.child_number || '-'} dari{' '}
-                                {data.total_siblings || '-'}
-                            </strong>
-                        </p>
+                                      : '-'
+                            }
+                        />
+                        <ReviewItem
+                            cls="sm:col-span-2"
+                            label="Alamat"
+                            value={data.address}
+                        />
                     </div>
                 </div>
 
@@ -94,24 +61,18 @@ export default function Step5Review({ data }: Step5ReviewProps) {
                                 Ayah Kandung
                             </p>
                             <div className="space-y-1">
-                                <p>
-                                    <span className="inline-block w-20 text-gray-500">
-                                        Nama
-                                    </span>{' '}
-                                    <strong>{data.father_name || '-'}</strong>
-                                </p>
-                                <p>
-                                    <span className="inline-block w-20 text-gray-500">
-                                        Pekerjaan
-                                    </span>{' '}
-                                    <strong>{data.father_job || '-'}</strong>
-                                </p>
-                                <p>
-                                    <span className="inline-block w-20 text-gray-500">
-                                        No. HP
-                                    </span>{' '}
-                                    <strong>{data.father_phone || '-'}</strong>
-                                </p>
+                                <ReviewRow
+                                    label="Nama"
+                                    value={data.father_name}
+                                />
+                                <ReviewRow
+                                    label="Pekerjaan"
+                                    value={data.father_job}
+                                />
+                                <ReviewRow
+                                    label="No. HP"
+                                    value={data.father_phone}
+                                />
                             </div>
                         </div>
                         <div>
@@ -119,70 +80,32 @@ export default function Step5Review({ data }: Step5ReviewProps) {
                                 Ibu Kandung
                             </p>
                             <div className="space-y-1">
-                                <p>
-                                    <span className="inline-block w-20 text-gray-500">
-                                        Nama
-                                    </span>{' '}
-                                    <strong>{data.mother_name || '-'}</strong>
-                                </p>
-                                <p>
-                                    <span className="inline-block w-20 text-gray-500">
-                                        Pekerjaan
-                                    </span>{' '}
-                                    <strong>{data.mother_job || '-'}</strong>
-                                </p>
-                                <p>
-                                    <span className="inline-block w-20 text-gray-500">
-                                        No. HP
-                                    </span>{' '}
-                                    <strong>{data.mother_phone || '-'}</strong>
-                                </p>
+                                <ReviewRow
+                                    label="Nama"
+                                    value={data.mother_name}
+                                />
+                                <ReviewRow
+                                    label="Pekerjaan"
+                                    value={data.mother_job}
+                                />
+                                <ReviewRow
+                                    label="No. HP"
+                                    value={data.mother_phone}
+                                />
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Data Sekolah */}
+                {/* Data Pendidikan */}
                 <div className="rounded-lg border border-purple-100 bg-purple-50 p-4 shadow-sm">
                     <h4 className="mb-3 font-bold text-purple-700">
                         Data Pendidikan
                     </h4>
-                    <div className="grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2">
-                        <p>
-                            <span className="block text-xs tracking-wider text-gray-500 uppercase">
-                                Sekolah Asal
-                            </span>{' '}
-                            <strong className="text-gray-900">
-                                {data.previous_school_name || '-'}
-                            </strong>
-                        </p>
-                        <p>
-                            <span className="block text-xs tracking-wider text-gray-500 uppercase">
-                                Jenjang Asal
-                            </span>{' '}
-                            <strong className="text-gray-900">
-                                {data.previous_school_level || '-'}
-                            </strong>
-                        </p>
-                        <p>
-                            <span className="block text-xs tracking-wider text-gray-500 uppercase">
-                                Sekolah Tujuan
-                            </span>{' '}
-                            <strong className="text-gray-900">
-                                {data.target_school || '-'}
-                            </strong>
-                        </p>
-                        <p>
-                            <span className="block text-xs tracking-wider text-gray-500 uppercase">
-                                Kelas
-                            </span>{' '}
-                            <strong className="text-gray-900">
-                                {data.target_class
-                                    ? `Kelas ${data.target_class}`
-                                    : '-'}
-                            </strong>
-                        </p>
-                    </div>
+                    <ReviewItem
+                        label="Sekolah Asal"
+                        value={data.previous_school}
+                    />
                 </div>
 
                 {/* Dokumen */}
@@ -191,84 +114,96 @@ export default function Step5Review({ data }: Step5ReviewProps) {
                         Dokumen Terlampir
                     </h4>
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                        <div className="flex items-center gap-2">
-                            {data.kartu_keluarga ? (
-                                <span className="text-green-500">✓</span>
-                            ) : (
-                                <span className="text-red-500">✗</span>
-                            )}
-                            <span className="text-sm">Kartu Keluarga</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            {data.akta_kelahiran ? (
-                                <span className="text-green-500">✓</span>
-                            ) : (
-                                <span className="text-red-500">✗</span>
-                            )}
-                            <span className="text-sm">Akta Kelahiran</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            {data.ktp_ortu ? (
-                                <span className="text-green-500">✓</span>
-                            ) : (
-                                <span className="text-red-500">✗</span>
-                            )}
-                            <span className="text-sm">KTP Ortu</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            {data.pas_foto ? (
-                                <span className="text-green-500">✓</span>
-                            ) : (
-                                <span className="text-red-500">✗</span>
-                            )}
-                            <span className="text-sm">Pas Foto</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            {data.ijazah ? (
-                                <span className="text-green-500">✓</span>
-                            ) : (
-                                <span className="text-yellow-500">-</span>
-                            )}
-                            <span className="border-b border-dashed border-gray-400 text-sm">
-                                Ijazah
-                            </span>
-                        </div>
+                        <DocStatus label="Kartu Keluarga" file={data.kk} />
+                        <DocStatus
+                            label="Akta Kelahiran"
+                            file={data.akta_lahir}
+                        />
+                        <DocStatus label="KTP Ortu" file={data.ktp_ortu} />
+                        <DocStatus label="Pas Foto" file={data.foto} />
+                        <DocStatus label="Ijazah" file={data.ijazah} optional />
+                        <DocStatus label="KIP/KIS" file={data.kip} optional />
                     </div>
                 </div>
 
+                {/* Declaration */}
                 <div className="border-l-4 border-yellow-400 bg-yellow-50 p-4">
                     <div className="flex">
-                        <div className="flex-shrink-0">
-                            <svg
-                                className="h-5 w-5 text-yellow-400"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-                        </div>
-                        <div className="ml-3">
+                        <svg
+                            className="mr-3 h-5 w-5 shrink-0 text-yellow-400"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                fillRule="evenodd"
+                                d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                                clipRule="evenodd"
+                            />
+                        </svg>
+                        <div>
                             <h3 className="text-sm font-medium text-yellow-800">
                                 Deklarasi
                             </h3>
-                            <div className="mt-2 text-sm text-yellow-700">
-                                <p>
-                                    Dengan menekan tombol "Kirim Pendaftaran",
-                                    saya menyatakan bahwa seluruh data yang
-                                    diisikan adalah benar dan dapat
-                                    dipertanggungjawabkan.
-                                </p>
-                            </div>
+                            <p className="mt-1 text-sm text-yellow-700">
+                                Dengan menekan tombol "Kirim Pendaftaran", saya
+                                menyatakan bahwa seluruh data yang diisikan
+                                adalah benar dan dapat dipertanggungjawabkan.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    );
+}
+
+function ReviewItem({
+    label,
+    value,
+    cls,
+}: {
+    label: string;
+    value?: string;
+    cls?: string;
+}) {
+    return (
+        <p className={cls}>
+            <span className="block text-xs tracking-wider text-gray-500 uppercase">
+                {label}
+            </span>
+            <strong className="text-gray-900">{value || '-'}</strong>
+        </p>
+    );
+}
+
+function ReviewRow({ label, value }: { label: string; value?: string }) {
+    return (
+        <p>
+            <span className="inline-block w-20 text-gray-500">{label}</span>
+            <strong>{value || '-'}</strong>
+        </p>
+    );
+}
+
+function DocStatus({
+    label,
+    file,
+    optional,
+}: {
+    label: string;
+    file: File | null;
+    optional?: boolean;
+}) {
+    return (
+        <div className="flex items-center gap-2">
+            {file ? (
+                <span className="text-green-500">✓</span>
+            ) : optional ? (
+                <span className="text-yellow-500">–</span>
+            ) : (
+                <span className="text-red-500">✗</span>
+            )}
+            <span className="text-sm">{label}</span>
         </div>
     );
 }

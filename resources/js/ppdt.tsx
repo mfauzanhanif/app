@@ -2,9 +2,9 @@ import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import '../css/psb.css';
+import '../css/ppdt.css';
 
-const appName = 'Pondo Pesantre Dar Al Tauhid';
+const appName = 'Pondok Pesantren Dar Al Tauhid';
 
 createInertiaApp({
     title: (title) => (title ? `${title} — ${appName}` : appName),

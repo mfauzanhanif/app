@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration 
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -132,7 +132,16 @@ return new class extends Migration
             $table->string('phone', 20)->nullable();
             $table->string('email')->nullable();
             $table->enum('last_education', [
-                'sd', 'smp', 'sma', 'd1', 'd2', 'd3', 's1', 's2', 's3', 'tidak_sekolah',
+                'sd',
+                'smp',
+                'sma',
+                'd1',
+                'd2',
+                'd3',
+                's1',
+                's2',
+                's3',
+                'tidak_sekolah',
             ])->nullable();
             $table->boolean('is_pesantren_alumnus')->default(false);
             $table->string('pesantren_name')->nullable();
@@ -195,7 +204,14 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             $table->enum('file_type', [
-                'foto', 'kk', 'akta_lahir', 'ijazah', 'skl', 'kip', 'ktp_ortu', 'lainnya',
+                'foto',
+                'kk',
+                'akta_lahir',
+                'ijazah',
+                'skl',
+                'kip',
+                'ktp_ortu',
+                'lainnya',
             ]);
             $table->string('file_name');
             $table->string('file_path');
@@ -243,7 +259,33 @@ return new class extends Migration
         });
 
         // ==============================
-        // 6. ADMISSION INVOICES (Tagihan PSB)
+        // 6. ADMISSION FEE COMPONENTS (Komponen Tagihan PSB)
+        // ==============================
+
+        Schema::create('admission_fee_components', function (Blueprint $table) {
+            $table->id();
+
+            $table->foreignId('institution_id')
+                ->constrained('institutions')
+                ->cascadeOnDelete();
+
+            $table->foreignId('academic_year_id')
+                ->constrained('academic_years')
+                ->cascadeOnDelete();
+
+            $table->string('name');
+            $table->decimal('amount', 15, 2)->default(0);
+            $table->enum('type', ['sekali', 'bulanan'])->default('sekali');
+            $table->text('description')->nullable();
+            $table->unsignedSmallInteger('sort_order')->default(0);
+
+            $table->timestamps();
+
+            $table->index(['institution_id', 'academic_year_id']);
+        });
+
+        // ==============================
+        // 7. ADMISSION INVOICES (Tagihan PSB)
         // ==============================
         Schema::create('admission_invoices', function (Blueprint $table) {
             $table->id();
@@ -277,6 +319,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('admission_invoices');
+        Schema::dropIfExists('admission_fee_components');
         Schema::dropIfExists('candidate_exams');
         Schema::dropIfExists('candidate_documents');
         Schema::dropIfExists('candidate_parents');

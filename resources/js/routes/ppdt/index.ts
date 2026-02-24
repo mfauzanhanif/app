@@ -1,7 +1,8 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 /**
- * @see routes/ppdt.php:7
- * @route '//daraltauhid.com/'
+* @see \App\Http\Controllers\Web\PPDTController::home
+ * @see app/Http/Controllers/Web/PPDTController.php:13
+ * @route '//daraltauhid.test/'
  */
 export const home = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: home.url(options),
@@ -10,28 +11,31 @@ export const home = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 home.definition = {
     methods: ["get","head"],
-    url: '//daraltauhid.com/',
+    url: '//daraltauhid.test/',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see routes/ppdt.php:7
- * @route '//daraltauhid.com/'
+* @see \App\Http\Controllers\Web\PPDTController::home
+ * @see app/Http/Controllers/Web/PPDTController.php:13
+ * @route '//daraltauhid.test/'
  */
 home.url = (options?: RouteQueryOptions) => {
     return home.definition.url + queryParams(options)
 }
 
 /**
- * @see routes/ppdt.php:7
- * @route '//daraltauhid.com/'
+* @see \App\Http\Controllers\Web\PPDTController::home
+ * @see app/Http/Controllers/Web/PPDTController.php:13
+ * @route '//daraltauhid.test/'
  */
 home.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: home.url(options),
     method: 'get',
 })
 /**
- * @see routes/ppdt.php:7
- * @route '//daraltauhid.com/'
+* @see \App\Http\Controllers\Web\PPDTController::home
+ * @see app/Http/Controllers/Web/PPDTController.php:13
+ * @route '//daraltauhid.test/'
  */
 home.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: home.url(options),
@@ -39,8 +43,9 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
     /**
- * @see routes/ppdt.php:7
- * @route '//daraltauhid.com/'
+* @see \App\Http\Controllers\Web\PPDTController::home
+ * @see app/Http/Controllers/Web/PPDTController.php:13
+ * @route '//daraltauhid.test/'
  */
     const homeForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: home.url(options),
@@ -48,16 +53,18 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     })
 
             /**
- * @see routes/ppdt.php:7
- * @route '//daraltauhid.com/'
+* @see \App\Http\Controllers\Web\PPDTController::home
+ * @see app/Http/Controllers/Web/PPDTController.php:13
+ * @route '//daraltauhid.test/'
  */
         homeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: home.url(options),
             method: 'get',
         })
             /**
- * @see routes/ppdt.php:7
- * @route '//daraltauhid.com/'
+* @see \App\Http\Controllers\Web\PPDTController::home
+ * @see app/Http/Controllers/Web/PPDTController.php:13
+ * @route '//daraltauhid.test/'
  */
         homeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: home.url({

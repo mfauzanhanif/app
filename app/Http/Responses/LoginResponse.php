@@ -17,23 +17,13 @@ class LoginResponse implements LoginResponseContract
     {
         $user = Auth::user();
 
-        // Check if the user is a guardian/wali.
-        // Assuming the logic is based on having roles or students.
-        // Since we can check students count or specific role, let's look at how LoginController checks it.
-        // $user->getStudents() is available. But if a user is both PTK and Wali, we might need a distinct check.
-        // For now, if the user has students and no institutions (unless global admin), redirect to student selection.
+        $institutions = method_exists($user, 'getInstitutions')
+            ? $user->getInstitutions()
+            : collect();
 
-        $institutions = tap(collect(), function (&$coll) use ($user) {
-            if (method_exists($user, 'getInstitutions')) {
-                $coll = $user->getInstitutions();
-            }
-        });
-
-        $students = tap(collect(), function (&$coll) use ($user) {
-            if (method_exists($user, 'getStudents')) {
-                $coll = $user->getStudents();
-            }
-        });
+        $students = method_exists($user, 'getStudents')
+            ? $user->getStudents()
+            : collect();
 
         $isGlobalAdmin = method_exists($user, 'isGlobalAdmin') ? $user->isGlobalAdmin() : false;
 

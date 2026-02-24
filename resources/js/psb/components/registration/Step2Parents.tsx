@@ -1,37 +1,22 @@
-import React from 'react';
-import { TextInput, Label, Select, Radio } from 'flowbite-react';
-
 export interface ParentsData {
     father_name: string;
     father_life_status: string;
     father_education: string;
-    father_has_pesantren: boolean;
-    father_pesantren_name: string;
     father_job: string;
-    father_job_other: string;
     father_phone: string;
-    father_no_whatsapp: boolean;
-
+    father_income: string;
     mother_name: string;
     mother_life_status: string;
     mother_education: string;
-    mother_has_pesantren: boolean;
-    mother_pesantren_name: string;
     mother_job: string;
-    mother_job_other: string;
     mother_phone: string;
-    mother_no_whatsapp: boolean;
-
+    mother_income: string;
     wali_type: string;
     guardian_name: string;
-    guardian_life_status: string;
-    guardian_education: string;
-    guardian_has_pesantren: boolean;
-    guardian_pesantren_name: string;
     guardian_job: string;
-    guardian_job_other: string;
     guardian_phone: string;
-    guardian_no_whatsapp: boolean;
+    guardian_education: string;
+    guardian_income: string;
 }
 
 interface Step2ParentsProps {
@@ -39,6 +24,75 @@ interface Step2ParentsProps {
     setData: (field: string, value: any) => void;
     errors?: Record<string, string>;
 }
+
+const EDUCATION_OPTIONS = [
+    { value: '', label: '-- Pilih Pendidikan --' },
+    { value: 'sd', label: 'SD / Sederajat' },
+    { value: 'smp', label: 'SMP / Sederajat' },
+    { value: 'sma', label: 'SMA / Sederajat' },
+    { value: 'd1', label: 'D1' },
+    { value: 'd2', label: 'D2' },
+    { value: 'd3', label: 'D3' },
+    { value: 's1', label: 'S1 / D4' },
+    { value: 's2', label: 'S2' },
+    { value: 's3', label: 'S3' },
+    { value: 'tidak_sekolah', label: 'Tidak Sekolah' },
+];
+
+const JOB_OPTIONS = [
+    { value: '', label: '-- Pilih Pekerjaan --' },
+    { value: 'Akuntan', label: 'Akuntan' },
+    { value: 'Apoteker', label: 'Apoteker' },
+    { value: 'Arsitek', label: 'Arsitek' },
+    { value: 'Bidan', label: 'Bidan' },
+    { value: 'Buruh', label: 'Buruh' },
+    { value: 'Buruh Harian Lepas', label: 'Buruh Harian Lepas' },
+    { value: 'Dokter', label: 'Dokter' },
+    { value: 'Dosen', label: 'Dosen' },
+    { value: 'Guru', label: 'Guru' },
+    { value: 'IRT', label: 'Ibu Rumah Tangga' },
+    { value: 'Karyawan BUMN/BUMD', label: 'Karyawan BUMN/BUMD' },
+    { value: 'Karyawan Swasta', label: 'Karyawan Swasta' },
+    { value: 'Kepala/Perangkat Desa', label: 'Kepala/Perangkat Desa' },
+    { value: 'Nelayan', label: 'Nelayan' },
+    { value: 'Pedagang', label: 'Pedagang' },
+    { value: 'Pelaut', label: 'Pelaut' },
+    { value: 'Pensiunan', label: 'Pensiunan' },
+    { value: 'Perawat', label: 'Perawat' },
+    { value: 'Petani', label: 'Petani' },
+    { value: 'Peternak', label: 'Peternak' },
+    { value: 'PNS', label: 'PNS' },
+    { value: 'Polri', label: 'Polri' },
+    { value: 'Seniman', label: 'Seniman' },
+    { value: 'Sopir', label: 'Sopir' },
+    { value: 'TNI', label: 'TNI' },
+    { value: 'Wartawan', label: 'Wartawan' },
+    { value: 'Wiraswasta', label: 'Wiraswasta' },
+    { value: 'Tidak Bekerja', label: 'Tidak Bekerja' },
+    { value: 'Lainnya', label: 'Lainnya' },
+];
+
+const INCOME_OPTIONS = [
+    { value: '', label: '-- Pilih Penghasilan --' },
+    { value: '<_500rb', label: '< Rp 500.000' },
+    { value: 'Rp. 500.000 - Rp. 1.000.000', label: 'Rp 500.000 - 1.000.000' },
+    {
+        value: 'Rp. 1.000.000 - Rp. 3.000.000',
+        label: 'Rp 1.000.000 - 3.000.000',
+    },
+    {
+        value: 'Rp. 3.000.000 - Rp. 5.000.000',
+        label: 'Rp 3.000.000 - 5.000.000',
+    },
+    {
+        value: 'Rp. 5.000.000 - Rp. 10.000.000',
+        label: 'Rp 5.000.000 - 10.000.000',
+    },
+    { value: 'Rp. 10.000.000_>', label: '> Rp 10.000.000' },
+];
+
+const inputClass = (hasError?: string) =>
+    `w-full rounded-lg border px-4 py-2.5 text-sm focus:ring-emerald-500 ${hasError ? 'border-red-400 focus:border-red-500' : 'border-gray-300 focus:border-emerald-500'}`;
 
 export default function Step2Parents({
     data,
@@ -48,106 +102,83 @@ export default function Step2Parents({
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
     ) => {
-        const { name, value, type } = e.target;
-        if (type === 'checkbox') {
-            const checked = (e.target as HTMLInputElement).checked;
-            setData(name, checked);
-        } else {
-            setData(name, value);
-        }
-    };
-
-    const handleRadio = (name: string, value: string) => {
-        setData(name, value);
+        setData(e.target.name, e.target.value);
     };
 
     return (
         <div>
-            {/* FATHER SECTION */}
+            {/* ─── FATHER ─── */}
             <h3 className="mb-4 border-b border-blue-100 pb-2 text-lg font-bold text-blue-700 md:text-xl">
                 Data Ayah Kandung
             </h3>
             <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
                 <div className="md:col-span-2">
-                    <div className="mb-2 block">
-                        <Label htmlFor="father_name">Nama Lengkap Ayah *</Label>
-                    </div>
-                    <TextInput
+                    <label
+                        htmlFor="father_name"
+                        className="mb-1.5 block text-sm font-semibold text-gray-700"
+                    >
+                        Nama Lengkap Ayah{' '}
+                        <span className="text-red-500">*</span>
+                    </label>
+                    <input
                         id="father_name"
                         name="father_name"
+                        type="text"
                         value={data.father_name}
                         onChange={handleChange}
-                        color={errors.father_name ? 'failure' : 'gray'}
+                        className={inputClass(errors.father_name)}
                     />
+                    {errors.father_name && (
+                        <p className="mt-1 text-xs text-red-600">
+                            {errors.father_name}
+                        </p>
+                    )}
                 </div>
 
+                <SelectField
+                    id="father_life_status"
+                    label="Status"
+                    value={data.father_life_status}
+                    onChange={handleChange}
+                    options={[
+                        { value: 'alive', label: 'Masih Hidup' },
+                        { value: 'deceased', label: 'Sudah Meninggal' },
+                    ]}
+                />
+
+                <SelectField
+                    id="father_education"
+                    label="Pendidikan Terakhir"
+                    value={data.father_education}
+                    onChange={handleChange}
+                    options={EDUCATION_OPTIONS}
+                />
+
+                <SelectField
+                    id="father_job"
+                    label="Pekerjaan"
+                    value={data.father_job}
+                    onChange={handleChange}
+                    options={JOB_OPTIONS}
+                    required
+                />
+
+                <SelectField
+                    id="father_income"
+                    label="Penghasilan"
+                    value={data.father_income}
+                    onChange={handleChange}
+                    options={INCOME_OPTIONS}
+                />
+
                 <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="father_life_status">Status *</Label>
-                    </div>
-                    <Select
-                        id="father_life_status"
-                        name="father_life_status"
-                        value={data.father_life_status}
-                        onChange={handleChange}
+                    <label
+                        htmlFor="father_phone"
+                        className="mb-1.5 block text-sm font-semibold text-gray-700"
                     >
-                        <option value="alive">Masih Hidup</option>
-                        <option value="deceased">Sudah Meninggal</option>
-                        <option value="unknown">Tidak Diketahui</option>
-                    </Select>
-                </div>
-
-                <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="father_education">
-                            Pendidikan Terakhir
-                        </Label>
-                    </div>
-                    <Select
-                        id="father_education"
-                        name="father_education"
-                        value={data.father_education}
-                        onChange={handleChange}
-                    >
-                        <option value="">-- Pilih Pendidikan --</option>
-                        <option value="SD/Sederajat">SD / Sederajat</option>
-                        <option value="SMP/Sederajat">SMP / Sederajat</option>
-                        <option value="SMA/Sederajat">SMA / Sederajat</option>
-                        <option value="D1/D2/D3">D1 / D2 / D3</option>
-                        <option value="S1/D4">S1 / D4</option>
-                        <option value="S2">S2</option>
-                        <option value="S3">S3</option>
-                        <option value="Tidak Sekolah">Tidak Sekolah</option>
-                    </Select>
-                </div>
-
-                <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="father_job">Pekerjaan *</Label>
-                    </div>
-                    <Select
-                        id="father_job"
-                        name="father_job"
-                        value={data.father_job}
-                        onChange={handleChange}
-                    >
-                        <option value="">-- Pilih Pekerjaan --</option>
-                        <option value="PNS">PNS / TNI / POLRI</option>
-                        <option value="Karyawan Swasta">Karyawan Swasta</option>
-                        <option value="Wiraswasta">
-                            Wiraswasta / Pengusaha
-                        </option>
-                        <option value="Buruh">Buruh / Petani / Nelayan</option>
-                        <option value="Tidak Bekerja">Tidak Bekerja</option>
-                        <option value="Lainnya">Lainnya...</option>
-                    </Select>
-                </div>
-
-                <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="father_phone">No. HP / WhatsApp</Label>
-                    </div>
-                    <TextInput
+                        No. HP / WhatsApp
+                    </label>
+                    <input
                         id="father_phone"
                         name="father_phone"
                         type="text"
@@ -158,114 +189,82 @@ export default function Step2Parents({
                                 e.target.value.replace(/[^0-9+]/g, ''),
                             )
                         }
-                        disabled={data.father_no_whatsapp}
+                        placeholder="contoh: 081234567890"
+                        className={inputClass()}
                     />
-                    <div className="mt-2 flex items-center gap-2">
-                        <input
-                            type="checkbox"
-                            id="father_no_whatsapp"
-                            name="father_no_whatsapp"
-                            checked={data.father_no_whatsapp}
-                            onChange={handleChange}
-                            className="text-dat-primary focus:ring-dat-primary rounded border-gray-300"
-                        />
-                        <Label
-                            htmlFor="father_no_whatsapp"
-                            className="text-sm font-normal"
-                        >
-                            Tidak ada No. WhatsApp
-                        </Label>
-                    </div>
                 </div>
             </div>
 
-            {/* MOTHER SECTION */}
+            {/* ─── MOTHER ─── */}
             <h3 className="mb-4 border-b border-pink-100 pb-2 text-lg font-bold text-pink-600 md:text-xl">
                 Data Ibu Kandung
             </h3>
             <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
                 <div className="md:col-span-2">
-                    <div className="mb-2 block">
-                        <Label htmlFor="mother_name">Nama Lengkap Ibu *</Label>
-                    </div>
-                    <TextInput
+                    <label
+                        htmlFor="mother_name"
+                        className="mb-1.5 block text-sm font-semibold text-gray-700"
+                    >
+                        Nama Lengkap Ibu <span className="text-red-500">*</span>
+                    </label>
+                    <input
                         id="mother_name"
                         name="mother_name"
+                        type="text"
                         value={data.mother_name}
                         onChange={handleChange}
-                        color={errors.mother_name ? 'failure' : 'gray'}
+                        className={inputClass(errors.mother_name)}
                     />
+                    {errors.mother_name && (
+                        <p className="mt-1 text-xs text-red-600">
+                            {errors.mother_name}
+                        </p>
+                    )}
                 </div>
 
+                <SelectField
+                    id="mother_life_status"
+                    label="Status"
+                    value={data.mother_life_status}
+                    onChange={handleChange}
+                    options={[
+                        { value: 'alive', label: 'Masih Hidup' },
+                        { value: 'deceased', label: 'Sudah Meninggal' },
+                    ]}
+                />
+
+                <SelectField
+                    id="mother_education"
+                    label="Pendidikan Terakhir"
+                    value={data.mother_education}
+                    onChange={handleChange}
+                    options={EDUCATION_OPTIONS}
+                />
+
+                <SelectField
+                    id="mother_job"
+                    label="Pekerjaan"
+                    value={data.mother_job}
+                    onChange={handleChange}
+                    options={JOB_OPTIONS}
+                />
+
+                <SelectField
+                    id="mother_income"
+                    label="Penghasilan"
+                    value={data.mother_income}
+                    onChange={handleChange}
+                    options={INCOME_OPTIONS}
+                />
+
                 <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="mother_life_status">Status *</Label>
-                    </div>
-                    <Select
-                        id="mother_life_status"
-                        name="mother_life_status"
-                        value={data.mother_life_status}
-                        onChange={handleChange}
+                    <label
+                        htmlFor="mother_phone"
+                        className="mb-1.5 block text-sm font-semibold text-gray-700"
                     >
-                        <option value="alive">Masih Hidup</option>
-                        <option value="deceased">Sudah Meninggal</option>
-                        <option value="unknown">Tidak Diketahui</option>
-                    </Select>
-                </div>
-
-                <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="mother_education">
-                            Pendidikan Terakhir
-                        </Label>
-                    </div>
-                    <Select
-                        id="mother_education"
-                        name="mother_education"
-                        value={data.mother_education}
-                        onChange={handleChange}
-                    >
-                        <option value="">-- Pilih Pendidikan --</option>
-                        <option value="SD/Sederajat">SD / Sederajat</option>
-                        <option value="SMP/Sederajat">SMP / Sederajat</option>
-                        <option value="SMA/Sederajat">SMA / Sederajat</option>
-                        <option value="D1/D2/D3">D1 / D2 / D3</option>
-                        <option value="S1/D4">S1 / D4</option>
-                        <option value="S2">S2</option>
-                        <option value="S3">S3</option>
-                        <option value="Tidak Sekolah">Tidak Sekolah</option>
-                    </Select>
-                </div>
-
-                <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="mother_job">Pekerjaan *</Label>
-                    </div>
-                    <Select
-                        id="mother_job"
-                        name="mother_job"
-                        value={data.mother_job}
-                        onChange={handleChange}
-                    >
-                        <option value="">-- Pilih Pekerjaan --</option>
-                        <option value="Ibu Rumah Tangga">
-                            Ibu Rumah Tangga
-                        </option>
-                        <option value="PNS">PNS / TNI / POLRI</option>
-                        <option value="Karyawan Swasta">Karyawan Swasta</option>
-                        <option value="Wiraswasta">
-                            Wiraswasta / Pengusaha
-                        </option>
-                        <option value="Buruh">Buruh / Petani / Nelayan</option>
-                        <option value="Lainnya">Lainnya...</option>
-                    </Select>
-                </div>
-
-                <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="mother_phone">No. HP / WhatsApp</Label>
-                    </div>
-                    <TextInput
+                        No. HP / WhatsApp
+                    </label>
+                    <input
                         id="mother_phone"
                         name="mother_phone"
                         type="text"
@@ -276,122 +275,104 @@ export default function Step2Parents({
                                 e.target.value.replace(/[^0-9+]/g, ''),
                             )
                         }
-                        disabled={data.mother_no_whatsapp}
+                        placeholder="contoh: 081234567890"
+                        className={inputClass()}
                     />
-                    <div className="mt-2 flex items-center gap-2">
-                        <input
-                            type="checkbox"
-                            id="mother_no_whatsapp"
-                            name="mother_no_whatsapp"
-                            checked={data.mother_no_whatsapp}
-                            onChange={handleChange}
-                            className="text-dat-primary focus:ring-dat-primary rounded border-gray-300"
-                        />
-                        <Label
-                            htmlFor="mother_no_whatsapp"
-                            className="text-sm font-normal"
-                        >
-                            Tidak ada No. WhatsApp
-                        </Label>
-                    </div>
                 </div>
             </div>
 
-            {/* GUARDIAN SECTION */}
+            {/* ─── GUARDIAN ─── */}
             <h3 className="mb-4 border-b border-amber-100 pb-2 text-lg font-bold text-amber-600 md:text-xl">
                 Wali Calon Santri
             </h3>
 
             <div className="mb-6 rounded-lg border border-amber-100 bg-amber-50 p-4">
-                <Label className="mb-3 block font-semibold">
+                <p className="mb-3 text-sm font-semibold text-gray-700">
                     Siapa yang menjadi wali calon santri?
-                </Label>
-                <div className="flex flex-col gap-4 sm:flex-row">
-                    <div className="flex items-center gap-2">
-                        <Radio
-                            id="wali_ayah"
-                            name="wali_type"
-                            value="father"
-                            checked={data.wali_type === 'father'}
-                            onChange={() => handleRadio('wali_type', 'father')}
-                        />
-                        <Label htmlFor="wali_ayah">Ayah Kandung</Label>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <Radio
-                            id="wali_ibu"
-                            name="wali_type"
-                            value="mother"
-                            checked={data.wali_type === 'mother'}
-                            onChange={() => handleRadio('wali_type', 'mother')}
-                        />
-                        <Label htmlFor="wali_ibu">Ibu Kandung</Label>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <Radio
-                            id="wali_lainnya"
-                            name="wali_type"
-                            value="other"
-                            checked={data.wali_type === 'other'}
-                            onChange={() => handleRadio('wali_type', 'other')}
-                        />
-                        <Label htmlFor="wali_lainnya">Wali Lainnya</Label>
-                    </div>
+                </p>
+                <div className="flex flex-col gap-3 sm:flex-row">
+                    {[
+                        { value: 'father', label: 'Ayah Kandung' },
+                        { value: 'mother', label: 'Ibu Kandung' },
+                        { value: 'other', label: 'Wali Lainnya' },
+                    ].map((opt) => (
+                        <label
+                            key={opt.value}
+                            className="flex cursor-pointer items-center gap-2"
+                        >
+                            <input
+                                type="radio"
+                                name="wali_type"
+                                value={opt.value}
+                                checked={data.wali_type === opt.value}
+                                onChange={handleChange}
+                                className="text-emerald-600 focus:ring-emerald-500"
+                            />
+                            <span className="text-sm text-gray-700">
+                                {opt.label}
+                            </span>
+                        </label>
+                    ))}
                 </div>
             </div>
 
             {data.wali_type === 'other' && (
                 <div className="grid grid-cols-1 gap-4 rounded-xl border border-gray-200 bg-gray-50 p-5 md:grid-cols-2 md:gap-5">
                     <div className="md:col-span-2">
-                        <div className="mb-2 block">
-                            <Label htmlFor="guardian_name">
-                                Nama Lengkap Wali *
-                            </Label>
-                        </div>
-                        <TextInput
+                        <label
+                            htmlFor="guardian_name"
+                            className="mb-1.5 block text-sm font-semibold text-gray-700"
+                        >
+                            Nama Lengkap Wali{' '}
+                            <span className="text-red-500">*</span>
+                        </label>
+                        <input
                             id="guardian_name"
                             name="guardian_name"
+                            type="text"
                             value={data.guardian_name}
                             onChange={handleChange}
-                            color={errors.guardian_name ? 'failure' : 'gray'}
+                            className={inputClass(errors.guardian_name)}
                         />
+                        {errors.guardian_name && (
+                            <p className="mt-1 text-xs text-red-600">
+                                {errors.guardian_name}
+                            </p>
+                        )}
                     </div>
 
+                    <SelectField
+                        id="guardian_education"
+                        label="Pendidikan"
+                        value={data.guardian_education}
+                        onChange={handleChange}
+                        options={EDUCATION_OPTIONS}
+                    />
+
+                    <SelectField
+                        id="guardian_job"
+                        label="Pekerjaan Wali"
+                        value={data.guardian_job}
+                        onChange={handleChange}
+                        options={JOB_OPTIONS}
+                    />
+
+                    <SelectField
+                        id="guardian_income"
+                        label="Penghasilan"
+                        value={data.guardian_income}
+                        onChange={handleChange}
+                        options={INCOME_OPTIONS}
+                    />
+
                     <div>
-                        <div className="mb-2 block">
-                            <Label htmlFor="guardian_job">
-                                Pekerjaan Wali *
-                            </Label>
-                        </div>
-                        <Select
-                            id="guardian_job"
-                            name="guardian_job"
-                            value={data.guardian_job}
-                            onChange={handleChange}
+                        <label
+                            htmlFor="guardian_phone"
+                            className="mb-1.5 block text-sm font-semibold text-gray-700"
                         >
-                            <option value="">-- Pilih Pekerjaan --</option>
-                            <option value="PNS">PNS / TNI / POLRI</option>
-                            <option value="Karyawan Swasta">
-                                Karyawan Swasta
-                            </option>
-                            <option value="Wiraswasta">
-                                Wiraswasta / Pengusaha
-                            </option>
-                            <option value="Buruh">
-                                Buruh / Petani / Nelayan
-                            </option>
-                            <option value="Tidak Bekerja">Tidak Bekerja</option>
-                            <option value="Lainnya">Lainnya...</option>
-                        </Select>
-                    </div>
-
-                    <div>
-                        <div className="mb-2 block">
-                            <Label htmlFor="guardian_phone">
-                                No. HP / WhatsApp Wali
-                            </Label>
-                        </div>
-                        <TextInput
+                            No. HP / WhatsApp Wali
+                        </label>
+                        <input
                             id="guardian_phone"
                             name="guardian_phone"
                             type="text"
@@ -402,27 +383,53 @@ export default function Step2Parents({
                                     e.target.value.replace(/[^0-9+]/g, ''),
                                 )
                             }
-                            disabled={data.guardian_no_whatsapp}
+                            className={inputClass()}
                         />
-                        <div className="mt-2 flex items-center gap-2">
-                            <input
-                                type="checkbox"
-                                id="guardian_no_whatsapp"
-                                name="guardian_no_whatsapp"
-                                checked={data.guardian_no_whatsapp}
-                                onChange={handleChange}
-                                className="text-dat-primary focus:ring-dat-primary rounded border-gray-300"
-                            />
-                            <Label
-                                htmlFor="guardian_no_whatsapp"
-                                className="text-sm font-normal"
-                            >
-                                Tidak ada No. WhatsApp
-                            </Label>
-                        </div>
                     </div>
                 </div>
             )}
+        </div>
+    );
+}
+
+/* ─── Helper ─── */
+
+function SelectField({
+    id,
+    label,
+    value,
+    onChange,
+    options,
+    required,
+}: {
+    id: string;
+    label: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    options: { value: string; label: string }[];
+    required?: boolean;
+}) {
+    return (
+        <div>
+            <label
+                htmlFor={id}
+                className="mb-1.5 block text-sm font-semibold text-gray-700"
+            >
+                {label} {required && <span className="text-red-500">*</span>}
+            </label>
+            <select
+                id={id}
+                name={id}
+                value={value}
+                onChange={onChange}
+                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-emerald-500 focus:ring-emerald-500"
+            >
+                {options.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                        {opt.label}
+                    </option>
+                ))}
+            </select>
         </div>
     );
 }

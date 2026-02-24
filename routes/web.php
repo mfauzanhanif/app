@@ -58,8 +58,9 @@ Route::domain(env('PSB_DOMAIN'))->group(function () {
 | PPDT / LANDING PAGE (daraltauhid.com)
 |--------------------------------------------------------------------------
 */
-require base_path('routes/ppdt.php');
-
+Route::domain(env('PPDT_DOMAIN'))->group(function () {
+    require base_path('routes/ppdt.php');
+});
 
 /*
 |--------------------------------------------------------------------------

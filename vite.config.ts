@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
-import flowbiteReact from "flowbite-react/plugin/vite";
+import flowbiteReact from 'flowbite-react/plugin/vite';
 
 export default defineConfig({
     plugins: [
@@ -15,7 +15,8 @@ export default defineConfig({
                 'resources/css/ppdt.css',
                 'resources/js/app.tsx',
                 'resources/js/psb.tsx',
-                'resources/js/ppdt.tsx'
+                'resources/js/ppdt.tsx',
+                'resources/js/misdt.tsx',
             ],
             ssr: 'resources/js/ssr.tsx',
             refresh: true,
@@ -29,7 +30,7 @@ export default defineConfig({
         wayfinder({
             formVariants: true,
         }),
-        flowbiteReact()
+        flowbiteReact(),
     ],
     esbuild: {
         jsx: 'automatic',

@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'root_institution_code' => env('ROOT_INSTITUTION_CODE', 'ydtp'),
+    'root_institution_code' => 'ydtp',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',
 
     /*
     |--------------------------------------------------------------------------

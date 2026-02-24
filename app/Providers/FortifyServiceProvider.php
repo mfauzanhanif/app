@@ -75,7 +75,7 @@ class FortifyServiceProvider extends ServiceProvider
 
         // Config tambahan yang standar untuk limit login
         RateLimiter::for('login', function (Request $request) {
-            $email = (string) $request->identifier ?? (string) $request->email;
+            $email = (string) ($request->identifier ?? $request->email);
             return Limit::perMinute(5)->by($email . $request->ip());
         });
     }

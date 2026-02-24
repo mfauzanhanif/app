@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\Web\PPDTController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-Route::domain(env('PPDT_DOMAIN', 'daraltauhid.com'))->group(function () {
-    Route::get('/', function () {
-        return Inertia::render('Home')->setRootView('ppdt');
-    })->name('ppdt.home');
-});
+/*
+|--------------------------------------------------------------------------
+| PPDT Routes (daraltauhid.com)
+|--------------------------------------------------------------------------
+| Routes for the public PPDT (Pondok Pesantren Dar Al Tauhid) website.
+| Semua route public — pengunjung tidak perlu login.
+*/
+
+Route::get('/', [PPDTController::class, 'home'])->name('ppdt.home');
